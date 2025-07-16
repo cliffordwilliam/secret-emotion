@@ -7,19 +7,46 @@ This repository includes development tooling such as Git hooks, linters, and for
 
 ## 📁 Project Structure
 
-| File/Folder               | Description                                                        |
-| ------------------------- | ------------------------------------------------------------------ |
-| `.github/`                | GitHub configuration — contains Actions workflows, etc.            |
-| `.godot/`                 | Godot editor state — can be ignored for version control.           |
-| `.editorconfig`           | Shared editor configuration (e.g., indent style, size).            |
-| `.gitattributes`          | Git settings for text normalization and merge behavior.            |
-| `.gitignore`              | Specifies intentionally untracked files to ignore in Git.          |
-| `.pre-commit-config.yaml` | Configuration for pre-commit hooks (e.g., linting and formatting). |
-| `.python-version`         | Pyenv-local Python version for this project (optional).            |
-| `icon.svg`                | Project icon for Godot editor display.                             |
-| `icon.svg.import`         | Auto-generated import metadata for the `icon.svg` asset.           |
-| `project.godot`           | The main configuration file for your Godot project.                |
-| `README.md`               | Project overview, setup instructions, and tooling documentation.   |
+```text
+project-root/
+├── .github/                   # GitHub configuration — Actions workflows, templates, etc.
+├── .godot/                    # Godot editor state (safe to ignore in VCS)
+├── .editorconfig              # Shared editor settings (indentation, charset, …)
+├── .gitattributes             # Text‑file normalization & merge rules
+├── .gitignore                 # Files/directories Git should ignore
+├── .pre-commit-config.yaml    # Linting / formatting hooks
+├── .python-version            # Local Python version for githooks & tooling
+│
+├── project.godot              # The main configuration file for your Godot project
+├── icon.svg                   # Project icon shown in the Godot launcher
+├── icon.svg.import            # Import metadata for the icon asset (*.import are ignored in VCS)
+├── README.md                  # Project overview & setup guide
+│
+└── source/                    # **All game content lives here**
+	├── player/                # Player domain (example below)
+	└── …                      # Additional domains (enemies/, ui/, levels/, …)
+```
+
+### ▶️ `source/player/`
+
+```text
+player/
+├── assets/                    # Raw art / audio (.png, .wav, ...)
+│   ├── sprite.png
+│   └── dash_sound.wav
+│
+├── scenes/                    # Packed Godot scenes (.tscn)
+│   ├── Player.tscn            # Main player scene
+│   └── DashEffect.tscn        # Dash VFX
+│
+├── scripts/                   # GDScript sources (.gd)
+│   ├── player.gd              # Core movement & input
+│   ├── player_state.gd        # State‑machine logic
+│   └── player_attack.gd       # Combat behaviours
+│
+└── resources/                 # Data‑only assets (.tres)
+	└── player_stats.tres      # Tunable stats (speed, health, …)
+```
 
 ---
 
