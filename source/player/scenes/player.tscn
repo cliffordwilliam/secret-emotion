@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dchdvljmx46te"]
+
+[ext_resource type="SpriteFrames" uid="uid://bm85prs0y1np7" path="res://source/player/resources/player_arm_combined_sprite_frames.tres" id="1_soudp"]
+[ext_resource type="Shape2D" uid="uid://cimsvms132gp" path="res://source/player/resources/player_collision_rectangle_shape_2d.tres" id="2_7fkwx"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_soudp")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_7fkwx")
