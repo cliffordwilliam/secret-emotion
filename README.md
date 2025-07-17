@@ -50,7 +50,71 @@ player/
 
 ---
 
+## Naming convention
+
+| Type          | Convention     | Example                        |
+|---------------|----------------|--------------------------------|
+| File names    | `snake_case`   | `yaml_parser.gd`               |
+| Class names   | `PascalCase`   | `class_name YAMLParser`        |
+| Node names    | `PascalCase`   | `Camera3D`, `Player`           |
+| Functions     | `snake_case`   | `func load_level():`           |
+| Variables     | `snake_case`   | `var particle_effect`          |
+| Signals       | `snake_case`   | `signal door_opened`           |
+| Constants     | `CONSTANT_CASE`| `const MAX_SPEED = 200`        |
+| Enum names    | `PascalCase`   | `enum Element`                 |
+| Enum members  | `CONSTANT_CASE`| `{EARTH, WATER, AIR, FIRE}`    |
+
+---
+
+## Code order
+
+```text
+01. @tool, @icon, @static_unload
+02. class_name
+03. extends
+04. ## doc comment
+
+05. signals
+06. enums
+07. constants
+08. static variables
+09. @export variables
+10. remaining regular variables
+11. @onready variables
+
+12. _static_init()
+13. remaining static methods
+14. overridden built-in virtual methods:
+	1. _init()
+	2. _enter_tree()
+	3. _ready()
+	4. _process()
+	5. _physics_process()
+	6. remaining virtual methods
+15. overridden custom methods
+16. remaining methods
+17. subclasses
+```
+
+And put the class methods and variables in the following order depending on their access modifiers:
+
+```text
+1. public
+2. private
+```
+
+This code order follows four rules of thumb:
+
+1. Properties and signals come first, followed by methods.
+2. Public comes before private.
+3. Virtual callbacks come before the class's interface.
+4. The object's construction and initialization functions, _init and _ready, come before functions that modify the object at runtime.
+
+---
+
 ## 🔧 GDScript Linting & Formatting (via Git Hooks)
+
+Formatting and Linting are delegated to [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit).
 
 This section guides you through setting up Python-based [pre-commit](https://pre-commit.com/) hooks using [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit).
 
