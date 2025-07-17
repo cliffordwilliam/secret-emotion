@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dchdvljmx46te"]
+[gd_scene load_steps=4 format=3 uid="uid://dchdvljmx46te"]
 
+[ext_resource type="Script" uid="uid://qudhcnrd0q03" path="res://source/player/scripts/player.gd" id="1_7fkwx"]
 [ext_resource type="SpriteFrames" uid="uid://bm85prs0y1np7" path="res://source/player/resources/player_arm_combined.tres" id="1_soudp"]
 [ext_resource type="Shape2D" uid="uid://cimsvms132gp" path="res://source/player/resources/player_collision.tres" id="2_7fkwx"]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7fkwx")
 
 [node name="PlayerArmCombined" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)
 sprite_frames = ExtResource("1_soudp")
-animation = &"idle"
+animation = &"walk"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
