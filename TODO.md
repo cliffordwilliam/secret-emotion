@@ -1,6 +1,12 @@
 # ✅ TODO List
 
-- [ ] Add const autoload
-- [ ] Adjust player walk speed
-- [ ] Add statemachine
-- [ ] Add documentation
+- [x] Add const autoload
+- [x] Adjust player walk speed
+- [x] Add statemachine
+- ~~[ ] Add documentation~~
+- [ ] Add more player states
+- [ ] Add sound manager
+- [ ] Add cutscene
+- [ ] Add npc to talk to
+- [ ] Add save feature
+- [ ] Add another room
