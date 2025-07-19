@@ -10,3 +10,4 @@
 - [ ] Add npc to talk to
 - [ ] Add save feature
 - [ ] Add another room
+- [ ] Check if each script follows formatting rule
