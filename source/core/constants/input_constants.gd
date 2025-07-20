@@ -1,4 +1,5 @@
 extends Node
+# Validates GUI against const (input map)
 
 const LEFT_INPUT: String = "left"
 const RIGHT_INPUT: String = "right"
@@ -9,15 +10,13 @@ const ALL_ACTIONS: Array[String] = [
 
 
 func _ready():
-	_validate_inputs()
+	_validate_gui_input_map()
 
 
-func _validate_inputs():
+func _validate_gui_input_map():
 	for action in ALL_ACTIONS:
 		if not InputMap.has_action(action):
-			push_error("❌ Input action missing from InputMap: %s" % action)
+			push_error("❌ GUI input map missing this action: %s" % action)
 			get_tree().quit(1)
 
-	# Can't check if GUI input maps are not in ALL_ACTIONS since it has defaults (ui_up, ...)
-
-	print("✅ All const input names are in GUI.")
+	print("✅ GUI input map is valid.")

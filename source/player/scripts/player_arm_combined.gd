@@ -1,5 +1,6 @@
 class_name PlayerArmCombined
 extends AnimatedSprite2D
+# Validates GUI against const (animation)
 
 const IDLE: String = "idle"
 const WALK: String = "walk"

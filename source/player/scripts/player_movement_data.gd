@@ -1,5 +1,10 @@
 class_name PlayerMovementData
-extends Resource
-## Holds all const for player movement
+extends LoadableResource
+# Player movement props
 
-const WALK_SPEED: float = 28.0
+var walk_speed: float
+
+
+func _apply_data() -> void:
+	# Pretend disk -> props
+	walk_speed = 28.0

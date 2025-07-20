@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dchdvljmx46te"]
+[gd_scene load_steps=8 format=3 uid="uid://dchdvljmx46te"]
 
 [ext_resource type="Script" uid="uid://qudhcnrd0q03" path="res://source/player/scripts/player.gd" id="1_7fkwx"]
 [ext_resource type="SpriteFrames" uid="uid://bm85prs0y1np7" path="res://source/player/resources/player_arm_combined.tres" id="1_soudp"]
 [ext_resource type="Shape2D" uid="uid://cimsvms132gp" path="res://source/player/resources/player_collision.tres" id="2_7fkwx"]
-[ext_resource type="Resource" uid="uid://ctymysemyvmxs" path="res://source/player/resources/player_movement_data.tres" id="2_sv1xe"]
 [ext_resource type="Script" uid="uid://o1e4j37m04g8" path="res://source/player/scripts/player_arm_combined.gd" id="3_pe5wp"]
 [ext_resource type="Script" uid="uid://bd03eou4rra0e" path="res://source/player/scripts/states/player_state_machine.gd" id="6_l7wa7"]
 [ext_resource type="Script" uid="uid://b2s52epft0kfa" path="res://source/player/scripts/states/player_idle_state.gd" id="7_l7wa7"]
@@ -11,7 +10,6 @@
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7fkwx")
-player_movement_data = ExtResource("2_sv1xe")
 
 [node name="PlayerArmCombined" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)

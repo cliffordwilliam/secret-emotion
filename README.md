@@ -211,26 +211,26 @@ Create this file at the project root:
 repos:
   # GDScript Toolkit
   - repo: https://github.com/Scony/godot-gdscript-toolkit
-    rev: 4.3.4
-    hooks:
-      - id: gdlint
-        name: gdlint
-        description: "gdlint - linter for GDScript"
-        entry: gdlint
-        language: python
-        language_version: python3
-        require_serial: true
-        types: [gdscript]
-        additional_dependencies: [setuptools]
-      - id: gdformat
-        name: gdformat
-        description: "gdformat - formatter for GDScript"
-        entry: gdformat
-        language: python
-        language_version: python3
-        require_serial: true
-        types: [gdscript]
-        additional_dependencies: [setuptools]
+	rev: 4.3.4
+	hooks:
+	  - id: gdlint
+		name: gdlint
+		description: "gdlint - linter for GDScript"
+		entry: gdlint
+		language: python
+		language_version: python3
+		require_serial: true
+		types: [gdscript]
+		additional_dependencies: [setuptools]
+	  - id: gdformat
+		name: gdformat
+		description: "gdformat - formatter for GDScript"
+		entry: gdformat
+		language: python
+		language_version: python3
+		require_serial: true
+		types: [gdscript]
+		additional_dependencies: [setuptools]
 ```
 
 ---
@@ -257,19 +257,19 @@ name: Static checks
 
 on:
   push:
-    branches: [ "main" ]
+	branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+	branches: [ "main" ]
 
 jobs:
   static-checks:
-    name: 'Static checks'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: Scony/godot-gdscript-toolkit@master
-    - run: gdformat --check source/
-    - run: gdlint source/
+	name: 'Static checks'
+	runs-on: ubuntu-latest
+	steps:
+	- uses: actions/checkout@v4
+	- uses: Scony/godot-gdscript-toolkit@master
+	- run: gdformat --check source/
+	- run: gdlint source/
 ```
 
 ---

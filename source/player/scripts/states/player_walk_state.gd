@@ -9,7 +9,7 @@ func enter() -> void:
 func physics_process(_delta: float) -> void:
 	var dir: int = player.get_dir()
 
-	player.velocity.x = float(dir) * player.player_movement_data.WALK_SPEED
+	player.velocity.x = float(dir) * player.movement_data.walk_speed
 	player.move_and_slide()
 
 	if not dir:

@@ -13,3 +13,4 @@
 - [ ] Check if each script follows formatting rule
 - [ ] Add MIT
 - [ ] Add door
+- [x] Scaffold save / load system
