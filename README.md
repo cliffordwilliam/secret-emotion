@@ -207,7 +207,7 @@ pip install gdtoolkit pre-commit
 
 Create this file at the project root:
 
-```yaml
+```Yaml
 repos:
   # GDScript Toolkit
   - repo: https://github.com/Scony/godot-gdscript-toolkit
@@ -252,7 +252,7 @@ To enforce formatting/linting on pull requests, add this workflow:
 
 ### `.github/workflows/static-checks.yml`
 
-```yaml
+```Yaml
 name: Static checks
 
 on:
