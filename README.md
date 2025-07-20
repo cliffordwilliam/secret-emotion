@@ -52,17 +52,17 @@ player/
 
 ## Naming convention
 
-| Type          | Convention     | Example                        |
-|---------------|----------------|--------------------------------|
-| File names    | `snake_case`   | `yaml_parser.gd`               |
-| Class names   | `PascalCase`   | `class_name YAMLParser`        |
-| Node names    | `PascalCase`   | `Camera3D`, `Player`           |
-| Functions     | `snake_case`   | `func load_level():`           |
-| Variables     | `snake_case`   | `var particle_effect`          |
-| Signals       | `snake_case`   | `signal door_opened`           |
-| Constants     | `CONSTANT_CASE`| `const MAX_SPEED = 200`        |
-| Enum names    | `PascalCase`   | `enum Element`                 |
-| Enum members  | `CONSTANT_CASE`| `{EARTH, WATER, AIR, FIRE}`    |
+| Type         | Convention      | Example                     |
+| ------------ | --------------- | --------------------------- |
+| File names   | `snake_case`    | `yaml_parser.gd`            |
+| Class names  | `PascalCase`    | `class_name YAMLParser`     |
+| Node names   | `PascalCase`    | `Camera3D`, `Player`        |
+| Functions    | `snake_case`    | `func load_level():`        |
+| Variables    | `snake_case`    | `var particle_effect`       |
+| Signals      | `snake_case`    | `signal door_opened`        |
+| Constants    | `CONSTANT_CASE` | `const MAX_SPEED = 200`     |
+| Enum names   | `PascalCase`    | `enum Element`              |
+| Enum members | `CONSTANT_CASE` | `{EARTH, WATER, AIR, FIRE}` |
 
 ---
 
@@ -108,7 +108,7 @@ This code order follows four rules of thumb:
 1. Properties and signals come first, followed by methods.
 2. Public comes before private.
 3. Virtual callbacks come before the class's interface.
-4. The object's construction and initialization functions, _init and _ready, come before functions that modify the object at runtime.
+4. The object's construction and initialization functions, \_init and \_ready, come before functions that modify the object at runtime.
 
 ---
 
@@ -120,9 +120,9 @@ This section guides you through setting up Python-based [pre-commit](https://pre
 
 ### ✅ Requirements
 
-* Ubuntu
-* Git
-* Python (installed via `pyenv` for isolation)
+- Ubuntu
+- Git
+- Python (installed via `pyenv` for isolation)
 
 ---
 
@@ -211,7 +211,7 @@ Create this file at the project root:
 repos:
   # GDScript Toolkit
   - repo: https://github.com/Scony/godot-gdscript-toolkit
-	rev: 4.2.2
+	rev: 4.3.4
 	hooks:
 	  - id: gdlint
 		name: gdlint
@@ -338,7 +338,7 @@ func bar():
 
 ## 🛠️ Extra Tools
 
-* `gdparse` – Parses GDScript into an AST.
-* `gdradon` – Calculates cyclomatic complexity.
+- `gdparse` – Parses GDScript into an AST.
+- `gdradon` – Calculates cyclomatic complexity.
 
 More tools and details: [Scony/godot-gdscript-toolkit](https://github.com/Scony/godot-gdscript-toolkit)

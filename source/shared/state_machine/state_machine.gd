@@ -10,20 +10,17 @@ func physics_process(delta: float) -> void:
 
 
 func add_state(new_state: State) -> void:
-	state_map[new_state.state_name] = new_state
+	state_map[new_state.name] = new_state
 	new_state.done.connect(_change_state)
 
 
-func start(first_state_name: String) -> void:
-	_change_state(first_state_name)
+func start(next_state: State) -> void:
+	_change_state(next_state)
 
 
-func _change_state(next_state_name: String) -> void:
+func _change_state(next_state: State) -> void:
 	if current_state:
 		current_state.exit()
-	current_state = state_map.get(next_state_name)
-	if not current_state:
-		push_error("State '%s' not found in state_map." % next_state_name)
-		return
+	current_state = state_map[next_state.name]
 	if current_state:
 		current_state.enter()

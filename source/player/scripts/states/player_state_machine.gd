@@ -1,16 +1,15 @@
 class_name PlayerStateMachine
 extends StateMachine
 
-@onready var first_state: PlayerState = $PlayerIdleState
 @onready var player_idle_state: PlayerState = $PlayerIdleState
 @onready var player_walk_state: PlayerState = $PlayerWalkState
 
 
+## Populate state machine with states, pass player to each state, then it enters first state
 func setup_states(player_reference: Player) -> void:
 	for child in get_children():
 		if child is PlayerState:
-			child.player = player_reference
-			child.player_state_machine = self
+			child.set_player(player_reference)
 			add_state(child)
 
-	start(first_state.state_name)
+	start(player_idle_state)

@@ -11,3 +11,5 @@
 - [ ] Add save feature
 - [ ] Add another room
 - [ ] Check if each script follows formatting rule
+- [ ] Add MIT
+- [ ] Add door

@@ -1,8 +1,8 @@
 extends Node
 
-const LEFT_INPUT := "left"
-const RIGHT_INPUT := "right"
-const ALL = [
+const LEFT_INPUT: String = "left"
+const RIGHT_INPUT: String = "right"
+const ALL_ACTIONS: Array[String] = [
 	LEFT_INPUT,
 	RIGHT_INPUT,
 ]
@@ -13,10 +13,11 @@ func _ready():
 
 
 func _validate_inputs():
-	for action in ALL:
+	for action in ALL_ACTIONS:
 		if not InputMap.has_action(action):
 			push_error("❌ Input action missing from InputMap: %s" % action)
+			get_tree().quit(1)
 
-	# Cannot check if some GUI input maps are not in ALL since it has defaults like ui_up, ...
+	# Can't check if GUI input maps are not in ALL_ACTIONS since it has defaults (ui_up, ...)
 
 	print("✅ All const input names are in GUI.")

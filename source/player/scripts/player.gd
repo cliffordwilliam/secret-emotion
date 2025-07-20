@@ -13,3 +13,8 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	player_state_machine.physics_process(delta)
+
+
+# Common methods for states
+func get_dir() -> int:
+	return int(Input.get_axis(InputConstants.LEFT_INPUT, InputConstants.RIGHT_INPUT))
