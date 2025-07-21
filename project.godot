@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-InputConstants="*res://source/core/constants/input_constants.gd"
+InputConstants="*res://source/autoloads/constants/input_constants.gd"
 
 [display]
 
@@ -25,6 +25,10 @@ window/size/viewport_width=320
 window/size/viewport_height=180
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/collapse_folders/plugin.cfg")
 
 [input]
 

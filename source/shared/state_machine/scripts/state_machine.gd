@@ -1,18 +1,16 @@
+@icon("res://source/shared/state_machine/assets/shuffle.svg")
 class_name StateMachine
 extends Node
-
-# Common state machine props
-var state_data: StateData
+# Listens to kid 'done' event to change current state
 
 var current_state: State
 
 
-## subscribe to kids done event, and enter first state
-func init() -> void:
-	for child in find_children("*", "State"):
+func _ready() -> void:
+	for child in get_children():
 		child.done.connect(_change_state)
 	await owner.ready
-	_change_state(get_node(state_data.initial_state_path))
+	_change_state(get_child(0))
 
 
 func physics_process(delta: float) -> void:

@@ -1,19 +1,20 @@
 class_name PlayerWalkState
 extends PlayerState
+# Player walking around
 
 
 func enter() -> void:
-	player.player_arm_combined.play(player.player_arm_combined.WALK)
+	player.play_animation.emit(player.animation_name_data.WALK)
 
 
 func physics_process(_delta: float) -> void:
-	var dir: int = player.get_dir()
+	var input_direction_x: int = player.get_input_direction_x()
 
-	player.velocity.x = float(dir) * player.movement_data.walk_speed
+	player.velocity.x = float(input_direction_x) * player.movement_data.WALK_SPEED
 	player.move_and_slide()
 
-	if not dir:
+	if not input_direction_x:
 		done.emit(player_state_machine.player_idle_state)
 		return
 
-	player.player_arm_combined.flip_h = player.velocity.x < 0.0
+	player.face_direction.emit(player.velocity.x < 0.0)

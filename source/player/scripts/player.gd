@@ -1,12 +1,13 @@
 class_name Player
 extends CharacterBody2D
+# This class listens to input, and use it to update position
 
-# Disk -> props
-var movement_data: PlayerMovementData = (
-	preload("res://source/player/resources/player_movement_data.tres").duplicate().init()
-)
+@warning_ignore_start("unused_signal") signal face_direction(is_facing_left: bool)
+signal play_animation(animation_name: StringName)
 
-@onready var player_arm_combined: AnimatedSprite2D = $PlayerArmCombined
+@export var movement_data: PlayerMovementData
+@export var animation_name_data: PlayerAnimationNameData
+
 @onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine
 
 
@@ -15,5 +16,5 @@ func _physics_process(delta):
 
 
 # States common methods
-func get_dir() -> int:
+func get_input_direction_x() -> int:
 	return int(Input.get_axis(InputConstants.LEFT_INPUT, InputConstants.RIGHT_INPUT))

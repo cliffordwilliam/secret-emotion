@@ -1,12 +1,12 @@
 class_name PlayerState
 extends State
-# Stores owner (player) references (belongings)
+# Stores owner belongings (so lsp knows owner 'Player' type)
 
 var player: Player
 var player_state_machine: PlayerStateMachine
 
 
 func _ready() -> void:
-	await owner.ready
 	player = owner as Player
+	await player.ready
 	player_state_machine = player.player_state_machine
