@@ -11,13 +11,13 @@ const ALL_ACTIONS: Array[StringName] = [
 
 
 func _ready():
-	_validate_gui_input_map()
+	_validate_gui()
 
 
-func _validate_gui_input_map():
+func _validate_gui():
 	for action in ALL_ACTIONS:
 		if not InputMap.has_action(action):
-			push_error("❌ GUI input map missing: %s" % action)
+			push_error("❌ GUI 'Input Map' missing: %s" % action)
 			get_tree().quit(1)
 
-	print("✅ GUI input maps are valid.")
+	print("✅ GUI 'Input Map' valid.")

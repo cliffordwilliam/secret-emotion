@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dchdvljmx46te"]
+[gd_scene load_steps=11 format=3 uid="uid://dchdvljmx46te"]
 
 [ext_resource type="Script" uid="uid://qudhcnrd0q03" path="res://source/player/scripts/player.gd" id="1_7fkwx"]
 [ext_resource type="SpriteFrames" uid="uid://bm85prs0y1np7" path="res://source/player/resources/player_animated_sprite.tres" id="1_soudp"]
@@ -9,14 +9,16 @@
 [ext_resource type="Script" uid="uid://bd03eou4rra0e" path="res://source/player/scripts/states/player_state_machine.gd" id="6_l7wa7"]
 [ext_resource type="Script" uid="uid://b2s52epft0kfa" path="res://source/player/scripts/states/player_idle_state.gd" id="7_l7wa7"]
 [ext_resource type="Script" uid="uid://bxnvv6inbw4bt" path="res://source/player/scripts/states/player_walk_state.gd" id="8_gp4bf"]
+[ext_resource type="Script" uid="uid://dp6ygnv6bxt7s" path="res://source/shared/player_input/scripts/player_input.gd" id="10_ie40s"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7fkwx")
 movement_data = ExtResource("2_l7wa7")
 animation_name_data = ExtResource("5_gp4bf")
 
-[node name="PlayerStateMachine" type="Node" parent="."]
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_l7wa7")
+initial_state = NodePath("PlayerIdleState")
 metadata/_custom_type_script = "uid://bd03eou4rra0e"
 
 [node name="PlayerIdleState" type="Node" parent="PlayerStateMachine"]
@@ -37,6 +39,10 @@ animation_name_data = ExtResource("5_gp4bf")
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
 shape = ExtResource("2_7fkwx")
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("10_ie40s")
+metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
 
 [connection signal="face_direction" from="." to="PlayerAnimatedSprite" method="_on_player_face_direction"]
 [connection signal="play_animation" from="." to="PlayerAnimatedSprite" method="_on_player_play_animation"]

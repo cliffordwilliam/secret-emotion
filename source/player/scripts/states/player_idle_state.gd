@@ -9,5 +9,5 @@ func enter() -> void:
 
 
 func physics_process(_delta: float) -> void:
-	if player.get_input_direction_x():
+	if player_input.get_input_direction_x():
 		done.emit(player_state_machine.player_walk_state)

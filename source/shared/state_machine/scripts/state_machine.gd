@@ -3,6 +3,8 @@ class_name StateMachine
 extends Node
 # Listens to kid 'done' event to change current state
 
+@export var initial_state: State
+
 var current_state: State
 
 
@@ -10,7 +12,7 @@ func _ready() -> void:
 	for child in get_children():
 		child.done.connect(_change_state)
 	await owner.ready
-	_change_state(get_child(0))
+	_change_state(initial_state)
 
 
 func physics_process(delta: float) -> void:

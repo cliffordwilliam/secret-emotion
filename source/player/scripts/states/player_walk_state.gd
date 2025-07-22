@@ -8,7 +8,7 @@ func enter() -> void:
 
 
 func physics_process(_delta: float) -> void:
-	var input_direction_x: int = player.get_input_direction_x()
+	var input_direction_x: int = player_input.get_input_direction_x()
 
 	player.velocity.x = float(input_direction_x) * player.movement_data.WALK_SPEED
 	player.move_and_slide()
