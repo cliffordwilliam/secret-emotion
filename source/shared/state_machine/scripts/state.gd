@@ -7,7 +7,7 @@ extends Node
 signal done(next_state: State)
 
 
-func enter() -> void:
+func enter(_previous_state: State) -> void:
 	pass
 
 

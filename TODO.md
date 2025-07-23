@@ -10,7 +10,7 @@
 - [ ] Add npc to talk to
 - [ ] Add save feature
 - [ ] Add another room
-- [ ] Check if each script follows formatting rule
+- [x] Check if each script follows formatting rule
 - [ ] Add MIT
 - [ ] Add door
 - [x] Scaffold save / load system

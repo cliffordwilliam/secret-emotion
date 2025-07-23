@@ -4,9 +4,11 @@ extends Node
 
 const LEFT_INPUT: StringName = "left"
 const RIGHT_INPUT: StringName = "right"
+const SHIFT_INPUT: StringName = "shift"
 const ALL_ACTIONS: Array[StringName] = [
 	LEFT_INPUT,
 	RIGHT_INPUT,
+	SHIFT_INPUT,
 ]
 
 

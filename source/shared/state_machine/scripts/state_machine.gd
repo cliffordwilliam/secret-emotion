@@ -22,6 +22,7 @@ func physics_process(delta: float) -> void:
 func _change_state(next_state: State) -> void:
 	if current_state:
 		current_state.exit()
+	var previous_state: State = current_state
 	current_state = get_node(next_state.get_path())
 	if current_state:
-		current_state.enter()
+		current_state.enter(previous_state)

@@ -4,3 +4,4 @@ extends StateMachine
 
 @onready var player_idle_state: PlayerState = $PlayerIdleState
 @onready var player_walk_state: PlayerState = $PlayerWalkState
+@onready var player_run_state: PlayerRunState = $PlayerRunState

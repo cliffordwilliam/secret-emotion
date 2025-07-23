@@ -25,3 +25,7 @@ func _on_player_play_animation(animation_name: StringName) -> void:
 
 func _on_player_face_direction(is_facing_left: bool) -> void:
 	flip_h = is_facing_left
+
+
+func _on_animation_finished() -> void:
+	play(animation_name_data.FOLLOWUPS[animation])

@@ -2,9 +2,9 @@ class_name Player
 extends CharacterBody2D
 # Listens to input and update its position with collision resolution
 
-@warning_ignore_start("unused_signal")
-# Formatter workaround
+@warning_ignore("unused_signal")
 signal face_direction(is_facing_left: bool)
+@warning_ignore("unused_signal")
 signal play_animation(animation_name: StringName)
 
 @export var movement_data: PlayerMovementData

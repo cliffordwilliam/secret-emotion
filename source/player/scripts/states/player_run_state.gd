@@ -1,10 +1,10 @@
-class_name PlayerWalkState
+class_name PlayerRunState
 extends PlayerState
-# Player walking around
+# Player running around
 
 
 func enter(_previous_state: State) -> void:
-	player.play_animation.emit(player.animation_name_data.WALK)
+	player.play_animation.emit(player.animation_name_data.TO_RUN)
 
 
 func physics_process(_delta: float) -> void:
@@ -14,11 +14,11 @@ func physics_process(_delta: float) -> void:
 		done.emit(player_state_machine.player_idle_state)
 		return
 
-	if player_input.is_shift_held():
-		done.emit(player_state_machine.player_run_state)
+	if not player_input.is_shift_held():
+		done.emit(player_state_machine.player_walk_state)
 		return
 
-	player.velocity.x = float(input_direction_x) * player.movement_data.WALK_SPEED
+	player.velocity.x = float(input_direction_x) * player.movement_data.RUN_SPEED
 	player.move_and_slide()
 
 	player.face_direction.emit(player.velocity.x < 0.0)

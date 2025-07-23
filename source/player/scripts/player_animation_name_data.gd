@@ -1,10 +1,21 @@
 class_name PlayerAnimationNameData
 extends Resource
-# Player animation name props
+# Player animation name props + next animation bindings (to_run -> run)
 
 const IDLE: StringName = "idle"
 const WALK: StringName = "walk"
+const TO_RUN: StringName = "to_run"
+const RUN: StringName = "run"
+const RUN_TO_IDLE: StringName = "run_to_idle"
 const ALL: Array[StringName] = [
 	IDLE,
 	WALK,
+	TO_RUN,
+	RUN,
+	RUN_TO_IDLE,
 ]
+
+const FOLLOWUPS: Dictionary[StringName, StringName] = {
+	TO_RUN: RUN,
+	RUN_TO_IDLE: IDLE,
+}

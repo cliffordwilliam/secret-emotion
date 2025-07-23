@@ -6,3 +6,7 @@ extends Node
 
 func get_input_direction_x() -> int:
 	return int(Input.get_axis(InputConstants.LEFT_INPUT, InputConstants.RIGHT_INPUT))
+
+
+func is_shift_held() -> int:
+	return Input.is_action_pressed(InputConstants.SHIFT_INPUT)
