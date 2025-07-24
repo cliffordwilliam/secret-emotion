@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=47 format=3 uid="uid://bm85prs0y1np7"]
+[gd_resource type="SpriteFrames" load_steps=59 format=3 uid="uid://bm85prs0y1np7"]
 
 [ext_resource type="Texture2D" uid="uid://bg3pq6kvrqf7d" path="res://source/player/assets/player_sprite_sheet_arm_combined.png" id="1_dua74"]
 
@@ -17,6 +17,34 @@ region = Rect2(576, 192, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_50lv7"]
 atlas = ExtResource("1_dua74")
 region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfne6"]
+atlas = ExtResource("1_dua74")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je6mf"]
+atlas = ExtResource("1_dua74")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsadf"]
+atlas = ExtResource("1_dua74")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bd1a"]
+atlas = ExtResource("1_dua74")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46hgs"]
+atlas = ExtResource("1_dua74")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw04w"]
+atlas = ExtResource("1_dua74")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yal3t"]
+atlas = ExtResource("1_dua74")
+region = Rect2(384, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fln8g"]
 atlas = ExtResource("1_dua74")
@@ -65,6 +93,18 @@ region = Rect2(0, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2esxg"]
 atlas = ExtResource("1_dua74")
 region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hckx2"]
+atlas = ExtResource("1_dua74")
+region = Rect2(320, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mvc8"]
+atlas = ExtResource("1_dua74")
+region = Rect2(384, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1n62"]
+atlas = ExtResource("1_dua74")
+region = Rect2(448, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xf7eg"]
 atlas = ExtResource("1_dua74")
@@ -125,6 +165,14 @@ region = Rect2(320, 192, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gcjm"]
 atlas = ExtResource("1_dua74")
 region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on48s"]
+atlas = ExtResource("1_dua74")
+region = Rect2(512, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b81ok"]
+atlas = ExtResource("1_dua74")
+region = Rect2(576, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkbhc"]
 atlas = ExtResource("1_dua74")
@@ -208,6 +256,37 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mfne6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je6mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsadf")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bd1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46hgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw04w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yal3t")
+}],
+"loop": false,
+"name": &"fall_to_idle",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fln8g")
 }, {
 "duration": 1.0,
@@ -246,6 +325,20 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hckx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mvc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1n62")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -305,6 +398,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"to_crouch",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on48s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b81ok")
+}],
+"loop": false,
+"name": &"to_fall",
 "speed": 15.0
 }, {
 "frames": [{

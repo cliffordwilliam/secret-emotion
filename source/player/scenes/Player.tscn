@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dchdvljmx46te"]
+[gd_scene load_steps=15 format=3 uid="uid://dchdvljmx46te"]
 
 [ext_resource type="Script" uid="uid://qudhcnrd0q03" path="res://source/player/scripts/player.gd" id="1_7fkwx"]
 [ext_resource type="SpriteFrames" uid="uid://bm85prs0y1np7" path="res://source/player/resources/player_animated_sprite.tres" id="1_soudp"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://b2s52epft0kfa" path="res://source/player/scripts/states/player_idle_state.gd" id="7_l7wa7"]
 [ext_resource type="Script" uid="uid://2684f788j75d" path="res://source/player/scripts/states/player_run_state.gd" id="7_svsdg"]
 [ext_resource type="Script" uid="uid://bxnvv6inbw4bt" path="res://source/player/scripts/states/player_walk_state.gd" id="8_gp4bf"]
+[ext_resource type="Script" uid="uid://pskvvtnf60hg" path="res://source/player/scripts/states/player_fall_state.gd" id="9_klvv8"]
+[ext_resource type="Script" uid="uid://bvvgrv06osw3c" path="res://source/player/scripts/states/player_jump_state.gd" id="10_h46lp"]
 [ext_resource type="Script" uid="uid://dp6ygnv6bxt7s" path="res://source/shared/player_input/scripts/player_input.gd" id="10_ie40s"]
 
 [node name="Player" type="CharacterBody2D"]
@@ -39,10 +41,18 @@ metadata/_custom_type_script = "uid://2684f788j75d"
 script = ExtResource("5_svsdg")
 metadata/_custom_type_script = "uid://tk53qsxj1c1a"
 
+[node name="PlayerFallState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_klvv8")
+metadata/_custom_type_script = "uid://pskvvtnf60hg"
+
+[node name="PlayerJumpState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_h46lp")
+metadata/_custom_type_script = "uid://bvvgrv06osw3c"
+
 [node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)
 sprite_frames = ExtResource("1_soudp")
-animation = &"turn_to_run"
+animation = &"fall_to_idle"
 script = ExtResource("3_pe5wp")
 animation_name_data = ExtResource("5_gp4bf")
 

@@ -11,6 +11,10 @@ const TO_CROUCH: StringName = "to_crouch"
 const CROUCH: StringName = "crouch"
 const CROUCH_TO_IDLE: StringName = "crouch_to_idle"
 const TURN_TO_RUN: StringName = "turn_to_run"
+const JUMP: StringName = "jump"
+const TO_FALL: StringName = "to_fall"
+const FALL: StringName = "fall"
+const FALL_TO_IDLE: StringName = "fall_to_idle"
 const ALL: Array[StringName] = [
 	IDLE,
 	WALK,
@@ -21,6 +25,10 @@ const ALL: Array[StringName] = [
 	CROUCH,
 	CROUCH_TO_IDLE,
 	TURN_TO_RUN,
+	JUMP,
+	TO_FALL,
+	FALL,
+	FALL_TO_IDLE,
 ]
 
 const FOLLOWUPS: Dictionary[StringName, StringName] = {
@@ -29,4 +37,6 @@ const FOLLOWUPS: Dictionary[StringName, StringName] = {
 	TO_CROUCH: CROUCH,
 	CROUCH_TO_IDLE: IDLE,
 	TURN_TO_RUN: RUN,
+	TO_FALL: FALL,
+	FALL_TO_IDLE: IDLE,
 }

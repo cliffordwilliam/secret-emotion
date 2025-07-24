@@ -14,3 +14,11 @@ func is_shift_held() -> int:
 
 func is_down_held() -> int:
 	return Input.is_action_pressed(InputConstants.DOWN_INPUT)
+
+
+func is_jump_tapped() -> int:
+	return Input.is_action_just_pressed(InputConstants.JUMP_INPUT)
+
+
+func is_jump_held() -> int:
+	return Input.is_action_pressed(InputConstants.JUMP_INPUT)
