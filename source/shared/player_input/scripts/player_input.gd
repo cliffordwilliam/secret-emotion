@@ -10,3 +10,7 @@ func get_input_direction_x() -> int:
 
 func is_shift_held() -> int:
 	return Input.is_action_pressed(InputConstants.SHIFT_INPUT)
+
+
+func is_down_held() -> int:
+	return Input.is_action_pressed(InputConstants.DOWN_INPUT)

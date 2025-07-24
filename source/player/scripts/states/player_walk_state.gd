@@ -10,6 +10,10 @@ func enter(_previous_state: State) -> void:
 func physics_process(_delta: float) -> void:
 	var input_direction_x: int = player_input.get_input_direction_x()
 
+	if player_input.is_down_held():
+		done.emit(player_state_machine.player_crouch_state)
+		return
+
 	if not input_direction_x:
 		done.emit(player_state_machine.player_idle_state)
 		return
@@ -22,3 +26,4 @@ func physics_process(_delta: float) -> void:
 	player.move_and_slide()
 
 	player.face_direction.emit(player.velocity.x < 0.0)
+	player.is_facing_left = player.velocity.x < 0.0
