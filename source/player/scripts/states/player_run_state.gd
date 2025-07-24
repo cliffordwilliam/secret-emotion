@@ -25,4 +25,9 @@ func physics_process(_delta: float) -> void:
 	player.velocity.x = float(input_direction_x) * player.movement_data.RUN_SPEED
 	player.move_and_slide()
 
-	player.set_facing_direction(player.velocity.x < 0.0)
+	player.face_direction.emit(player.velocity.x < 0.0)
+
+
+func _on_player_animated_sprite_flip_h_changed() -> void:
+	if player_state_machine.current_state == self:
+		player.play_animation.emit(player.animation_name_data.TURN_TO_RUN)

@@ -26,4 +26,3 @@ func physics_process(_delta: float) -> void:
 	player.move_and_slide()
 
 	player.face_direction.emit(player.velocity.x < 0.0)
-	player.is_facing_left = player.velocity.x < 0.0
