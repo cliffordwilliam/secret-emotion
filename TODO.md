@@ -4,7 +4,7 @@
 - [x] Adjust player walk speed
 - [x] Add statemachine
 - ~~[ ] Add documentation~~
-- [ ] Add more player states
+- [x] Add more player states
 - [ ] Add sound manager
 - [ ] Add cutscene
 - [ ] Add npc to talk to

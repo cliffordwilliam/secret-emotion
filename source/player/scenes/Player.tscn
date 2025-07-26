@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://dp6ygnv6bxt7s" path="res://source/shared/player_input/scripts/player_input.gd" id="10_ie40s"]
 
 [node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+floor_snap_length = 16.0
 script = ExtResource("1_7fkwx")
 movement_data = ExtResource("2_l7wa7")
 animation_name_data = ExtResource("5_gp4bf")
@@ -52,7 +54,7 @@ metadata/_custom_type_script = "uid://bvvgrv06osw3c"
 [node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -21)
 sprite_frames = ExtResource("1_soudp")
-animation = &"fall_to_idle"
+animation = &"idle"
 script = ExtResource("3_pe5wp")
 animation_name_data = ExtResource("5_gp4bf")
 
