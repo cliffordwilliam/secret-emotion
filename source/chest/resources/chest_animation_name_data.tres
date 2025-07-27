@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ChestAnimationNameData" load_steps=2 format=3 uid="uid://bq600h675o2i4"]
+
+[ext_resource type="Script" uid="uid://cjux78yb4oxdr" path="res://source/chest/scripts/chest_animation_name_data.gd" id="1_pbt51"]
+
+[resource]
+script = ExtResource("1_pbt51")
+metadata/_custom_type_script = "uid://cjux78yb4oxdr"

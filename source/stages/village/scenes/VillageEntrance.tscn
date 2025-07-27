@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bvbespk4pnia4"]
+[gd_scene load_steps=14 format=4 uid="uid://bvbespk4pnia4"]
 
 [ext_resource type="Script" uid="uid://bb0y7uhq34t5n" path="res://source/stages/village/scripts/village_entrance.gd" id="1_rh0n8"]
 [ext_resource type="TileSet" uid="uid://c6ksmr8m52u4b" path="res://source/stages/village/resources/village_tile_set.tres" id="1_ykyy6"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cs71ewfki0f8n" path="res://source/parallax_backgrounds/scenes/forest_top_far.tscn" id="5_rh0n8"]
 [ext_resource type="PackedScene" uid="uid://dybu8vg2dbbip" path="res://source/parallax_backgrounds/scenes/forest_top_near.tscn" id="6_p38ko"]
 [ext_resource type="PackedScene" uid="uid://c1uf1suxhw6gd" path="res://source/parallax_backgrounds/scenes/pines.tscn" id="7_hegwb"]
+[ext_resource type="PackedScene" uid="uid://bvlrmt68228f" path="res://source/chest/scenes/Chest.tscn" id="8_rh0n8"]
 [ext_resource type="PackedScene" uid="uid://cu7lsh2me8wdm" path="res://source/parallax_backgrounds/scenes/ray.tscn" id="10_sf5gu"]
 [ext_resource type="PackedScene" uid="uid://ck0ab3frwfod3" path="res://source/door/scenes/Door.tscn" id="11_xt76x"]
 
@@ -27,6 +28,9 @@ script = ExtResource("1_rh0n8")
 [node name="ForestTopNear" parent="." instance=ExtResource("6_p38ko")]
 
 [node name="Pines" parent="." instance=ExtResource("7_hegwb")]
+
+[node name="Chest" parent="." instance=ExtResource("8_rh0n8")]
+position = Vector2(352, 112)
 
 [node name="Player" parent="." instance=ExtResource("2_a4ul6")]
 position = Vector2(96, 112)

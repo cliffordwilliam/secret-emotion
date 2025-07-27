@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://btjtm4q7k0d8x"]
+[gd_scene load_steps=12 format=4 uid="uid://btjtm4q7k0d8x"]
 
 [ext_resource type="Script" uid="uid://onat5bjl3ps6" path="res://source/stages/village/scripts/village_river_bank.gd" id="1_f4sm8"]
 [ext_resource type="PackedScene" uid="uid://cwmuljcxfnra6" path="res://source/parallax_backgrounds/scenes/sky.tscn" id="2_l05dr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cs71ewfki0f8n" path="res://source/parallax_backgrounds/scenes/forest_top_far.tscn" id="5_fkxi0"]
 [ext_resource type="PackedScene" uid="uid://dybu8vg2dbbip" path="res://source/parallax_backgrounds/scenes/forest_top_near.tscn" id="6_775kx"]
 [ext_resource type="PackedScene" uid="uid://dchdvljmx46te" path="res://source/player/scenes/Player.tscn" id="7_epdta"]
+[ext_resource type="PackedScene" uid="uid://bvlrmt68228f" path="res://source/chest/scenes/Chest.tscn" id="7_f4sm8"]
 [ext_resource type="TileSet" uid="uid://c6ksmr8m52u4b" path="res://source/stages/village/resources/village_tile_set.tres" id="8_2l6gk"]
 [ext_resource type="PackedScene" uid="uid://cu7lsh2me8wdm" path="res://source/parallax_backgrounds/scenes/ray.tscn" id="9_44fna"]
 [ext_resource type="PackedScene" uid="uid://ck0ab3frwfod3" path="res://source/door/scenes/Door.tscn" id="12_tnsup"]
@@ -23,6 +24,9 @@ script = ExtResource("1_f4sm8")
 [node name="ForestTopFar" parent="." instance=ExtResource("5_fkxi0")]
 
 [node name="ForestTopNear" parent="." instance=ExtResource("6_775kx")]
+
+[node name="Chest" parent="." instance=ExtResource("7_f4sm8")]
+position = Vector2(216, 128)
 
 [node name="Player" parent="." instance=ExtResource("7_epdta")]
 

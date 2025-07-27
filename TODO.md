@@ -9,7 +9,7 @@
 - [ ] Add music manager
 - [ ] Add cutscene
 - [ ] Add npc to talk to
-- [ ] Add save feature
+- [ ] Add save feature (kid - base save component - world state cache autoload - disk)
 - [x] Add another room
 - [x] Check if each script follows formatting rule
 - [x] Add MIT

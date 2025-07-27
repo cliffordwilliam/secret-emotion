@@ -3,6 +3,8 @@ class_name Room
 extends Node
 # Stores room base properties
 
+signal position_player_to_door(global_position: Vector2)
+
 var doors: Dictionary[String, Door] = {}
 var player: Player
 
@@ -11,6 +13,7 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Player:
 			player = child
+			position_player_to_door.connect(player._on_enter_room_reposition_to_door)
 	for child in get_children():
 		if child is Door:
 			doors[child.name] = child
@@ -18,7 +21,7 @@ func _ready() -> void:
 
 
 func initialize_player_position_to_door(door_name: String) -> void:
-	player.global_position = doors[door_name].player_spawn_position.global_position
+	position_player_to_door.emit(doors[door_name].player_spawn_position.global_position)
 
 
 func _on_door_player_entered(target_room_scene_path: String, target_door_name: String) -> void:
