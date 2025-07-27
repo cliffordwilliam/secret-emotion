@@ -7,6 +7,10 @@ func enter(_previous_state: State) -> void:
 	player.play_animation.emit(player_animation_name_data.TO_FALL)
 
 
+func exit() -> void:
+	SoundEffect.play(SoundEffectFilePathContants.SOFT_LAND)
+
+
 func physics_process(delta: float) -> void:
 	var input_direction_x: int = player_input.get_input_direction_x()
 

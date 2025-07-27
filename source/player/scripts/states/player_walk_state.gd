@@ -2,9 +2,18 @@ class_name PlayerWalkState
 extends PlayerState
 # Player walking around
 
+@export var sound_effect_data: PlayerSoundEffectData
+@onready var timer: Timer = $Timer
+
 
 func enter(_previous_state: State) -> void:
 	player.play_animation.emit(player_animation_name_data.WALK)
+	timer.wait_time = sound_effect_data.WALK_STEP_INTERVAL
+	timer.start()
+
+
+func exit() -> void:
+	timer.stop()
 
 
 func physics_process(_delta: float) -> void:
@@ -34,3 +43,7 @@ func physics_process(_delta: float) -> void:
 		return
 
 	player.face_direction.emit(player.velocity.x < 0.0)
+
+
+func _on_timer_timeout() -> void:
+	SoundEffect.play(SoundEffectFilePathContants.GRASS_FOOTSTEP)

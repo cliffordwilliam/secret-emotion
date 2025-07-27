@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dchdvljmx46te"]
+[gd_scene load_steps=16 format=3 uid="uid://dchdvljmx46te"]
 
 [ext_resource type="Script" uid="uid://qudhcnrd0q03" path="res://source/player/scripts/player.gd" id="1_7fkwx"]
 [ext_resource type="SpriteFrames" uid="uid://bm85prs0y1np7" path="res://source/player/resources/player_animated_sprite.tres" id="1_soudp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bd03eou4rra0e" path="res://source/player/scripts/states/player_state_machine.gd" id="6_l7wa7"]
 [ext_resource type="Script" uid="uid://b2s52epft0kfa" path="res://source/player/scripts/states/player_idle_state.gd" id="7_l7wa7"]
 [ext_resource type="Script" uid="uid://2684f788j75d" path="res://source/player/scripts/states/player_run_state.gd" id="7_svsdg"]
+[ext_resource type="Resource" uid="uid://dhnqie8nllt52" path="res://source/player/resources/player_sound_effect_data.tres" id="7_wk3uo"]
 [ext_resource type="Script" uid="uid://bxnvv6inbw4bt" path="res://source/player/scripts/states/player_walk_state.gd" id="8_gp4bf"]
 [ext_resource type="Script" uid="uid://pskvvtnf60hg" path="res://source/player/scripts/states/player_fall_state.gd" id="9_klvv8"]
 [ext_resource type="Script" uid="uid://bvvgrv06osw3c" path="res://source/player/scripts/states/player_jump_state.gd" id="10_h46lp"]
@@ -34,11 +35,17 @@ metadata/_custom_type_script = "uid://b2s52epft0kfa"
 
 [node name="PlayerWalkState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("8_gp4bf")
+sound_effect_data = ExtResource("7_wk3uo")
 metadata/_custom_type_script = "uid://bxnvv6inbw4bt"
+
+[node name="Timer" type="Timer" parent="PlayerStateMachine/PlayerWalkState"]
 
 [node name="PlayerRunState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("7_svsdg")
+sound_effect_data = ExtResource("7_wk3uo")
 metadata/_custom_type_script = "uid://2684f788j75d"
+
+[node name="Timer" type="Timer" parent="PlayerStateMachine/PlayerRunState"]
 
 [node name="PlayerCrouchState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_svsdg")
@@ -69,5 +76,7 @@ metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
 
 [connection signal="face_direction" from="." to="PlayerAnimatedSprite" method="_on_player_face_direction"]
 [connection signal="play_animation" from="." to="PlayerAnimatedSprite" method="_on_player_play_animation"]
+[connection signal="timeout" from="PlayerStateMachine/PlayerWalkState/Timer" to="PlayerStateMachine/PlayerWalkState" method="_on_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/PlayerRunState/Timer" to="PlayerStateMachine/PlayerRunState" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="PlayerAnimatedSprite" to="PlayerAnimatedSprite" method="_on_animation_finished"]
 [connection signal="flip_h_changed" from="PlayerAnimatedSprite" to="PlayerStateMachine/PlayerRunState" method="_on_player_animated_sprite_flip_h_changed"]
