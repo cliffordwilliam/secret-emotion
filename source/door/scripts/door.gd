@@ -9,4 +9,4 @@ signal player_entered(target_room_scene_path: String, target_door_name: String)
 
 
 func _on_body_entered(_body: Node):
-	emit_signal("player_entered", target_room_scene_path, self.name)
+	player_entered.emit(target_room_scene_path, self.name)

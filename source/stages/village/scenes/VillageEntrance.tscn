@@ -1,66 +1,32 @@
 [gd_scene load_steps=13 format=4 uid="uid://bvbespk4pnia4"]
 
-[ext_resource type="Texture2D" uid="uid://c06nc4d6c3fxj" path="res://source/stages/village/assets/day_blue_sky.png" id="1_2eyfm"]
 [ext_resource type="Script" uid="uid://bb0y7uhq34t5n" path="res://source/stages/village/scripts/village_entrance.gd" id="1_rh0n8"]
 [ext_resource type="TileSet" uid="uid://c6ksmr8m52u4b" path="res://source/stages/village/resources/village_tile_set.tres" id="1_ykyy6"]
-[ext_resource type="Texture2D" uid="uid://b2uput1f3nlmm" path="res://source/stages/village/assets/day_blue_cloud.png" id="2_8reao"]
 [ext_resource type="PackedScene" uid="uid://dchdvljmx46te" path="res://source/player/scenes/Player.tscn" id="2_a4ul6"]
-[ext_resource type="Texture2D" uid="uid://b43820vw2qr5n" path="res://source/stages/village/assets/day_blue_mountain.png" id="3_73ej3"]
+[ext_resource type="PackedScene" uid="uid://cwmuljcxfnra6" path="res://source/parallax_backgrounds/scenes/sky.tscn" id="2_sf5gu"]
+[ext_resource type="PackedScene" uid="uid://du7nppdy14map" path="res://source/parallax_backgrounds/scenes/clouds.tscn" id="3_sf5gu"]
 [ext_resource type="PackedScene" uid="uid://4asrh0i80401" path="res://source/camera/scenes/Camera.tscn" id="3_utr1p"]
-[ext_resource type="Texture2D" uid="uid://dkulxsyiwppee" path="res://source/stages/village/assets/day_blue_forest_top_1.png" id="4_gnqra"]
-[ext_resource type="Texture2D" uid="uid://ckiwonhwjli38" path="res://source/stages/village/assets/day_blue_forest_top_2.png" id="5_qg467"]
-[ext_resource type="Texture2D" uid="uid://c5isuccpv6vwm" path="res://source/stages/village/assets/day_blue_pines.png" id="6_2vv7q"]
-[ext_resource type="Texture2D" uid="uid://dy6xd4akc630g" path="res://source/stages/village/assets/day_blue_ray.png" id="10_406d6"]
+[ext_resource type="PackedScene" uid="uid://ma6v8k46bim8" path="res://source/parallax_backgrounds/scenes/mountains.tscn" id="4_sf5gu"]
+[ext_resource type="PackedScene" uid="uid://cs71ewfki0f8n" path="res://source/parallax_backgrounds/scenes/forest_top_far.tscn" id="5_rh0n8"]
+[ext_resource type="PackedScene" uid="uid://dybu8vg2dbbip" path="res://source/parallax_backgrounds/scenes/forest_top_near.tscn" id="6_p38ko"]
+[ext_resource type="PackedScene" uid="uid://c1uf1suxhw6gd" path="res://source/parallax_backgrounds/scenes/pines.tscn" id="7_hegwb"]
+[ext_resource type="PackedScene" uid="uid://cu7lsh2me8wdm" path="res://source/parallax_backgrounds/scenes/ray.tscn" id="10_sf5gu"]
 [ext_resource type="PackedScene" uid="uid://ck0ab3frwfod3" path="res://source/door/scenes/Door.tscn" id="11_xt76x"]
 
 [node name="VillageEntrance" type="Node"]
 script = ExtResource("1_rh0n8")
 
-[node name="Sky" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0, 0)
+[node name="Sky" parent="." instance=ExtResource("2_sf5gu")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Sky"]
-texture = ExtResource("1_2eyfm")
-centered = false
+[node name="Clouds" parent="." instance=ExtResource("3_sf5gu")]
 
-[node name="Clouds" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.05, 0)
-repeat_size = Vector2(320, 0)
+[node name="Mountains" parent="." instance=ExtResource("4_sf5gu")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Clouds"]
-texture = ExtResource("2_8reao")
-centered = false
+[node name="ForestTopFar" parent="." instance=ExtResource("5_rh0n8")]
 
-[node name="Mountains" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.2, 0)
-repeat_size = Vector2(320, 0)
+[node name="ForestTopNear" parent="." instance=ExtResource("6_p38ko")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Mountains"]
-texture = ExtResource("3_73ej3")
-centered = false
-
-[node name="ForestTopFar" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.3, 1)
-repeat_size = Vector2(320, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ForestTopFar"]
-texture = ExtResource("4_gnqra")
-centered = false
-
-[node name="ForestTopNear" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.4, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ForestTopNear"]
-texture = ExtResource("5_qg467")
-centered = false
-
-[node name="Pines" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.5, 0)
-repeat_size = Vector2(320, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Pines"]
-texture = ExtResource("6_2vv7q")
-centered = false
+[node name="Pines" parent="." instance=ExtResource("7_hegwb")]
 
 [node name="Player" parent="." instance=ExtResource("2_a4ul6")]
 position = Vector2(96, 112)
@@ -69,13 +35,7 @@ position = Vector2(96, 112)
 tile_map_data = PackedByteArray("AAAAAAcAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAkAAAAAAAIAAAABAAcAAAAAAAMAAAABAAgAAAAAAAQAAAABAAkAAAAAAAUAAAACAAcAAAAAAAYAAAACAAgAAAAAAAcAAAACAAkAAAAAAAgAAAADAAcAAAAAAAkAAAADAAgAAAAAAAoAAAADAAkAAAAAAAsAAAAEAAcAAAAAAAwAAAAEAAgAAAAAAA0AAAAEAAkAAAAAAA4AAAAFAAYAAAAAAA8AAAAFAAcAAAAAABAAAAAFAAgAAAAAABEAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAIAAAAHAAYAAAAAAAMAAAAHAAcAAAAAAAQAAAAHAAgAAAAAAAUAAAAIAAYAAAAAABUAABAIAAcAAAAAABYAABAIAAgAAAAAABcAABAJAAcAAAAAABIAABAJAAgAAAAAABMAABAJAAkAAAAAABQAABAKAAcAAAAAAA8AABAKAAgAAAAAABAAABAKAAkAAAAAABEAABALAAgAAAAAAAwAABALAAkAAAAAAA0AABALAAoAAAAAAA4AABAMAAgAAAAAAAkAABAMAAkAAAAAAAoAABAMAAoAAAAAAAsAABANAAgAAAAAAAYAABANAAkAAAAAAAcAABANAAoAAAAAAAgAABAOAAgAAAAAAAAAAAAOAAkAAAAAAAEAAAAOAAoAAAAAAAIAAAAPAAgAAAAAAAMAAAAPAAkAAAAAAAQAAAAPAAoAAAAAAAUAAAAQAAgAAAAAABIAAAAQAAkAAAAAABMAAAAQAAoAAAAAABQAAAARAAcAAAAAABUAAAARAAgAAAAAABYAAAARAAkAAAAAABcAAAASAAcAAAAAABIAAAASAAgAAAAAABMAAAASAAkAAAAAABQAAAATAAYAAAAAABUAAAATAAcAAAAAABYAAAATAAgAAAAAABcAAAAAAAoAAAAAAA4AAAABAAoAAAAAAA4AAAACAAoAAAAAAA4AAAADAAoAAAAAAA4AAAAEAAoAAAAAAA4AAAAGAAkAAAAAAA4AAAAFAAkAAAAAAA4AAAAHAAkAAAAAAA4AAAAIAAkAAAAAAA4AAAAKAAoAAAAAAA4AAAAJAAoAAAAAAA4AAAAIAAoAAAAAAA4AAAAHAAoAAAAAAA4AAAAGAAoAAAAAAA4AAAAFAAoAAAAAAA4AAAATAAkAAAAAAA4AAAATAAoAAAAAAA4AAAASAAoAAAAAAA4AAAARAAoAAAAAAA4AAAAUAAoAAAAAAA4AAAAVAAoAAAAAAA4AAAAZAAoAAAAAAA4AAAAaAAoAAAAAAA4AAAAbAAoAAAAAAA4AAAAcAAcAAAAAABYAABAcAAgAAAAAABcAABAcAAkAAAAAAA4AAAAcAAoAAAAAAA4AAAAdAAcAAAAAABIAABAdAAgAAAAAABMAABAdAAkAAAAAABQAABAdAAoAAAAAAA4AAAAeAAcAAAAAAA8AABAeAAgAAAAAABAAABAeAAkAAAAAABEAABAeAAoAAAAAAA4AAAAfAAgAAAAAAAwAABAfAAkAAAAAAA0AABAfAAoAAAAAAA4AABAgAAgAAAAAAAkAABAgAAkAAAAAAAoAABAgAAoAAAAAAAsAABAhAAgAAAAAAAYAABAhAAkAAAAAAAcAABAhAAoAAAAAAAgAABAiAAgAAAAAAAAAAAAiAAkAAAAAAAEAAAAiAAoAAAAAAAIAAAAjAAgAAAAAAAMAAAAjAAkAAAAAAAQAAAAjAAoAAAAAAAUAAAAkAAgAAAAAABIAAAAkAAkAAAAAABMAAAAkAAoAAAAAABQAAAAlAAcAAAAAABUAAAAlAAgAAAAAABYAAAAlAAkAAAAAABcAAAAlAAoAAAAAAA4AAAAmAAcAAAAAABIAAAAmAAgAAAAAABMAAAAmAAkAAAAAABQAAAAmAAoAAAAAAA4AAAAnAAcAAAAAABYAAAAnAAgAAAAAABcAAAAnAAkAAAAAAA4AAAAnAAoAAAAAAA4AAAAWAAoAAAAAAA4AAAAXAAoAAAAAAA4AAAAYAAoAAAAAAA4AAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAEAAAAUAAgAAAAAAAIAAAAVAAYAAAAAAAMAAAAVAAcAAAAAAAQAAAAVAAgAAAAAAAUAAAAUAAkAAAAAAA4AAAAVAAkAAAAAAA4AAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAEAAAAWAAgAAAAAAAIAAAAWAAkAAAAAAA4AAAAXAAYAAAAAAAMAAAAXAAcAAAAAAAQAAAAXAAgAAAAAAAUAAAAXAAkAAAAAAA4AAAAYAAYAAAAAAAAAAAAYAAcAAAAAAAEAAAAYAAgAAAAAAAIAAAAYAAkAAAAAAA4AAAAZAAYAAAAAAAMAAAAZAAcAAAAAAAQAAAAZAAgAAAAAAAUAAAAZAAkAAAAAAA4AAAAaAAYAAAAAAAAAAAAaAAcAAAAAAAEAAAAaAAgAAAAAAAIAAAAaAAkAAAAAAA4AAAAbAAYAAAAAAAMAAAAbAAcAAAAAAAQAAAAbAAgAAAAAAAUAAAAbAAkAAAAAAA4AAAAdAAsAAAAAAA4AAAAeAAsAAAAAAA4AAAAfAAsAAAAAAA4AAAAgAAsAAAAAAA4AAAAhAAsAAAAAAA4AAAAiAAsAAAAAAA4AAAAjAAsAAAAAAA4AAAAkAAsAAAAAAA4AAAAlAAsAAAAAAA4AAAAmAAsAAAAAAA4AAAAnAAsAAAAAAA4AAAAQAAsAAAAAAA4AAAARAAsAAAAAAA4AAAASAAsAAAAAAA4AAAATAAsAAAAAAA4AAAAUAAsAAAAAAA4AAAAVAAsAAAAAAA4AAAAWAAsAAAAAAA4AAAAXAAsAAAAAAA4AAAAYAAsAAAAAAA4AAAAZAAsAAAAAAA4AAAAaAAsAAAAAAA4AAAAbAAsAAAAAAA4AAAAcAAsAAAAAAA4AAAAHAAsAAAAAAA4AAAAIAAsAAAAAAA4AAAAJAAsAAAAAAA4AAAAKAAsAAAAAAA4AAAALAAsAAAAAAA4AAAAMAAsAAAAAAA4AAAANAAsAAAAAAA4AAAAOAAsAAAAAAA4AAAAPAAsAAAAAAA4AAAAAAAsAAAAAAA4AAAABAAsAAAAAAA4AAAACAAsAAAAAAA4AAAADAAsAAAAAAA4AAAAEAAsAAAAAAA4AAAAFAAsAAAAAAA4AAAAGAAsAAAAAAA4AAAA=")
 tile_set = ExtResource("1_ykyy6")
 
-[node name="Ray" type="Parallax2D" parent="."]
-scroll_scale = Vector2(1.05, 0)
-repeat_size = Vector2(320, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ray"]
-texture = ExtResource("10_406d6")
-centered = false
+[node name="Ray" parent="." instance=ExtResource("10_sf5gu")]
 
 [node name="Camera" parent="." instance=ExtResource("3_utr1p")]
 limit_left = 0

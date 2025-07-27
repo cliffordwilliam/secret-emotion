@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RayMovementData" load_steps=2 format=3 uid="uid://ccpbxhxgnp8of"]
+
+[ext_resource type="Script" uid="uid://mm06rpt08yq8" path="res://source/parallax_backgrounds/scripts/ray_movement_data.gd" id="1_ydenf"]
+
+[resource]
+script = ExtResource("1_ydenf")
+metadata/_custom_type_script = "uid://mm06rpt08yq8"
