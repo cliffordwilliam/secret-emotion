@@ -31,5 +31,5 @@ func physics_process(delta: float) -> void:
 	if player.velocity.x:
 		player.face_direction.emit(player.velocity.x < 0.0)
 
-	if player.velocity.y > 0:
+	if not player.velocity.y < 0:
 		done.emit(player_state_machine.player_fall_state)

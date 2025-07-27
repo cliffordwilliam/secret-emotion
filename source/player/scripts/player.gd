@@ -23,3 +23,7 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	player_state_machine.physics_process(delta)
+
+
+func _on_room_door_enter_reposition(given_global_position: Vector2) -> void:
+	global_position = given_global_position

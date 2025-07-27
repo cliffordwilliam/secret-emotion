@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://34pnhpp5rd6p"]
-
-[ext_resource type="PackedScene" uid="uid://bvbespk4pnia4" path="res://source/stages/village/scenes/VillageEntrance.tscn" id="1_415o5"]
-
-[node name="Main" type="Node"]
-
-[node name="VillageEntrance" parent="." instance=ExtResource("1_415o5")]

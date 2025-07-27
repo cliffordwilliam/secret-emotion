@@ -9,8 +9,8 @@
 - [ ] Add cutscene
 - [ ] Add npc to talk to
 - [ ] Add save feature
-- [ ] Add another room
+- [x] Add another room
 - [x] Check if each script follows formatting rule
-- [ ] Add MIT
-- [ ] Add door
+- [x] Add MIT
+- [x] Add door
 - [x] Scaffold save / load system

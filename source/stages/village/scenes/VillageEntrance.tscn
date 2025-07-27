@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://bvbespk4pnia4"]
+[gd_scene load_steps=13 format=4 uid="uid://bvbespk4pnia4"]
 
 [ext_resource type="Texture2D" uid="uid://c06nc4d6c3fxj" path="res://source/stages/village/assets/day_blue_sky.png" id="1_2eyfm"]
+[ext_resource type="Script" uid="uid://bb0y7uhq34t5n" path="res://source/stages/village/scripts/village_entrance.gd" id="1_rh0n8"]
 [ext_resource type="TileSet" uid="uid://c6ksmr8m52u4b" path="res://source/stages/village/resources/village_tile_set.tres" id="1_ykyy6"]
 [ext_resource type="Texture2D" uid="uid://b2uput1f3nlmm" path="res://source/stages/village/assets/day_blue_cloud.png" id="2_8reao"]
 [ext_resource type="PackedScene" uid="uid://dchdvljmx46te" path="res://source/player/scenes/Player.tscn" id="2_a4ul6"]
@@ -10,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://ckiwonhwjli38" path="res://source/stages/village/assets/day_blue_forest_top_2.png" id="5_qg467"]
 [ext_resource type="Texture2D" uid="uid://c5isuccpv6vwm" path="res://source/stages/village/assets/day_blue_pines.png" id="6_2vv7q"]
 [ext_resource type="Texture2D" uid="uid://dy6xd4akc630g" path="res://source/stages/village/assets/day_blue_ray.png" id="10_406d6"]
+[ext_resource type="PackedScene" uid="uid://ck0ab3frwfod3" path="res://source/door/scenes/Door.tscn" id="11_xt76x"]
 
 [node name="VillageEntrance" type="Node"]
+script = ExtResource("1_rh0n8")
 
 [node name="Sky" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0, 0)
@@ -81,4 +84,13 @@ limit_right = 640
 limit_bottom = 180
 editor_draw_limits = true
 
+[node name="Door" parent="." instance=ExtResource("11_xt76x")]
+position = Vector2(-16, 0)
+target_room_scene_path = "res://source/stages/village/scenes/VillageRiverBank.tscn"
+
+[node name="PlayerSpawnPosition" parent="Door" index="1"]
+position = Vector2(32, 128)
+
 [connection signal="camera_follow" from="Player" to="Camera" method="_on_player_camera_follow"]
+
+[editable path="Door"]
