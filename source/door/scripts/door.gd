@@ -3,7 +3,7 @@ extends Area2D
 
 signal player_entered(target_room_scene_path: String, target_door_name: String)
 
-@export var target_room_scene_path: String
+@export_file("*.tscn") var target_room_scene_path: String
 
 @onready var player_spawn_position: Marker2D = $PlayerSpawnPosition
 

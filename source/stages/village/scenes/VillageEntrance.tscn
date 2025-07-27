@@ -86,7 +86,7 @@ editor_draw_limits = true
 
 [node name="Door" parent="." instance=ExtResource("11_xt76x")]
 position = Vector2(-16, 0)
-target_room_scene_path = "res://source/stages/village/scenes/VillageRiverBank.tscn"
+target_room_scene_path = "uid://btjtm4q7k0d8x"
 
 [node name="PlayerSpawnPosition" parent="Door" index="1"]
 position = Vector2(32, 128)

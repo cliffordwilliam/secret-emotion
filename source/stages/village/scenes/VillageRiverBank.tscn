@@ -59,7 +59,7 @@ tile_set = ExtResource("8_2l6gk")
 
 [node name="Door" parent="." instance=ExtResource("12_tnsup")]
 position = Vector2(320, 0)
-target_room_scene_path = "res://source/stages/village/scenes/VillageEntrance.tscn"
+target_room_scene_path = "uid://bvbespk4pnia4"
 
 [node name="PlayerSpawnPosition" parent="Door" index="1"]
 position = Vector2(-8, 128)
