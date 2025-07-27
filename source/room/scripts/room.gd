@@ -1,3 +1,4 @@
+@icon("res://source/room/assets/layout-grid.svg")
 class_name Room
 extends Node
 # Stores room base properties
