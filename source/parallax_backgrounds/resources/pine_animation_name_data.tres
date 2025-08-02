@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PineAnimationNameData" load_steps=2 format=3 uid="uid://bosj18pswwm2r"]
+
+[ext_resource type="Script" uid="uid://be0gqg0igeh17" path="res://source/parallax_backgrounds/scripts/pine_animation_name_data.gd" id="1_krokb"]
+
+[resource]
+script = ExtResource("1_krokb")
+metadata/_custom_type_script = "uid://be0gqg0igeh17"

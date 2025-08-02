@@ -5,6 +5,8 @@ extends Area2D
 @warning_ignore("unused_signal")
 signal play_animation(animation_name: StringName)
 signal set_enable_input(value: bool)
+signal set_interaction_marker_active
+signal set_interaction_marker_inactive
 
 @export var animation_name_data: ChestAnimationNameData
 
@@ -18,7 +20,9 @@ func _physics_process(delta):
 
 func _on_body_entered(_body: Node2D) -> void:
 	set_enable_input.emit(true)
+	set_interaction_marker_active.emit()
 
 
 func _on_body_exited(_body: Node2D) -> void:
 	set_enable_input.emit(false)
+	set_interaction_marker_inactive.emit()

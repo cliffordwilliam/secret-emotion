@@ -1,11 +1,19 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1uf1suxhw6gd"]
 
-[ext_resource type="Texture2D" uid="uid://c5isuccpv6vwm" path="res://source/stages/village/assets/day_blue_pines.png" id="1_avclb"]
+[ext_resource type="PackedScene" uid="uid://yscb6li8ju1y" path="res://source/parallax_backgrounds/scenes/pine.tscn" id="1_n2i6x"]
 
 [node name="Pines" type="Parallax2D"]
 scroll_scale = Vector2(0.5, 0)
 repeat_size = Vector2(320, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_avclb")
-centered = false
+[node name="Pine" parent="." instance=ExtResource("1_n2i6x")]
+position = Vector2(39, 104)
+
+[node name="Pine2" parent="." instance=ExtResource("1_n2i6x")]
+position = Vector2(151, 138)
+
+[node name="Pine3" parent="." instance=ExtResource("1_n2i6x")]
+position = Vector2(215, 104)
+
+[node name="Pine4" parent="." instance=ExtResource("1_n2i6x")]
+position = Vector2(279, 72)

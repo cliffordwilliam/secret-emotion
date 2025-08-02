@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvlrmt68228f"]
+[gd_scene load_steps=11 format=3 uid="uid://bvlrmt68228f"]
 
 [ext_resource type="Script" uid="uid://fe3i72axwq3l" path="res://source/chest/scripts/chest.gd" id="1_48ulj"]
 [ext_resource type="SpriteFrames" uid="uid://bm7osxl10jy5a" path="res://source/chest/resources/chest_animation_data.tres" id="1_dy6hu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cb5q3vx58cnj" path="res://source/chest/scripts/states/chest_open_state.gd" id="4_mgjww"]
 [ext_resource type="Script" uid="uid://dcc3kjokn64wr" path="res://source/chest/scripts/chest_animated_sprite.gd" id="6_luvah"]
 [ext_resource type="Script" uid="uid://dp6ygnv6bxt7s" path="res://source/shared/player_input/scripts/player_input.gd" id="7_mgjww"]
+[ext_resource type="PackedScene" uid="uid://kvelexcshhn5" path="res://source/interaction_marker/scenes/InteractionMarker.tscn" id="10_shpfg"]
 
 [node name="Chest" type="Area2D"]
 collision_layer = 0
@@ -45,7 +46,12 @@ script = ExtResource("7_mgjww")
 input_enabled = false
 metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
 
+[node name="InteractionMarker" parent="." instance=ExtResource("10_shpfg")]
+position = Vector2(0, -32)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="play_animation" from="." to="ChestAnimatedSprite" method="_on_chest_play_animation"]
 [connection signal="set_enable_input" from="." to="PlayerInput" method="set_input_enabled"]
+[connection signal="set_interaction_marker_active" from="." to="InteractionMarker" method="set_active"]
+[connection signal="set_interaction_marker_inactive" from="." to="InteractionMarker" method="set_inactive"]
