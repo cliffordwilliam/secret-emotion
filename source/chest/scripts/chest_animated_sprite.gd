@@ -1,5 +1,5 @@
 class_name ChestAnimatedSprite
-extends AnimatedSprite2D
+extends ValidatedAnimatedSprite
 # Draw and animate sprite
 # Validates GUI against my resource (animation name)
 
@@ -7,16 +7,7 @@ extends AnimatedSprite2D
 
 
 func _ready():
-	_validate_gui()
-
-
-func _validate_gui():
-	for anim in sprite_frames.get_animation_names():
-		if anim not in animation_name_data.ALL:
-			push_error("❌ GUI 'ChestAnimatedSprite' animation name missing: '%s'" % anim)
-			get_tree().quit(1)
-
-	print("✅ GUI 'ChestAnimatedSprite' animation name valid.")
+	_validate_gui(animation_name_data)
 
 
 func _on_chest_play_animation(animation_name: StringName) -> void:

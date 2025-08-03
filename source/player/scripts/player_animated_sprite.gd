@@ -1,5 +1,5 @@
 class_name PlayerAnimatedSprite
-extends AnimatedSprite2D
+extends ValidatedAnimatedSprite
 # Draw and animate sprite
 # Validates GUI against my resource (animation name)
 
@@ -9,16 +9,7 @@ signal flip_h_changed
 
 
 func _ready():
-	_validate_gui()
-
-
-func _validate_gui():
-	for anim in sprite_frames.get_animation_names():
-		if anim not in animation_name_data.ALL:
-			push_error("❌ GUI 'PlayerAnimatedSprite' animation name missing: '%s'" % anim)
-			get_tree().quit(1)
-
-	print("✅ GUI 'PlayerAnimatedSprite' animation name valid.")
+	_validate_gui(animation_name_data)
 
 
 func _on_player_play_animation(animation_name: StringName) -> void:

@@ -29,7 +29,7 @@ script = ExtResource("1_rh0n8")
 
 [node name="Pines" parent="." instance=ExtResource("7_hegwb")]
 
-[node name="Chest" parent="." instance=ExtResource("8_rh0n8")]
+[node name="VillageEntranceChest001" parent="." instance=ExtResource("8_rh0n8")]
 position = Vector2(352, 112)
 
 [node name="Player" parent="." instance=ExtResource("2_a4ul6")]

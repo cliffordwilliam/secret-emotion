@@ -9,10 +9,16 @@ var world_state: Dictionary = {}
 
 func set_world_state(actor_id: String, state: Dictionary) -> void:
 	world_state[actor_id] = state
+	#print("UPDATE")
+	#print(world_state)
 
 
 func get_world_state(actor_id: String) -> Dictionary:
-	return world_state[actor_id]
+	if world_state.has(actor_id):
+		#print("GET")
+		#print(world_state)
+		return world_state[actor_id]
+	return {}
 
 
 func save_to_slot(slot_name: SaveSlot) -> void:

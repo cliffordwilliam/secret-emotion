@@ -7,6 +7,7 @@ signal play_animation(animation_name: StringName)
 signal set_enable_input(value: bool)
 signal set_interaction_marker_active
 signal set_interaction_marker_inactive
+signal room_changed
 
 @export var animation_name_data: ChestAnimationNameData
 
@@ -26,3 +27,7 @@ func _on_body_entered(_body: Node2D) -> void:
 func _on_body_exited(_body: Node2D) -> void:
 	set_enable_input.emit(false)
 	set_interaction_marker_inactive.emit()
+
+
+func _on_room_changed() -> void:
+	room_changed.emit()

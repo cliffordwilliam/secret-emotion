@@ -37,6 +37,7 @@ position = Vector2(0, -16)
 sprite_frames = ExtResource("1_dy6hu")
 animation = &"open"
 script = ExtResource("6_luvah")
+animation_name_data = ExtResource("2_cjjk1")
 
 [node name="ChestInteractionCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -57,6 +58,7 @@ metadata/_custom_type_script = "uid://wmwebcb1i3je"
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="play_animation" from="." to="ChestAnimatedSprite" method="_on_chest_play_animation"]
+[connection signal="room_changed" from="." to="ChestSaveComponent" method="_on_room_changed"]
 [connection signal="set_enable_input" from="." to="PlayerInput" method="set_input_enabled"]
 [connection signal="set_interaction_marker_active" from="." to="InteractionMarker" method="set_active"]
 [connection signal="set_interaction_marker_inactive" from="." to="InteractionMarker" method="set_inactive"]
