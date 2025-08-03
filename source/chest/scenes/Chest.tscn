@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvlrmt68228f"]
+[gd_scene load_steps=12 format=3 uid="uid://bvlrmt68228f"]
 
 [ext_resource type="Script" uid="uid://fe3i72axwq3l" path="res://source/chest/scripts/chest.gd" id="1_48ulj"]
 [ext_resource type="SpriteFrames" uid="uid://bm7osxl10jy5a" path="res://source/chest/resources/chest_animation_data.tres" id="1_dy6hu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dcc3kjokn64wr" path="res://source/chest/scripts/chest_animated_sprite.gd" id="6_luvah"]
 [ext_resource type="Script" uid="uid://dp6ygnv6bxt7s" path="res://source/shared/player_input/scripts/player_input.gd" id="7_mgjww"]
 [ext_resource type="PackedScene" uid="uid://kvelexcshhn5" path="res://source/interaction_marker/scenes/InteractionMarker.tscn" id="10_shpfg"]
+[ext_resource type="Script" uid="uid://wmwebcb1i3je" path="res://source/chest/scripts/chest_save_component.gd" id="11_85e77"]
 
 [node name="Chest" type="Area2D"]
 collision_layer = 0
@@ -48,6 +49,10 @@ metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
 
 [node name="InteractionMarker" parent="." instance=ExtResource("10_shpfg")]
 position = Vector2(0, -32)
+
+[node name="ChestSaveComponent" type="Node" parent="."]
+script = ExtResource("11_85e77")
+metadata/_custom_type_script = "uid://wmwebcb1i3je"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
