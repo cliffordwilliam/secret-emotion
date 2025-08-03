@@ -15,3 +15,4 @@
 - [x] Add MIT
 - [x] Add door
 - [x] Scaffold save / load system
+- [ ] Add direction export to door to init player face dir

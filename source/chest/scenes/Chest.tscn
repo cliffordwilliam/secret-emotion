@@ -57,8 +57,11 @@ metadata/_custom_type_script = "uid://wmwebcb1i3je"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="dump_state_to_world" from="." to="ChestSaveComponent" method="_dump_state"]
 [connection signal="play_animation" from="." to="ChestAnimatedSprite" method="_on_chest_play_animation"]
-[connection signal="room_changed" from="." to="ChestSaveComponent" method="_on_room_changed"]
+[connection signal="read_world_state" from="." to="ChestSaveComponent" method="_on_owner_read_world_state"]
 [connection signal="set_enable_input" from="." to="PlayerInput" method="set_input_enabled"]
 [connection signal="set_interaction_marker_active" from="." to="InteractionMarker" method="set_active"]
 [connection signal="set_interaction_marker_inactive" from="." to="InteractionMarker" method="set_inactive"]
+[connection signal="skip_to_last_frame" from="." to="ChestAnimatedSprite" method="_on_chest_skip_to_last_frame"]
+[connection signal="start_state_machine" from="." to="ChestStateMachine" method="_on_owner_start"]

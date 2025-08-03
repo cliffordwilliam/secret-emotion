@@ -3,8 +3,11 @@ extends ChestState
 # Chest opened
 
 
-func enter(_previous_state: State) -> void:
-	chest.play_animation.emit(chest_animation_name_data.OPEN)
+func enter(previous_state: State) -> void:
+	if previous_state and previous_state == chest_state_machine.chest_close_state:
+		chest.play_animation.emit(chest_animation_name_data.OPEN)
+	else:
+		chest.skip_to_last_frame.emit(chest_animation_name_data.OPEN)
 
 
 func physics_process(_delta: float) -> void:

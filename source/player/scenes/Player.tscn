@@ -76,6 +76,7 @@ metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
 
 [connection signal="face_direction" from="." to="PlayerAnimatedSprite" method="_on_player_face_direction"]
 [connection signal="play_animation" from="." to="PlayerAnimatedSprite" method="_on_player_play_animation"]
+[connection signal="start_state_machine" from="." to="PlayerStateMachine" method="_on_owner_start"]
 [connection signal="timeout" from="PlayerStateMachine/PlayerWalkState/Timer" to="PlayerStateMachine/PlayerWalkState" method="_on_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/PlayerRunState/Timer" to="PlayerStateMachine/PlayerRunState" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="PlayerAnimatedSprite" to="PlayerAnimatedSprite" method="_on_animation_finished"]

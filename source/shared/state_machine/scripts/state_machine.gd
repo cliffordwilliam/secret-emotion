@@ -11,7 +11,9 @@ var current_state: State
 func _ready() -> void:
 	for child in get_children():
 		child.done.connect(change_state)
-	await owner.ready
+
+
+func _on_owner_start() -> void:
 	change_state(initial_state)
 
 

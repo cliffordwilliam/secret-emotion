@@ -8,6 +8,7 @@ signal face_direction(is_facing_left: bool)
 signal play_animation(animation_name: StringName)
 @warning_ignore("unused_signal")
 signal camera_follow(node: Node2D)
+signal start_state_machine
 
 @export var movement_data: PlayerMovementData
 @export var animation_name_data: PlayerAnimationNameData
@@ -19,6 +20,7 @@ signal camera_follow(node: Node2D)
 func _ready() -> void:
 	await owner.ready
 	camera_follow.emit(self)
+	start_state_machine.emit()
 
 
 func _physics_process(delta):
