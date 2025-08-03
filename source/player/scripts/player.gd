@@ -3,12 +3,12 @@ extends CharacterBody2D
 # Listens to input and update its position with collision resolution
 
 @warning_ignore("unused_signal")
-signal face_direction(is_facing_left: bool)
+signal face_direction_request(is_facing_left: bool)
 @warning_ignore("unused_signal")
-signal play_animation(animation_name: StringName)
+signal play_animation_request(animation_name: StringName)
 @warning_ignore("unused_signal")
-signal camera_follow(node: Node2D)
-signal start_state_machine
+signal camera_follow_request(node: Node2D)
+signal start_state_machine_request
 
 @export var movement_data: PlayerMovementData
 @export var animation_name_data: PlayerAnimationNameData
@@ -19,13 +19,13 @@ signal start_state_machine
 
 func _ready() -> void:
 	await owner.ready
-	camera_follow.emit(self)
-	start_state_machine.emit()
+	camera_follow_request.emit(self)
+	start_state_machine_request.emit()
 
 
 func _physics_process(delta):
 	player_state_machine.physics_process(delta)
 
 
-func _on_enter_room_reposition_to_door(given_global_position: Vector2) -> void:
+func _reposition_to_door_request(given_global_position: Vector2) -> void:
 	global_position = given_global_position

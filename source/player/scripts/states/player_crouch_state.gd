@@ -4,7 +4,7 @@ extends PlayerState
 
 
 func enter(_previous_state: State) -> void:
-	player.play_animation.emit(player_animation_name_data.TO_CROUCH)
+	player.play_animation_request.emit(player_animation_name_data.TO_CROUCH)
 	player.velocity.x = 0.0
 
 

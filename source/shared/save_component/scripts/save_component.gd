@@ -1,7 +1,7 @@
 @icon("res://source/shared/save_component/assets/save.svg")
 class_name SaveComponent
 extends Node
-# Declare world actor ID and holds methods to talk to WorldState autoload
+# Declare actor ID (unique name) and has methods to talk to WorldState autoload
 
 var id: StringName = ""
 

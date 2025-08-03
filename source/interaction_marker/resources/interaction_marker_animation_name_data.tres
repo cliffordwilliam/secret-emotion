@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="InteractionMarkerAnimationNameData" load_steps=2 format=3 uid="uid://3dh2n6yok2sn"]
-
-[ext_resource type="Script" uid="uid://b37e57jx2iqf5" path="res://source/interaction_marker/scripts/animation_marker_animation_name_data.gd" id="1_d786i"]
-
-[resource]
-script = ExtResource("1_d786i")
-metadata/_custom_type_script = "uid://b37e57jx2iqf5"

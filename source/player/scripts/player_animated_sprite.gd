@@ -12,11 +12,11 @@ func _ready():
 	_validate_gui(animation_name_data)
 
 
-func _on_player_play_animation(animation_name: StringName) -> void:
+func _play_animation(animation_name: StringName) -> void:
 	play(animation_name)
 
 
-func _on_player_face_direction(is_facing_left: bool) -> void:
+func _face_direction(is_facing_left: bool) -> void:
 	if flip_h == is_facing_left:
 		return
 	flip_h_changed.emit()

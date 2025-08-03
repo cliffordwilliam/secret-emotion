@@ -7,7 +7,7 @@ extends PlayerState
 
 
 func enter(_previous_state: State) -> void:
-	player.play_animation.emit(player_animation_name_data.WALK)
+	player.play_animation_request.emit(player_animation_name_data.WALK)
 	timer.wait_time = sound_effect_data.WALK_STEP_INTERVAL
 	timer.start()
 
@@ -42,7 +42,7 @@ func physics_process(_delta: float) -> void:
 		done.emit(player_state_machine.player_fall_state)
 		return
 
-	player.face_direction.emit(player.velocity.x < 0.0)
+	player.face_direction_request.emit(player.velocity.x < 0.0)
 
 
 func _on_timer_timeout() -> void:

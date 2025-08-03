@@ -3,17 +3,17 @@ class_name Chest
 extends Area2D
 
 @warning_ignore("unused_signal")
-signal play_animation(animation_name: StringName)
+signal play_animation_request(animation_name: StringName)
 @warning_ignore("unused_signal")
-signal start_state_machine
+signal start_state_machine_request
 @warning_ignore("unused_signal")
-signal read_world_state
+signal read_world_state_request
 @warning_ignore("unused_signal")
-signal skip_to_last_frame(animation_name: StringName)
-signal set_enable_input(value: bool)
-signal set_interaction_marker_active
-signal set_interaction_marker_inactive
-signal dump_state_to_world
+signal skip_to_last_frame_request(animation_name: StringName)
+signal set_enable_input_request(value: bool)
+signal set_interaction_marker_active_request
+signal set_interaction_marker_inactive_request
+signal dump_state_to_world_request
 
 @export var animation_name_data: ChestAnimationNameData
 
@@ -22,7 +22,7 @@ signal dump_state_to_world
 
 
 func _ready() -> void:
-	read_world_state.emit()
+	read_world_state_request.emit()
 
 
 func _physics_process(delta):
@@ -30,14 +30,14 @@ func _physics_process(delta):
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	set_enable_input.emit(true)
-	set_interaction_marker_active.emit()
+	set_enable_input_request.emit(true)
+	set_interaction_marker_active_request.emit()
 
 
 func _on_body_exited(_body: Node2D) -> void:
-	set_enable_input.emit(false)
-	set_interaction_marker_inactive.emit()
+	set_enable_input_request.emit(false)
+	set_interaction_marker_inactive_request.emit()
 
 
 func _on_room_changed() -> void:
-	dump_state_to_world.emit()
+	dump_state_to_world_request.emit()

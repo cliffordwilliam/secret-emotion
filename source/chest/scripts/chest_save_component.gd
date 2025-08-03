@@ -6,14 +6,14 @@ extends SaveComponent
 var chest: Chest
 
 
-func _on_owner_read_world_state() -> void:
+func _read_world_state() -> void:
 	chest = owner as Chest
 	id = chest.name
 
 	# Save to local
 	var raw_data: Dictionary = get_world_state()
 	if raw_data.is_empty():
-		chest.start_state_machine.emit()
+		chest.start_state_machine_request.emit()
 		_dump_state()
 		return
 
@@ -53,7 +53,7 @@ func _world_sync(save_data: ChestSaveData) -> void:
 		push_warning("Could not find state with name: %s" % save_data.current_state_name)
 		return
 	chest.chest_state_machine.initial_state = target_state
-	chest.start_state_machine.emit()
+	chest.start_state_machine_request.emit()
 
 
 func _dump_state() -> void:

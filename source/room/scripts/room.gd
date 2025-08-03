@@ -4,7 +4,7 @@ extends Node
 # Stores room base properties
 
 signal room_changed
-signal position_player_to_door(global_position: Vector2)
+signal position_player_to_door_request(global_position: Vector2)
 
 var doors: Dictionary[String, Door] = {}
 var player: Player
@@ -14,22 +14,21 @@ func _ready() -> void:
 	# Get player ref
 	for child in get_children():
 		if child is Player:
-			player = child
-			position_player_to_door.connect(player._on_enter_room_reposition_to_door)
+			position_player_to_door_request.connect(child._reposition_to_door_request)
 			break
-	# Build door map storage
+	# Populate door dict map storage
 	for child in get_children():
 		if child is Door:
 			doors[child.name] = child
 			child.player_entered.connect(_on_door_player_entered)
-	# Make chests listen to room change
+	# Make chests sub to my room changed event
 	for child in get_children():
 		if child is Chest:
 			room_changed.connect(child._on_room_changed)
 
 
 func initialize_player_position_to_door(door_name: String) -> void:
-	position_player_to_door.emit(doors[door_name].player_spawn_position.global_position)
+	position_player_to_door_request.emit(doors[door_name].player_spawn_position.global_position)
 
 
 func _on_door_player_entered(target_room_scene_path: String, target_door_name: String) -> void:

@@ -55,6 +55,6 @@ target_room_scene_path = "uid://btjtm4q7k0d8x"
 [node name="PlayerSpawnPosition" parent="Door" index="1"]
 position = Vector2(32, 128)
 
-[connection signal="camera_follow" from="Player" to="Camera" method="_on_player_camera_follow"]
+[connection signal="camera_follow_request" from="Player" to="Camera" method="_camera_follow"]
 
 [editable path="Door"]

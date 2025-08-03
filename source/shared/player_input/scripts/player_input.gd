@@ -6,7 +6,7 @@ extends Node
 @export var input_enabled: bool = true
 
 
-func set_input_enabled(value: bool) -> void:
+func set_enable_input(value: bool) -> void:
 	input_enabled = value
 
 
