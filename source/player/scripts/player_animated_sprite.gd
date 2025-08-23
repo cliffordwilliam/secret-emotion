@@ -10,13 +10,10 @@ signal flip_h_changed
 
 func _ready():
 	_validate_gui(animation_name_data)
+	animation_finished.connect(_on_animation_finished)
 
 
-func _play_animation(animation_name: StringName) -> void:
-	play(animation_name)
-
-
-func _face_direction(is_facing_left: bool) -> void:
+func set_face_direction(is_facing_left: bool) -> void:
 	if flip_h == is_facing_left:
 		return
 	flip_h_changed.emit()

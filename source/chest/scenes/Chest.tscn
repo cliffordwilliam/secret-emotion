@@ -49,19 +49,8 @@ input_enabled = false
 metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
 
 [node name="InteractionMarker" parent="." instance=ExtResource("10_shpfg")]
-position = Vector2(0, -32)
+position = Vector2(0, -40)
 
 [node name="ChestSaveComponent" type="Node" parent="."]
 script = ExtResource("11_85e77")
 metadata/_custom_type_script = "uid://wmwebcb1i3je"
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="dump_state_to_world_request" from="." to="ChestSaveComponent" method="_dump_state"]
-[connection signal="play_animation_request" from="." to="ChestAnimatedSprite" method="_play_animation"]
-[connection signal="read_world_state_request" from="." to="ChestSaveComponent" method="_read_world_state"]
-[connection signal="set_enable_input_request" from="." to="PlayerInput" method="set_enable_input"]
-[connection signal="set_interaction_marker_active_request" from="." to="InteractionMarker" method="set_active"]
-[connection signal="set_interaction_marker_inactive_request" from="." to="InteractionMarker" method="set_inactive"]
-[connection signal="skip_to_last_frame_request" from="." to="ChestAnimatedSprite" method="_skip_to_last_frame"]
-[connection signal="start_state_machine_request" from="." to="ChestStateMachine" method="_start"]

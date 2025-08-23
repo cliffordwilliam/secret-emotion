@@ -2,17 +2,20 @@ class_name PlayerRunState
 extends PlayerState
 # Player running around
 
-@export var sound_effect_data: PlayerSoundEffectData
 @onready var timer: Timer = $Timer
 
 
 func enter(_previous_state: State) -> void:
-	player.play_animation_request.emit(player_animation_name_data.TO_RUN)
-	timer.wait_time = sound_effect_data.RUN_STEP_INTERVAL
+	player_animation_sprite.flip_h_changed.connect(_on_player_animated_sprite_flip_h_changed)
+	player_animation_sprite.play(player_animation_name_data.TO_RUN)
+	timer.timeout.connect(_on_timer_timeout)
+	timer.wait_time = player_sound_effect_data.RUN_STEP_INTERVAL
 	timer.start()
 
 
 func exit() -> void:
+	player_animation_sprite.flip_h_changed.disconnect(_on_player_animated_sprite_flip_h_changed)
+	timer.timeout.disconnect(_on_timer_timeout)
 	timer.stop()
 
 
@@ -42,12 +45,11 @@ func physics_process(_delta: float) -> void:
 		done.emit(player_state_machine.player_fall_state)
 		return
 
-	player.face_direction_request.emit(player.velocity.x < 0.0)
+	player_animation_sprite.set_face_direction(player.velocity.x < 0.0)
 
 
 func _on_player_animated_sprite_flip_h_changed() -> void:
-	if player_state_machine.current_state == self:
-		player.play_animation_request.emit(player_animation_name_data.TURN_TO_RUN)
+	player_animation_sprite.play(player_animation_name_data.TURN_TO_RUN)
 
 
 func _on_timer_timeout() -> void:

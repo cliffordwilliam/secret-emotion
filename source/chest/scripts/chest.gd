@@ -2,27 +2,23 @@
 class_name Chest
 extends Area2D
 
-@warning_ignore("unused_signal")
-signal play_animation_request(animation_name: StringName)
-@warning_ignore("unused_signal")
-signal start_state_machine_request
-@warning_ignore("unused_signal")
-signal read_world_state_request
-@warning_ignore("unused_signal")
-signal skip_to_last_frame_request(animation_name: StringName)
-signal set_enable_input_request(value: bool)
-signal set_interaction_marker_active_request
-signal set_interaction_marker_inactive_request
-signal dump_state_to_world_request
-
 @export var animation_name_data: ChestAnimationNameData
 
 @onready var chest_state_machine: ChestStateMachine = $ChestStateMachine
 @onready var chest_input: PlayerInput = $PlayerInput
+@onready var chest_animated_sprite: ChestAnimatedSprite = $ChestAnimatedSprite
+@onready var interaction_marker: InteractionMarker = $InteractionMarker
+@onready var player_input: PlayerInput = $PlayerInput
+@onready var chest_save_component: ChestSaveComponent = $ChestSaveComponent
 
 
 func _ready() -> void:
-	read_world_state_request.emit()
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	chest_save_component.start_owner_state_machine_request.connect(
+		_on_chest_save_component_start_owner_state_machine_request
+	)
+	chest_save_component.read_world_state()
 
 
 func _physics_process(delta):
@@ -30,14 +26,18 @@ func _physics_process(delta):
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	set_enable_input_request.emit(true)
-	set_interaction_marker_active_request.emit()
+	player_input.set_enable_input(true)
+	interaction_marker.set_active()
 
 
 func _on_body_exited(_body: Node2D) -> void:
-	set_enable_input_request.emit(false)
-	set_interaction_marker_inactive_request.emit()
+	player_input.set_enable_input(false)
+	interaction_marker.set_inactive()
 
 
-func _on_room_changed() -> void:
-	dump_state_to_world_request.emit()
+func _on_room_player_entered_door() -> void:
+	chest_save_component.dump_state_to_world()
+
+
+func _on_chest_save_component_start_owner_state_machine_request() -> void:
+	chest_state_machine.start()

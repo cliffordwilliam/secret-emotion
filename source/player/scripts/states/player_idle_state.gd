@@ -5,13 +5,13 @@ extends PlayerState
 
 func enter(previous_state: State) -> void:
 	if previous_state == player_state_machine.player_run_state:
-		player.play_animation_request.emit(player_animation_name_data.RUN_TO_IDLE)
+		player_animation_sprite.play(player_animation_name_data.RUN_TO_IDLE)
 	elif previous_state == player_state_machine.player_crouch_state:
-		player.play_animation_request.emit(player_animation_name_data.CROUCH_TO_IDLE)
+		player_animation_sprite.play(player_animation_name_data.CROUCH_TO_IDLE)
 	elif previous_state == player_state_machine.player_fall_state:
-		player.play_animation_request.emit(player_animation_name_data.FALL_TO_IDLE)
+		player_animation_sprite.play(player_animation_name_data.FALL_TO_IDLE)
 	else:
-		player.play_animation_request.emit(player_animation_name_data.IDLE)
+		player_animation_sprite.play(player_animation_name_data.IDLE)
 	player.velocity.x = 0.0
 
 

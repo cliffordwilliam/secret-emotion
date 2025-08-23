@@ -21,6 +21,7 @@ collision_layer = 2
 floor_constant_speed = true
 floor_snap_length = 16.0
 script = ExtResource("1_7fkwx")
+sound_effect_data = ExtResource("7_wk3uo")
 movement_data = ExtResource("2_l7wa7")
 animation_name_data = ExtResource("5_gp4bf")
 
@@ -35,14 +36,12 @@ metadata/_custom_type_script = "uid://b2s52epft0kfa"
 
 [node name="PlayerWalkState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("8_gp4bf")
-sound_effect_data = ExtResource("7_wk3uo")
 metadata/_custom_type_script = "uid://bxnvv6inbw4bt"
 
 [node name="Timer" type="Timer" parent="PlayerStateMachine/PlayerWalkState"]
 
 [node name="PlayerRunState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("7_svsdg")
-sound_effect_data = ExtResource("7_wk3uo")
 metadata/_custom_type_script = "uid://2684f788j75d"
 
 [node name="Timer" type="Timer" parent="PlayerStateMachine/PlayerRunState"]
@@ -73,11 +72,3 @@ shape = ExtResource("2_7fkwx")
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("10_ie40s")
 metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
-
-[connection signal="face_direction_request" from="." to="PlayerAnimatedSprite" method="_face_direction"]
-[connection signal="play_animation_request" from="." to="PlayerAnimatedSprite" method="_play_animation"]
-[connection signal="start_state_machine_request" from="." to="PlayerStateMachine" method="_start"]
-[connection signal="timeout" from="PlayerStateMachine/PlayerWalkState/Timer" to="PlayerStateMachine/PlayerWalkState" method="_on_timer_timeout"]
-[connection signal="timeout" from="PlayerStateMachine/PlayerRunState/Timer" to="PlayerStateMachine/PlayerRunState" method="_on_timer_timeout"]
-[connection signal="animation_finished" from="PlayerAnimatedSprite" to="PlayerAnimatedSprite" method="_on_animation_finished"]
-[connection signal="flip_h_changed" from="PlayerAnimatedSprite" to="PlayerStateMachine/PlayerRunState" method="_on_player_animated_sprite_flip_h_changed"]

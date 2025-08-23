@@ -4,7 +4,7 @@ extends PlayerState
 
 
 func enter(_previous_state: State) -> void:
-	player.play_animation_request.emit(player_animation_name_data.JUMP)
+	player_animation_sprite.play(player_animation_name_data.JUMP)
 	player.velocity.y -= player_movement_data.JUMP_SPEED
 	SoundEffect.play(SoundEffectFilePathContants.JUMP)
 
@@ -30,7 +30,7 @@ func physics_process(delta: float) -> void:
 	player.move_and_slide()
 
 	if player.velocity.x:
-		player.face_direction_request.emit(player.velocity.x < 0.0)
+		player_animation_sprite.set_face_direction(player.velocity.x < 0.0)
 
 	if not player.velocity.y < 0:
 		done.emit(player_state_machine.player_fall_state)

@@ -86,6 +86,3 @@ libraries = {
 }
 script = ExtResource("3_7yj37")
 animation_name_data = ExtResource("4_y0epw")
-
-[connection signal="set_active_request" from="." to="FadeAnimator" method="_on_set_active_request"]
-[connection signal="set_inactive_request" from="." to="FadeAnimator" method="_on_set_inactive_request"]

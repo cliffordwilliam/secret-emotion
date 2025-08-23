@@ -3,25 +3,33 @@ extends SaveComponent
 # Stores owner belongings (so LSP knows owner is a 'Chest' type)
 # On ready it syncs with world state and defines its id with the node name
 
+signal start_owner_state_machine_request
+
 var chest: Chest
 
 
-func _read_world_state() -> void:
+func _ready() -> void:
 	chest = owner as Chest
+
+
+func read_world_state() -> void:
+	# This func is responsible for starting state machine
+	# So needs to make sure all parent refs are ready in base class
+	await chest.ready
 	id = chest.name
 
 	# Save to local
 	var raw_data: Dictionary = get_world_state()
 	if raw_data.is_empty():
-		chest.start_state_machine_request.emit()
-		_dump_state()
+		start_owner_state_machine_request.emit()
+		dump_state_to_world()
 		return
 
 	# Load from local
 	if not _validate_raw(raw_data):
 		return
 	var save_data: ChestSaveData = _raw_to_resource_schema(raw_data)
-	_world_sync(save_data)
+	_apply_loaded_data(save_data)
 
 
 func _validate_raw(raw_data: Dictionary) -> bool:
@@ -42,7 +50,7 @@ func _validate_raw(raw_data: Dictionary) -> bool:
 	return false
 
 
-func _world_sync(save_data: ChestSaveData) -> void:
+func _apply_loaded_data(save_data: ChestSaveData) -> void:
 	# Chest state machine current state
 	var target_state: ChestState = null
 	for child in chest.chest_state_machine.get_children():
@@ -53,10 +61,10 @@ func _world_sync(save_data: ChestSaveData) -> void:
 		push_warning("Could not find state with name: %s" % save_data.current_state_name)
 		return
 	chest.chest_state_machine.initial_state = target_state
-	chest.start_state_machine_request.emit()
+	start_owner_state_machine_request.emit()
 
 
-func _dump_state() -> void:
+func dump_state_to_world() -> void:
 	# Chest state machine current state
 	var save_data: ChestSaveData = ChestSaveData.new()
 	save_data.current_state_name = chest.chest_state_machine.current_state.name

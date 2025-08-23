@@ -1,8 +1,8 @@
 @icon("res://source/interaction_marker/assets/message-circle-more.svg")
+class_name InteractionMarker
 extends Sprite2D
 
-signal set_active_request
-signal set_inactive_request
+@onready var fade_animator: InteractionMarkerFadeAnimationPlayer = $FadeAnimator
 
 
 func _ready() -> void:
@@ -10,8 +10,8 @@ func _ready() -> void:
 
 
 func set_active() -> void:
-	set_active_request.emit()
+	fade_animator.play(fade_animator.animation_name_data.FADE_IN)
 
 
 func set_inactive() -> void:
-	set_inactive_request.emit()
+	fade_animator.play(fade_animator.animation_name_data.FADE_OUT)

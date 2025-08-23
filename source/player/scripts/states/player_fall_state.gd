@@ -4,7 +4,7 @@ extends PlayerState
 
 
 func enter(_previous_state: State) -> void:
-	player.play_animation_request.emit(player_animation_name_data.TO_FALL)
+	player_animation_sprite.play(player_animation_name_data.TO_FALL)
 
 
 func exit() -> void:
@@ -26,7 +26,7 @@ func physics_process(delta: float) -> void:
 	player.move_and_slide()
 
 	if player.velocity.x:
-		player.face_direction_request.emit(player.velocity.x < 0.0)
+		player_animation_sprite.set_face_direction(player.velocity.x < 0.0)
 
 	if player.is_on_floor():
 		if player_input.is_down_held():

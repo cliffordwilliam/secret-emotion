@@ -13,7 +13,7 @@ func _ready() -> void:
 		child.done.connect(change_state)
 
 
-func _start() -> void:
+func start() -> void:
 	change_state(initial_state)
 
 

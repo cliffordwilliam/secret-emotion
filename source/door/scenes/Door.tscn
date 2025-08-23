@@ -14,5 +14,3 @@ position = Vector2(8, 90)
 shape = ExtResource("1_oh267")
 
 [node name="PlayerSpawnPosition" type="Marker2D" parent="."]
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

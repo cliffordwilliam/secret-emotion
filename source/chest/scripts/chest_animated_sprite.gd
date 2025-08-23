@@ -10,10 +10,6 @@ func _ready():
 	_validate_gui(animation_name_data)
 
 
-func _play_animation(animation_name: StringName) -> void:
-	play(animation_name)
-
-
-func _skip_to_last_frame(animation_name: StringName) -> void:
+func skip_to_last_frame(animation_name: StringName) -> void:
 	play(animation_name)
 	frame = sprite_frames.get_frame_count(animation_name)
