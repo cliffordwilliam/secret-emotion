@@ -2,19 +2,19 @@ class_name PlayerWalkState
 extends PlayerState
 # Player walking around
 
-@onready var timer: Timer = $Timer
+@onready var walk_step_sfx_timer: Timer = $WalkStepSfxTimer
 
 
 func enter(_previous_state: State) -> void:
 	player_animation_sprite.play(player_animation_name_data.WALK)
-	timer.timeout.connect(_on_timer_timeout)
-	timer.wait_time = player_sound_effect_data.WALK_STEP_INTERVAL
-	timer.start()
+	walk_step_sfx_timer.timeout.connect(_on_walk_step_sfx_timer_timeout)
+	walk_step_sfx_timer.wait_time = player_sound_effect_data.WALK_STEP_INTERVAL
+	walk_step_sfx_timer.start()
 
 
 func exit() -> void:
-	timer.timeout.disconnect(_on_timer_timeout)
-	timer.stop()
+	walk_step_sfx_timer.timeout.disconnect(_on_walk_step_sfx_timer_timeout)
+	walk_step_sfx_timer.stop()
 
 
 func physics_process(_delta: float) -> void:
@@ -46,5 +46,5 @@ func physics_process(_delta: float) -> void:
 	player_animation_sprite.set_face_direction(player.velocity.x < 0.0)
 
 
-func _on_timer_timeout() -> void:
+func _on_walk_step_sfx_timer_timeout() -> void:
 	SoundEffect.play(SoundEffectFilePathContants.GRASS_FOOTSTEP)

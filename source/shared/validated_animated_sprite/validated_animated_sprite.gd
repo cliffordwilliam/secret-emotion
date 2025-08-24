@@ -1,6 +1,6 @@
 class_name ValidatedAnimatedSprite
 extends AnimatedSprite2D
-# Base class to validate animations against provided names
+# Base class to validate AnimatedSprite2D animations against provided names
 
 
 func _validate_gui(animation_name_data: Resource):

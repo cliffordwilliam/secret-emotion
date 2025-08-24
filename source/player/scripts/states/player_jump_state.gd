@@ -27,6 +27,7 @@ func physics_process(delta: float) -> void:
 		gravity = player_movement_data.FALL_GRAVITY
 
 	player.velocity.y += gravity * delta
+	player.velocity.y = min(player.velocity.y, player_movement_data.MAX_FALL_SPEED)
 	player.move_and_slide()
 
 	if player.velocity.x:

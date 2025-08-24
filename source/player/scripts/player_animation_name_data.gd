@@ -1,6 +1,6 @@
 class_name PlayerAnimationNameData
 extends Resource
-# Player animation name props + next animation bindings (to_run -> run)
+# Player animation name props + next animation map bindings (to_run -> run)
 
 const IDLE: StringName = "idle"
 const WALK: StringName = "walk"

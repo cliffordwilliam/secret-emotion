@@ -1,6 +1,7 @@
 @icon("res://source/chest/assets/archive.svg")
 class_name Chest
 extends Area2D
+# Opens and close sprite animation on player input
 
 @export var animation_name_data: ChestAnimationNameData
 

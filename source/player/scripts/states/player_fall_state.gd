@@ -1,6 +1,6 @@
 class_name PlayerFallState
 extends PlayerState
-# Player jumping up around
+# Player falling down around
 
 
 func enter(_previous_state: State) -> void:

@@ -1,5 +1,6 @@
 class_name VillageEntrance
 extends Room
+# Where player first start, meeting friend
 
 @onready var camera: Camera = $Camera
 

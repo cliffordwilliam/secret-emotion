@@ -1,4 +1,6 @@
+class_name Ray
 extends Parallax2D
+# Scroll ray each frame
 
 @export var movement_data: RayMovementData
 

@@ -1,4 +1,6 @@
+class_name Rivers
 extends Parallax2D
+# Scroll rivers each frame
 
 @export var movement_data: RiversMovementData
 

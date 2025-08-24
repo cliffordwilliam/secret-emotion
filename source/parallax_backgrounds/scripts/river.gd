@@ -1,5 +1,7 @@
 class_name RiverAnimatedSprite
 extends ValidatedAnimatedSprite
+# Draw and animate sprite
+# Validates GUI against my resource (animation name)
 
 @export var animation_name_data: RiverAnimationNameData
 

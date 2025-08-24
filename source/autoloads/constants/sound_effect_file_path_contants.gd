@@ -1,5 +1,6 @@
 # This is an autoload class (SoundEffectFilePathConstants)
 extends Node
+# Holds all path string to sound files (.wav)
 
 const BASE_PATH := "res://source/player/assets/"
 

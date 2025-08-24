@@ -20,5 +20,5 @@ func _physics_process(delta):
 	player_state_machine.physics_process(delta)
 
 
-func _reposition_to_door_request(given_global_position: Vector2) -> void:
+func reposition_to_door(given_global_position: Vector2) -> void:
 	global_position = given_global_position

@@ -1,6 +1,6 @@
 class_name PlayerState
 extends State
-# Stores owner belongings (so lsp knows owner 'Player' type)
+# This is an extension of owner. It stores owner belongings
 
 var player: Player
 var player_state_machine: PlayerStateMachine

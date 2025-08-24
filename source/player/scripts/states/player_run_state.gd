@@ -2,21 +2,21 @@ class_name PlayerRunState
 extends PlayerState
 # Player running around
 
-@onready var timer: Timer = $Timer
+@onready var run_step_sfx_timer: Timer = $RunStepSfxTimer
 
 
 func enter(_previous_state: State) -> void:
 	player_animation_sprite.flip_h_changed.connect(_on_player_animated_sprite_flip_h_changed)
 	player_animation_sprite.play(player_animation_name_data.TO_RUN)
-	timer.timeout.connect(_on_timer_timeout)
-	timer.wait_time = player_sound_effect_data.RUN_STEP_INTERVAL
-	timer.start()
+	run_step_sfx_timer.timeout.connect(_on_run_step_sfx_timer_timeout)
+	run_step_sfx_timer.wait_time = player_sound_effect_data.RUN_STEP_INTERVAL
+	run_step_sfx_timer.start()
 
 
 func exit() -> void:
 	player_animation_sprite.flip_h_changed.disconnect(_on_player_animated_sprite_flip_h_changed)
-	timer.timeout.disconnect(_on_timer_timeout)
-	timer.stop()
+	run_step_sfx_timer.timeout.disconnect(_on_run_step_sfx_timer_timeout)
+	run_step_sfx_timer.stop()
 
 
 func physics_process(_delta: float) -> void:
@@ -52,5 +52,5 @@ func _on_player_animated_sprite_flip_h_changed() -> void:
 	player_animation_sprite.play(player_animation_name_data.TURN_TO_RUN)
 
 
-func _on_timer_timeout() -> void:
+func _on_run_step_sfx_timer_timeout() -> void:
 	SoundEffect.play(SoundEffectFilePathContants.GRASS_FOOTSTEP)

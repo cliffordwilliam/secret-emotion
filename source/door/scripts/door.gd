@@ -1,5 +1,6 @@
 class_name Door
 extends Area2D
+# Shout event if player enters it
 
 signal player_entered(target_room_scene_path: String, target_door_name: String)
 

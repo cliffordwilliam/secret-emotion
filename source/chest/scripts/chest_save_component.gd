@@ -1,7 +1,7 @@
 class_name ChestSaveComponent
 extends SaveComponent
-# Stores owner belongings (so LSP knows owner is a 'Chest' type)
-# On ready it syncs with world state and defines its id with the node name
+# This is an extension of owner. It stores owner belongings
+# Determine when to start owner state machine
 
 signal start_owner_state_machine_request
 
@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func read_world_state() -> void:
 	# This func is responsible for starting state machine
-	# So needs to make sure all parent refs are ready in base class
+	# So needs to make sure all parent refs are ready in state base class
 	await chest.ready
 	id = chest.name
 

@@ -1,10 +1,9 @@
 @icon("res://source/room/assets/layout-grid.svg")
 class_name Room
 extends Node
-# Stores room base properties
+# Stores room base props
 
-signal room_player_entered_door
-signal position_player_to_door_request(global_position: Vector2)
+signal player_entered_door
 
 var doors: Dictionary[String, Door] = {}
 var player: Player
@@ -15,21 +14,20 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Player:
 			player = child
-			position_player_to_door_request.connect(child._reposition_to_door_request)
 			break
 	# Populate door dict map storage
 	for child in get_children():
 		if child is Door:
 			doors[child.name] = child
 			child.player_entered.connect(_on_door_player_entered)
-	# Make chests sub to my room changed event
+	# Make chests sub to my player_entered_door event
 	for child in get_children():
 		if child is Chest:
-			room_player_entered_door.connect(child._on_room_player_entered_door)
+			player_entered_door.connect(child._on_room_player_entered_door)
 
 
 func initialize_player_position_to_door(door_name: String) -> void:
-	position_player_to_door_request.emit(doors[door_name].player_spawn_position.global_position)
+	player.reposition_to_door(doors[door_name].player_spawn_position.global_position)
 
 
 func _on_door_player_entered(target_room_scene_path: String, target_door_name: String) -> void:
@@ -37,5 +35,5 @@ func _on_door_player_entered(target_room_scene_path: String, target_door_name: S
 	var new_room: Room = load(target_room_scene_path).instantiate()
 	get_tree().root.add_child(new_room)
 	new_room.initialize_player_position_to_door(target_door_name)
-	room_player_entered_door.emit()
+	player_entered_door.emit()
 	self.free()

@@ -1,6 +1,8 @@
+class_name Clouds
 extends Parallax2D
+# Scroll rivers each frame
 
-@export var movement_data: CloudMovementData
+@export var movement_data: CloudsMovementData
 
 
 func _physics_process(delta: float) -> void:

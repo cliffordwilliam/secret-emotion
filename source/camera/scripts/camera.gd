@@ -1,5 +1,6 @@
 class_name Camera
 extends Camera2D
+# Follows target around
 
 var target: Node2D = null
 

@@ -1,6 +1,6 @@
 class_name ChestState
 extends State
-# Stores owner belongings (so lsp knows owner 'Player' type)
+# Stores owner belongings (so lsp knows owner type)
 
 var chest: Chest
 var chest_state_machine: ChestStateMachine
