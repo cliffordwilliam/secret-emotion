@@ -14,20 +14,25 @@ func _ready() -> void:
 
 func read_world_state() -> void:
 	# This func is responsible for starting state machine
-	# So needs to make sure all parent refs are ready in state base class
+	# So must ensure parent refs are ready in state base class
 	await chest.ready
+
+	# Define my unique ID for world state key registration
 	id = chest.name
 
-	# Save to local
+	# Read world state
 	var raw_data: Dictionary = get_world_state()
+
+	# Empty? Start state machine now
 	if raw_data.is_empty():
 		start_owner_state_machine_request.emit()
-		dump_state_to_world()
 		return
 
-	# Load from local
+	# Got something? Validate it
 	if not _validate_raw(raw_data):
 		return
+
+	# Apply world state to my props
 	var save_data: ChestSaveData = _raw_to_resource_schema(raw_data)
 	_apply_loaded_data(save_data)
 
