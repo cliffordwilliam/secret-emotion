@@ -10,7 +10,7 @@ This repository includes development tooling such as Git hooks, linters, and for
 ```text
 project-root/
 ├── .github/                   # GitHub configuration — Actions workflows, templates, etc.
-├── .godot/                    # Godot editor state (safe to ignore in VCS)
+├── .godot/                    # Godot editor state (safe to ignore in VCS) (if editor is acting odd, can delete this to make it regen it)
 ├── .editorconfig              # Shared editor settings (indentation, charset, …)
 ├── .gitattributes             # Text‑file normalization & merge rules
 ├── .gitignore                 # Files/directories Git should ignore
