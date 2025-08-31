@@ -9,7 +9,6 @@ extends Area2D
 @onready var chest_input: PlayerInput = $PlayerInput
 @onready var chest_animated_sprite: ChestAnimatedSprite = $ChestAnimatedSprite
 @onready var interaction_marker: InteractionMarker = $InteractionMarker
-@onready var player_input: PlayerInput = $PlayerInput
 @onready var chest_save_component: ChestSaveComponent = $ChestSaveComponent
 
 
@@ -27,12 +26,12 @@ func _physics_process(delta):
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	player_input.set_enable_input(true)
+	chest_input.set_enable_input(true)
 	interaction_marker.set_active()
 
 
 func _on_body_exited(_body: Node2D) -> void:
-	player_input.set_enable_input(false)
+	chest_input.set_enable_input(false)
 	interaction_marker.set_inactive()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bvbespk4pnia4"]
+[gd_scene load_steps=16 format=4 uid="uid://bvbespk4pnia4"]
 
 [ext_resource type="Script" uid="uid://bb0y7uhq34t5n" path="res://source/stages/village/scripts/village_entrance.gd" id="1_rh0n8"]
 [ext_resource type="TileSet" uid="uid://c6ksmr8m52u4b" path="res://source/stages/village/resources/village_tile_set.tres" id="1_ykyy6"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cu7lsh2me8wdm" path="res://source/parallax_backgrounds/scenes/Ray.tscn" id="10_sf5gu"]
 [ext_resource type="PackedScene" uid="uid://b7iu64rbsie17" path="res://source/parallax_backgrounds/scenes/Rivers.tscn" id="11_p38ko"]
 [ext_resource type="PackedScene" uid="uid://ck0ab3frwfod3" path="res://source/door/scenes/Door.tscn" id="11_xt76x"]
+[ext_resource type="PackedScene" uid="uid://dhd10mh015lwf" path="res://source/save_point/scenes/SavePoint.tscn" id="15_hegwb"]
 
 [node name="VillageEntrance" type="Node"]
 script = ExtResource("1_rh0n8")
@@ -32,6 +33,9 @@ script = ExtResource("1_rh0n8")
 
 [node name="VillageEntranceChest001" parent="." instance=ExtResource("8_rh0n8")]
 position = Vector2(352, 112)
+
+[node name="SavePoint" parent="." instance=ExtResource("15_hegwb")]
+position = Vector2(416, 112)
 
 [node name="Player" parent="." instance=ExtResource("2_a4ul6")]
 position = Vector2(96, 112)
