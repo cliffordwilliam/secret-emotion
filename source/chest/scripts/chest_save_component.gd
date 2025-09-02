@@ -42,9 +42,18 @@ func _validate_raw(raw_data: Dictionary) -> bool:
 		push_warning("Missing state name in chest save data for id: %s" % id)
 		return false
 
-	if typeof(raw_data[ChestSaveData.KEY_CURRENT_STATE_NAME]) != TYPE_STRING_NAME:
-		push_warning("State name must be StringName in chest save data for id: %s" % id)
-		return false
+	var found := false
+	for child in chest.chest_state_machine.get_children():
+		if child.name == raw_data[ChestSaveData.KEY_CURRENT_STATE_NAME]:
+			found = true
+			break
+	if not found:
+		push_warning(
+			(
+				"Invalid state '%s' in chest save data for id: %s"
+				% [raw_data[ChestSaveData.KEY_CURRENT_STATE_NAME], id]
+			)
+		)
 
 	var state_name: StringName = raw_data[ChestSaveData.KEY_CURRENT_STATE_NAME]
 	for child in chest.chest_state_machine.get_children():

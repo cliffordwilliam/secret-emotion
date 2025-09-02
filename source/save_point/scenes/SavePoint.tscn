@@ -27,6 +27,7 @@ position = Vector2(0, -10)
 shape = ExtResource("4_skrf2")
 
 [node name="PlayerInput" parent="." instance=ExtResource("5_s5ucr")]
+input_enabled = false
 
 [node name="InteractionMarker" parent="." instance=ExtResource("6_3v35x")]
 position = Vector2(0, -56)

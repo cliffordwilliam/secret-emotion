@@ -21,6 +21,9 @@ func _ready() -> void:
 			doors[child.name] = child
 			child.player_entered.connect(_on_door_player_entered)
 	# Make chests sub to my player_entered_door event
+	# TODO: Collect all saveable stuff to a list
+	# TODO: On door player entered, tell all saveable stuff to dump to local
+	# TODO: Let save point emit here and do exactly what player hit on door
 	for child in get_children():
 		if child is Chest:
 			player_entered_door.connect(child._on_room_player_entered_door)

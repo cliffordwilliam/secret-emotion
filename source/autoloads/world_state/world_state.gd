@@ -10,6 +10,11 @@ const SAVE_FILE_EXTENSION := ".json"
 var world_state: Dictionary = {}
 
 
+# TODO: Delete this, make save/load menu be initial scene
+func _ready() -> void:
+	load_from_slot(WorldState.SaveSlot.SLOT_0)
+
+
 func set_world_state(actor_id: String, state: Dictionary) -> void:
 	world_state[actor_id] = state
 

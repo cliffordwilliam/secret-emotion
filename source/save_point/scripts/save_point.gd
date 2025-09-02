@@ -17,7 +17,11 @@ func _ready() -> void:
 
 func _physics_process(_delta):
 	if save_point_input.is_up_tapped():
-		pass
+		# TODO: Announce others in this room to dump to local world state
+		# TODO: Open save/load menu instead of doing this
+		# For now just save to SLOT_0
+		WorldState.save_to_slot(WorldState.SaveSlot.SLOT_0)
+		print("World state saved to SLOT_0")
 
 
 func _on_body_entered(_body: Node2D) -> void:
