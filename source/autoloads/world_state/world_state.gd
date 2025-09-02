@@ -10,12 +10,10 @@ const SAVE_FILE_EXTENSION := ".json"
 var world_state: Dictionary = {}
 
 
-# TODO: No need? Just dump local world state to disk right?
 func set_world_state(actor_id: String, state: Dictionary) -> void:
 	world_state[actor_id] = state
 
 
-# TODO: No need? Just dump local world state to disk right?
 func get_world_state(actor_id: String) -> Dictionary:
 	if world_state.has(actor_id):
 		return world_state[actor_id]
