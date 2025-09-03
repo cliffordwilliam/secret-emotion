@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="ChestSaveData" load_steps=2 format=3 uid="uid://dmvl762h00bcr"]
-
-[ext_resource type="Script" uid="uid://dslhtbstjgqew" path="res://source/chest/scripts/chest_save_data.gd" id="1_6j4ag"]
-
-[resource]
-script = ExtResource("1_6j4ag")
-metadata/_custom_type_script = "uid://dslhtbstjgqew"

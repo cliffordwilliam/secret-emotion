@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ma6v8k46bim8"]
+
+[ext_resource type="Texture2D" uid="uid://b43820vw2qr5n" path="res://source/room/stages/village/assets/day_blue_mountain.png" id="1_lokrt"]
+
+[node name="Mountains" type="Parallax2D"]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lokrt")
+centered = false

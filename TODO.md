@@ -9,12 +9,13 @@
 - [ ] Add music manager
 - [ ] Add cutscene
 - [ ] Add npc to talk to
-- [ ] Add save feature (kid - base save component - world state cache autoload - disk)
+- [x] Add save feature (kid - base save component - world state cache autoload - disk)
 - [x] Add another room
 - [x] Check if each script follows formatting rule
 - [x] Add MIT
 - [x] Add door
 - [x] Scaffold save / load system
-- [ ] Add direction export to door to init player face dir
-- [ ] Create a save trigger
+- ~~[ ] Add direction export to door to init player face dir~~
+- [x] Create a save trigger
 - [ ] Use strategy pattern for long if else
+- [ ] Complete code base todo list comments

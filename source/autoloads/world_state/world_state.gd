@@ -10,11 +10,6 @@ const SAVE_FILE_EXTENSION := ".json"
 var world_state: Dictionary = {}
 
 
-# TODO: Delete this, make save/load menu be initial scene
-func _ready() -> void:
-	load_from_slot(WorldState.SaveSlot.SLOT_0)
-
-
 func set_world_state(actor_id: String, state: Dictionary) -> void:
 	world_state[actor_id] = state
 
@@ -33,10 +28,24 @@ func save_to_slot(slot_name: SaveSlot) -> void:
 	file.close()
 
 
-func load_from_slot(slot_name: SaveSlot) -> void:
-	var file = FileAccess.open(
-		SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION, FileAccess.READ
-	)
-	var data = JSON.parse_string(file.get_as_text())
+func load_from_slot(slot_name: SaveSlot) -> Dictionary:
+	var path: String = SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION
+
+	if not FileAccess.file_exists(path):
+		print("No save file at slot:", slot_name)
+		return {}
+
+	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		push_error("Failed to open save file at slot: %s" % slot_name)
+		return {}
+	var text: String = file.get_as_text()
 	file.close()
+
+	var data = JSON.parse_string(text)
+	if typeof(data) != TYPE_DICTIONARY:
+		push_error("Corrupted save file at slot: %s" % slot_name)
+		return {}
+
 	world_state = data
+	return data

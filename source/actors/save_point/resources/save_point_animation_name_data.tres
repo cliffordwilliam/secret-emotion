@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SavePointAnimationNameData" load_steps=2 format=3 uid="uid://bntj0hxvi6p8p"]
+
+[ext_resource type="Script" uid="uid://dvxi0e74ncq2t" path="res://source/actors/save_point/scripts/save_point_animation_name_data.gd" id="1_ouebf"]
+
+[resource]
+script = ExtResource("1_ouebf")
+metadata/_custom_type_script = "uid://dvxi0e74ncq2t"

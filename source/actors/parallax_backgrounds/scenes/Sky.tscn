@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwmuljcxfnra6"]
+
+[ext_resource type="Texture2D" uid="uid://c06nc4d6c3fxj" path="res://source/room/stages/village/assets/day_blue_sky.png" id="1_k8crk"]
+
+[node name="Sky" type="Parallax2D"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k8crk")
+centered = false

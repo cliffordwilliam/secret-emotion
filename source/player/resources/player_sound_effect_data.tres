@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="PlayerSoundEffectData" load_steps=2 format=3 uid="uid://dhnqie8nllt52"]
-
-[ext_resource type="Script" uid="uid://cc7yw6q4733kn" path="res://source/player/scripts/player_sound_effect_data.gd" id="1_ui5p3"]
-
-[resource]
-script = ExtResource("1_ui5p3")
-metadata/_custom_type_script = "uid://cc7yw6q4733kn"

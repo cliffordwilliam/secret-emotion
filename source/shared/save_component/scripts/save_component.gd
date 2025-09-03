@@ -4,6 +4,9 @@ extends Node
 # Declare actor ID (unique name for kid to define with node name)
 # And has GET and PATCH for WorldState autoload
 
+@warning_ignore("unused_signal")
+signal start_owner_state_machine_request
+
 var id: StringName = ""
 
 

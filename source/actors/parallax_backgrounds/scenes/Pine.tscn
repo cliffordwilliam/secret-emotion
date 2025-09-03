@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://yscb6li8ju1y"]
+
+[ext_resource type="SpriteFrames" uid="uid://nj12qtqxyh8q" path="res://source/actors/parallax_backgrounds/resources/pine_tree_animation_data.tres" id="1_r3nbj"]
+[ext_resource type="Script" uid="uid://bj7iah5w37w3k" path="res://source/actors/parallax_backgrounds/scripts/pine.gd" id="2_23hfk"]
+[ext_resource type="Resource" uid="uid://bosj18pswwm2r" path="res://source/actors/parallax_backgrounds/resources/pine_animation_name_data.tres" id="3_22c4d"]
+
+[node name="Pine" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_r3nbj")
+animation = &"sway"
+script = ExtResource("2_23hfk")
+animation_name_data = ExtResource("3_22c4d")

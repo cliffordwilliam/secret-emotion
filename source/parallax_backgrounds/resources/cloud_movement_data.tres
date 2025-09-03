@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="CloudMovementData" load_steps=2 format=3 uid="uid://dhrbea5wg6gn3"]
-
-[ext_resource type="Script" uid="uid://b6tssgubth6dq" path="res://source/parallax_backgrounds/scripts/clouds_movement_data.gd" id="1_63435"]
-
-[resource]
-script = ExtResource("1_63435")
-metadata/_custom_type_script = "uid://b6tssgubth6dq"
