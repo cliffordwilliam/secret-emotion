@@ -14,6 +14,7 @@ func physics_process(_delta: float) -> void:
 		return
 
 	if not player_input.is_down_held():
+		# TODO: Make strat here
 		if not player_input.get_input_direction_x():
 			done.emit(player_state_machine.player_idle_state)
 			return

@@ -20,6 +20,7 @@ func exit() -> void:
 func physics_process(_delta: float) -> void:
 	var input_direction_x: int = player_input.get_input_direction_x()
 
+	# TODO: Make strat here
 	if player_input.is_down_held():
 		done.emit(player_state_machine.player_crouch_state)
 		return
@@ -47,4 +48,4 @@ func physics_process(_delta: float) -> void:
 
 
 func _on_walk_step_sfx_timer_timeout() -> void:
-	SoundEffect.play(SoundEffectFilePathContants.GRASS_FOOTSTEP)
+	SoundEffect.play(SoundEffectFilePathContants.PLAYER_GRASS_FOOTSTEP_SFX_PATH)

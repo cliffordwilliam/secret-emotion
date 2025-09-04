@@ -5,6 +5,14 @@ This repository includes development tooling such as Git hooks, linters, and for
 
 ---
 
+## Notes
+
+1. use resource to hold const for 1 domain
+2. use autoload for const that multiple domain wanna use
+3. use export as like a GUI like init param in OOP
+
+---
+
 ## 📁 Project Structure
 
 ```text

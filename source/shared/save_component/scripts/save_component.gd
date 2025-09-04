@@ -2,17 +2,24 @@
 class_name SaveComponent
 extends Node
 # Declare actor ID (unique name for kid to define with node name)
+# Actor ID should be its name using this format (RoomNameItem00)
 # And has GET and PATCH for WorldState autoload
 
 @warning_ignore("unused_signal")
-signal start_owner_state_machine_request
+signal properties_initialized_by_save_file
 
 var id: StringName = ""
 
 
-func update_world_state(state_dictionary: Dictionary):
-	WorldState.set_world_state(id, state_dictionary)
+func _ready() -> void:
+	owner.add_to_group(GroupNameConstants.SAVABLES)
 
 
-func get_world_state() -> Dictionary:
-	return WorldState.get_world_state(id)
+func set_one_object_in_world_state_by_id(
+	given_id: StringName, state_dictionary: Dictionary
+) -> void:
+	WorldState.set_one_object_in_world_state_by_id(given_id, state_dictionary)
+
+
+func get_one_object_in_world_state_by_id(given_id: StringName) -> Dictionary:
+	return WorldState.get_one_object_in_world_state_by_id(given_id)

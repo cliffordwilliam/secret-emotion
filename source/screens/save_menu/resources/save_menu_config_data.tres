@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SaveMenuConfigData" load_steps=2 format=3 uid="uid://bcehjxld0kkyr"]
+
+[ext_resource type="Script" uid="uid://ctqsygkg10nt7" path="res://source/screens/save_menu/scripts/save_menu_config_data.gd" id="1_mr7eb"]
+
+[resource]
+script = ExtResource("1_mr7eb")
+metadata/_custom_type_script = "uid://ctqsygkg10nt7"

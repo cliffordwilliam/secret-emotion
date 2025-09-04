@@ -6,7 +6,7 @@ extends PlayerState
 func enter(_previous_state: State) -> void:
 	player_animation_sprite.play(player_animation_name_data.JUMP)
 	player.velocity.y -= player_movement_data.JUMP_SPEED
-	SoundEffect.play(SoundEffectFilePathContants.JUMP)
+	SoundEffect.play(SoundEffectFilePathContants.PLAYER_JUMP_SFX_PATH)
 
 
 func physics_process(delta: float) -> void:

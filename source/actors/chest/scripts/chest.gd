@@ -13,16 +13,15 @@ extends Area2D
 
 
 func _ready() -> void:
-	add_to_group(GroupNameConstants.SAVABLE)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	chest_save_component.start_owner_state_machine_request.connect(
-		_on_chest_save_component_start_owner_state_machine_request
+	chest_save_component.properties_initialized_by_save_file.connect(
+		_on_chest_save_component_finished
 	)
 	chest_save_component.read_world_state()
 
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	chest_state_machine.physics_process(delta)
 
 
@@ -40,5 +39,5 @@ func _dump_state_to_world() -> void:
 	chest_save_component.dump_state_to_world()
 
 
-func _on_chest_save_component_start_owner_state_machine_request() -> void:
+func _on_chest_save_component_finished() -> void:
 	chest_state_machine.start()

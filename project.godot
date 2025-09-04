@@ -22,7 +22,7 @@ SoundEffect="*res://source/autoloads/sound_effect/sound_effect.gd"
 SoundEffectFilePathContants="*res://source/autoloads/constants/sound_effect_file_path_contants.gd"
 WorldState="*res://source/autoloads/world_state/world_state.gd"
 GroupNameConstants="*res://source/autoloads/constants/group_name_constants.gd"
-LocalWorldStateConstants="*res://source/autoloads/constants/local_world_state_constants.gd"
+LocalWorldStateKeyConstants="*res://source/autoloads/constants/local_world_state_key_constants.gd"
 
 [display]
 

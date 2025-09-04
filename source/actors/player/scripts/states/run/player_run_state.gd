@@ -2,6 +2,10 @@ class_name PlayerRunState
 extends PlayerState
 # Player running around
 
+var exit_strategy_manager: PlayerRunStateExitStrategyManager = (
+	PlayerRunStateExitStrategyManager.new()
+)
+
 @onready var run_step_sfx_timer: Timer = $RunStepSfxTimer
 
 
@@ -22,20 +26,9 @@ func exit() -> void:
 func physics_process(_delta: float) -> void:
 	var input_direction_x: int = player_input.get_input_direction_x()
 
-	if player_input.is_down_held():
-		done.emit(player_state_machine.player_crouch_state)
-		return
-
-	if player_input.is_jump_tapped():
-		done.emit(player_state_machine.player_jump_state)
-		return
-
-	if not input_direction_x:
-		done.emit(player_state_machine.player_idle_state)
-		return
-
-	if player_input.is_shift_held():
-		done.emit(player_state_machine.player_walk_state)
+	var strategy: PlayerRunStateBaseExitStrategy = exit_strategy_manager.get_strategy(self)
+	if strategy:
+		done.emit(strategy.get_next_state())
 		return
 
 	player.velocity.x = float(input_direction_x) * player_movement_data.RUN_SPEED
@@ -53,4 +46,4 @@ func _on_player_animated_sprite_flip_h_changed() -> void:
 
 
 func _on_run_step_sfx_timer_timeout() -> void:
-	SoundEffect.play(SoundEffectFilePathContants.GRASS_FOOTSTEP)
+	SoundEffect.play(SoundEffectFilePathContants.PLAYER_GRASS_FOOTSTEP_SFX_PATH)

@@ -4,7 +4,7 @@ extends ChestState
 
 
 func enter(previous_state: State) -> void:
-	if previous_state and previous_state == chest_state_machine.chest_open_state:
+	if previous_state == chest_state_machine.chest_open_state:
 		chest_animated_sprite.play(chest_animation_name_data.CLOSE)
 	else:
 		chest_animated_sprite.skip_to_last_frame(chest_animation_name_data.CLOSE)

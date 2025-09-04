@@ -1,5 +1,5 @@
 # This is an autoload class (GroupNameConstants)
 extends Node
-# Holds all group names
+# Holds all godot group names
 
-const SAVABLE: StringName = "savable"
+const SAVABLES: StringName = "savables"

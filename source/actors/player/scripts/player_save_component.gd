@@ -7,6 +7,7 @@ var player: Player
 
 
 func _ready() -> void:
+	super._ready()
 	player = owner as Player
 
 
@@ -19,11 +20,11 @@ func read_world_state() -> void:
 	id = player.name
 
 	# Read world state
-	var raw_data: Dictionary = get_world_state()
+	var raw_data: Dictionary = get_one_object_in_world_state_by_id(id)
 
 	# Empty? Start state machine now
 	if raw_data.is_empty():
-		start_owner_state_machine_request.emit()
+		properties_initialized_by_save_file.emit()
 		return
 
 	# Got something? Validate it
@@ -36,9 +37,9 @@ func read_world_state() -> void:
 
 	# Apply world state to my props
 	var save_data: PlayerSaveData = _raw_to_resource_schema(raw_data)
-	_apply_loaded_data(save_data)
+	_rehydrate_self_with_loaded_data(save_data)
 	# Start state machine now
-	start_owner_state_machine_request.emit()
+	properties_initialized_by_save_file.emit()
 
 
 func _validate_state_machine(raw_data: Dictionary) -> bool:
@@ -84,7 +85,7 @@ func _validate_position(raw_data: Dictionary) -> bool:
 	return true
 
 
-func _apply_loaded_data(save_data: PlayerSaveData) -> void:
+func _rehydrate_self_with_loaded_data(save_data: PlayerSaveData) -> void:
 	# Restore state machine
 	var target_state: PlayerState = null
 	for child in player.player_state_machine.get_children():
@@ -105,7 +106,7 @@ func dump_state_to_world() -> void:
 	save_data.position_y = player.position.y
 	save_data.flip_h = player.player_animated_sprite.flip_h
 	var save_data_dict: Dictionary = _resource_schema_to_raw_dict(save_data)
-	update_world_state(save_data_dict)
+	set_one_object_in_world_state_by_id(id, save_data_dict)
 
 
 func _raw_to_resource_schema(raw_data: Dictionary) -> PlayerSaveData:

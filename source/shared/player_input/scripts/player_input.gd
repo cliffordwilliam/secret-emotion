@@ -1,7 +1,8 @@
 @icon("res://source/shared/player_input/assets/gamepad-2.svg")
 class_name PlayerInput
 extends Node
-# The only thing that calls the Input singleton, so its not spammed everywhere
+# The only thing that calls the builtin Input singleton
+# So its not spammed everywhere
 
 @export var input_enabled: bool = true
 
@@ -13,34 +14,34 @@ func set_enable_input(value: bool) -> void:
 func get_input_direction_x() -> int:
 	if not input_enabled:
 		return 0
-	return int(Input.get_axis(InputConstants.LEFT_INPUT, InputConstants.RIGHT_INPUT))
+	return int(Input.get_axis(InputConstants.LEFT_INPUT_NAME, InputConstants.RIGHT_INPUT_NAME))
 
 
-func is_shift_held() -> int:
+func is_shift_held() -> bool:
 	if not input_enabled:
 		return false
-	return Input.is_action_pressed(InputConstants.SHIFT_INPUT)
+	return Input.is_action_pressed(InputConstants.SHIFT_INPUT_NAME)
 
 
-func is_down_held() -> int:
+func is_down_held() -> bool:
 	if not input_enabled:
 		return false
-	return Input.is_action_pressed(InputConstants.DOWN_INPUT)
+	return Input.is_action_pressed(InputConstants.DOWN_INPUT_NAME)
 
 
-func is_jump_tapped() -> int:
+func is_jump_tapped() -> bool:
 	if not input_enabled:
 		return false
-	return Input.is_action_just_pressed(InputConstants.JUMP_INPUT)
+	return Input.is_action_just_pressed(InputConstants.JUMP_INPUT_NAME)
 
 
-func is_jump_held() -> int:
+func is_jump_held() -> bool:
 	if not input_enabled:
 		return false
-	return Input.is_action_pressed(InputConstants.JUMP_INPUT)
+	return Input.is_action_pressed(InputConstants.JUMP_INPUT_NAME)
 
 
-func is_up_tapped() -> int:
+func is_up_tapped() -> bool:
 	if not input_enabled:
 		return false
-	return Input.is_action_just_pressed(InputConstants.UP_INPUT)
+	return Input.is_action_just_pressed(InputConstants.UP_INPUT_NAME)

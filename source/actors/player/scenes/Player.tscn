@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://tk53qsxj1c1a" path="res://source/actors/player/scripts/states/player_crouch_state.gd" id="5_svsdg"]
 [ext_resource type="Script" uid="uid://bd03eou4rra0e" path="res://source/actors/player/scripts/states/player_state_machine.gd" id="6_l7wa7"]
 [ext_resource type="Script" uid="uid://b2s52epft0kfa" path="res://source/actors/player/scripts/states/player_idle_state.gd" id="7_l7wa7"]
-[ext_resource type="Script" uid="uid://2684f788j75d" path="res://source/actors/player/scripts/states/player_run_state.gd" id="7_svsdg"]
+[ext_resource type="Script" uid="uid://2684f788j75d" path="res://source/actors/player/scripts/states/run/player_run_state.gd" id="7_svsdg"]
 [ext_resource type="Resource" uid="uid://dhnqie8nllt52" path="res://source/actors/player/resources/player_sound_effect_data.tres" id="7_wk3uo"]
 [ext_resource type="Script" uid="uid://bxnvv6inbw4bt" path="res://source/actors/player/scripts/states/player_walk_state.gd" id="8_gp4bf"]
 [ext_resource type="Script" uid="uid://pskvvtnf60hg" path="res://source/actors/player/scripts/states/player_fall_state.gd" id="9_klvv8"]

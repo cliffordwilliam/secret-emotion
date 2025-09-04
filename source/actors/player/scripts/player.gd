@@ -13,14 +13,13 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
-	add_to_group(GroupNameConstants.SAVABLE)
-	player_save_component.start_owner_state_machine_request.connect(
-		_on_player_save_component_start_owner_state_machine_request
+	player_save_component.properties_initialized_by_save_file.connect(
+		_on_player_save_component_finished
 	)
 	player_save_component.read_world_state()
 
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	player_state_machine.physics_process(delta)
 
 
@@ -32,5 +31,5 @@ func _dump_state_to_world() -> void:
 	player_save_component.dump_state_to_world()
 
 
-func _on_player_save_component_start_owner_state_machine_request() -> void:
+func _on_player_save_component_finished() -> void:
 	player_state_machine.start()

@@ -1,17 +1,17 @@
 # This is an autoload class (SoundEffect)
 extends Node
-# Plays sound effect
+# Plays sound effect (footstep, explosion, BUT NOT MUSIC)
 # Cache loaded AudioStream from sound file paths
 
 const POOL_SIZE: int = 16
-const BUS: String = "SFX"
+const BUS: StringName = "SFX"
 
 var sound_cache: Dictionary[String, AudioStream] = {}
 
 
 func _ready() -> void:
 	for i in range(POOL_SIZE):
-		var player := AudioStreamPlayer.new()
+		var player: AudioStreamPlayer = AudioStreamPlayer.new()
 		player.bus = BUS
 		player.name = player.name + str(i)
 		player.volume_db = 0.0

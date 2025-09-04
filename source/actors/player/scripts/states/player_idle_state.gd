@@ -4,6 +4,7 @@ extends PlayerState
 
 
 func enter(previous_state: State) -> void:
+	# TODO: Make strat here
 	if previous_state == player_state_machine.player_run_state:
 		player_animation_sprite.play(player_animation_name_data.RUN_TO_IDLE)
 	elif previous_state == player_state_machine.player_crouch_state:
@@ -16,6 +17,7 @@ func enter(previous_state: State) -> void:
 
 
 func physics_process(_delta: float) -> void:
+	# TODO: Make strat here
 	if player_input.is_down_held():
 		done.emit(player_state_machine.player_crouch_state)
 		return

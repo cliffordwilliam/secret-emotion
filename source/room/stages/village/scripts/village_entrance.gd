@@ -8,3 +8,4 @@ extends Room
 func _ready() -> void:
 	super._ready()
 	camera.set_target(player)
+	# TODO: Read local world state, then decide to play intro cutscene or not

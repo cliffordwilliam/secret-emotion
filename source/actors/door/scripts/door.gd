@@ -1,8 +1,8 @@
 class_name Door
 extends Area2D
-# Shout event if player enters it
+# Emit player_entered event
 
-signal player_entered(target_room_scene_path: String, target_door_name: String)
+signal player_entered(target_room_scene_path: String, target_door_name: StringName)
 
 @export_file("*.tscn") var target_room_scene_path: String
 
@@ -10,8 +10,8 @@ signal player_entered(target_room_scene_path: String, target_door_name: String)
 
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	body_entered.connect(_on_player_entered)
 
 
-func _on_body_entered(_body: Node):
+func _on_player_entered(_player: Player) -> void:
 	player_entered.emit(target_room_scene_path, self.name)

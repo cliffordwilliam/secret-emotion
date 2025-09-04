@@ -8,7 +8,7 @@ func enter(_previous_state: State) -> void:
 
 
 func exit() -> void:
-	SoundEffect.play(SoundEffectFilePathContants.SOFT_LAND)
+	SoundEffect.play(SoundEffectFilePathContants.PLAYER_SOFT_LAND_SFX_PATH)
 
 
 func physics_process(delta: float) -> void:
