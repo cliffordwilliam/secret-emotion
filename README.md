@@ -5,6 +5,23 @@ This repository includes development tooling such as Git hooks, linters, and for
 
 ---
 
+## After Cloning the Repository
+
+This project relies on the **[Godot-SQLite](https://github.com/2shady4u/godot-sqlite)** plugin, which is **not committed** to the repository.
+You’ll need to install it yourself via the **Godot Asset Library**:
+
+1. In the Godot editor, click the **AssetLib** button at the top.
+2. Search for **godot-sqlite** and select the result.
+3. Click **Download**.
+4. In the dialog, click **Install**.
+5. Confirm installation by clicking **Install** again.
+6. Open **Project → Project Settings → Plugins** and enable the plugin.
+7. Done — the project is now ready to use SQLite.
+
+For more details, check out the official repo: [2shady4u/godot-sqlite](https://github.com/2shady4u/godot-sqlite).
+
+---
+
 ## Notes
 
 1. use resource to hold const for 1 domain
