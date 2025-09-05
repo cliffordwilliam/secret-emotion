@@ -3,8 +3,6 @@ class_name Chest
 extends Area2D
 # Opens and close sprite animation on player input
 
-@export var animation_name_data: ChestAnimationNameData
-
 @onready var chest_state_machine: ChestStateMachine = $ChestStateMachine
 @onready var chest_input: PlayerInput = $PlayerInput
 @onready var chest_animated_sprite: ChestAnimatedSprite = $ChestAnimatedSprite
@@ -13,6 +11,8 @@ extends Area2D
 
 
 func _ready() -> void:
+	chest_state_machine.initial_state = $ChestStateMachine/ChestCloseState
+	chest_input.set_enable_input(false)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	chest_save_component.properties_initialized_by_save_file.connect(

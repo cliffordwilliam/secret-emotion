@@ -1,5 +1,5 @@
 class_name RiverAnimationNameData
-extends Resource
+extends RefCounted
 # River animation name props
 
 const FLOW: StringName = "flow"

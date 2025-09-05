@@ -1,5 +1,5 @@
-# This is an autoload class (SoundEffectFilePathConstants)
-extends Node
+class_name SoundEffectFilePathContants
+extends RefCounted
 # Holds all path string to sound files (.wav)
 
 const PLAYER_BASE_PATH_SFX_PATH: StringName = "res://source/actors/player/assets/"

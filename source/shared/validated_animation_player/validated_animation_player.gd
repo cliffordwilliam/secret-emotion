@@ -3,7 +3,7 @@ extends AnimationPlayer
 # Base class to validate AnimationPlayer animations against provided names
 
 
-func _validate_gui(animation_name_data: Resource) -> void:
+func _validate_gui(animation_name_data: RefCounted) -> void:
 	for anim in get_animation_list():
 		if anim not in animation_name_data.ALL:
 			push_error("❌ GUI '%s' '%s' animation name missing: '%s'" % [get_class(), name, anim])

@@ -1,5 +1,5 @@
 class_name PlayerAnimationNameData
-extends Resource
+extends RefCounted
 # Player animation name props + next animation map bindings (to_run -> run)
 
 const IDLE: StringName = "idle"

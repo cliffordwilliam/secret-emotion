@@ -1,5 +1,5 @@
 class_name RiversMovementData
-extends Resource
+extends RefCounted
 # Rivers movement props
 
 const FLOW_SPEED: float = 2.0

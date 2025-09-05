@@ -1,5 +1,5 @@
-# This is an autoload class (LocalWorldStateKeyConstants)
-extends Node
+class_name LocalWorldStateKeyConstants
+extends RefCounted
 # Holds all local world keys that others need globally
 
 const CURRENT_ROOM_KEY: StringName = "current_room"

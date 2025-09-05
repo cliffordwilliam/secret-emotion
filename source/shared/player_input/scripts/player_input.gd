@@ -4,7 +4,7 @@ extends Node
 # The only thing that calls the builtin Input singleton
 # So its not spammed everywhere
 
-@export var input_enabled: bool = true
+var input_enabled: bool = true
 
 
 func set_enable_input(value: bool) -> void:

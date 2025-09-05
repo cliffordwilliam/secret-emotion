@@ -3,12 +3,10 @@ extends ValidatedAnimatedSprite
 # Draw and animate sprite
 # Validates GUI against my resource (animation name)
 
-@export var animation_name_data: PineAnimationNameData
-
 
 func _ready() -> void:
-	_validate_gui(animation_name_data)
+	_validate_gui(PineAnimationNameData)
 	randomize()
-	play(animation_name_data.SWAY)
+	play(PineAnimationNameData.SWAY)
 	var frame_count: int = sprite_frames.get_frame_count(animation)
 	frame = randi() % frame_count

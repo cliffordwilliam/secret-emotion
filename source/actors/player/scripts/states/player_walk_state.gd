@@ -6,9 +6,9 @@ extends PlayerState
 
 
 func enter(_previous_state: State) -> void:
-	player_animation_sprite.play(player_animation_name_data.WALK)
+	player_animation_sprite.play(PlayerAnimationNameData.WALK)
 	walk_step_sfx_timer.timeout.connect(_on_walk_step_sfx_timer_timeout)
-	walk_step_sfx_timer.wait_time = player_sound_effect_data.WALK_STEP_INTERVAL
+	walk_step_sfx_timer.wait_time = PlayerSoundEffectData.WALK_STEP_INTERVAL
 	walk_step_sfx_timer.start()
 
 
@@ -37,7 +37,7 @@ func physics_process(_delta: float) -> void:
 		done.emit(player_state_machine.player_run_state)
 		return
 
-	player.velocity.x = float(input_direction_x) * player_movement_data.WALK_SPEED
+	player.velocity.x = float(input_direction_x) * PlayerMovementData.WALK_SPEED
 	player.move_and_slide()
 
 	if not player.is_on_floor():

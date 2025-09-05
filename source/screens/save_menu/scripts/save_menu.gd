@@ -10,8 +10,6 @@ signal player_pressed_save_button
 enum ActionType { SAVE, LOAD }
 @export var action: ActionType = ActionType.LOAD
 
-@export var save_menu_config_data: SaveMenuConfigData
-
 var strategy: SaveMenuBaseModeStrategy
 var strategy_manager: SaveMenuModeStrategyManager = SaveMenuModeStrategyManager.new()
 

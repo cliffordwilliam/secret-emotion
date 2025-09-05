@@ -1,5 +1,5 @@
 class_name RayMovementData
-extends Resource
+extends RefCounted
 # Ray movement props
 
 const FLOAT_SPEED: float = 1.0

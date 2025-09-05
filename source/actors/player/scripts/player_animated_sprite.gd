@@ -5,11 +5,9 @@ extends ValidatedAnimatedSprite
 
 signal flip_h_changed
 
-@export var animation_name_data: PlayerAnimationNameData
-
 
 func _ready() -> void:
-	_validate_gui(animation_name_data)
+	_validate_gui(PlayerAnimationNameData)
 	animation_finished.connect(_on_animation_finished)
 
 
@@ -21,4 +19,4 @@ func set_face_direction(is_facing_left: bool) -> void:
 
 
 func _on_animation_finished() -> void:
-	play(animation_name_data.FOLLOWUPS[animation])
+	play(PlayerAnimationNameData.FOLLOWUPS[animation])

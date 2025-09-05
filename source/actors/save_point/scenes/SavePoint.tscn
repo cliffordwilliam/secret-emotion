@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhd10mh015lwf"]
+[gd_scene load_steps=8 format=3 uid="uid://dhd10mh015lwf"]
 
 [ext_resource type="Script" uid="uid://byhfr1mp4v8rf" path="res://source/actors/save_point/scripts/save_point.gd" id="1_bmiyu"]
-[ext_resource type="Resource" uid="uid://bntj0hxvi6p8p" path="res://source/actors/save_point/resources/save_point_animation_name_data.tres" id="2_ijhtv"]
 [ext_resource type="SpriteFrames" uid="uid://b3cdjnhioetb3" path="res://source/actors/save_point/resources/save_point_animation_data.tres" id="3_o554e"]
 [ext_resource type="Script" uid="uid://c1q84bdpa4gm2" path="res://source/actors/save_point/scripts/save_point_animated_sprite.gd" id="4_3v35x"]
 [ext_resource type="Shape2D" uid="uid://c6nrcw6xltwxv" path="res://source/actors/save_point/resources/save_point_interaction_area.tres" id="4_skrf2"]
@@ -14,21 +13,18 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_bmiyu")
-animation_name_data = ExtResource("2_ijhtv")
 
 [node name="SavePointAnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_o554e")
 animation = &"spin"
 offset = Vector2(0, -24)
 script = ExtResource("4_3v35x")
-animation_name_data = ExtResource("2_ijhtv")
 
 [node name="SavePointInteractionCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
 shape = ExtResource("4_skrf2")
 
 [node name="PlayerInput" parent="." instance=ExtResource("5_s5ucr")]
-input_enabled = false
 
 [node name="InteractionMarker" parent="." instance=ExtResource("6_3v35x")]
 position = Vector2(0, -56)

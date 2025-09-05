@@ -1,5 +1,5 @@
 class_name SavePointAnimationNameData
-extends Resource
+extends RefCounted
 # SavePoint animation name props
 
 const SPIN: StringName = "spin"

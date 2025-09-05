@@ -8,7 +8,7 @@ func can_handle(action: int) -> bool:
 
 
 func on_ready_logic() -> void:
-	owner.label.text = owner.save_menu_config_data.LOAD_TITLE_TEXT
+	owner.label.text = SaveMenuConfigData.LOAD_TITLE_TEXT
 
 
 func on_button_pressed_logic(slot: WorldState.SaveSlot) -> void:
@@ -20,7 +20,7 @@ func on_button_pressed_logic(slot: WorldState.SaveSlot) -> void:
 
 	if raw_data.is_empty():
 		owner.get_tree().change_scene_to_file(
-			owner.save_menu_config_data.FIRST_STARTING_ROOM_SCENE_FILE_PATH
+			SaveMenuConfigData.FIRST_STARTING_ROOM_SCENE_FILE_PATH
 		)
 		return
 

@@ -1,5 +1,5 @@
 class_name InteractionMarkerFadeAnimationNameData
-extends Resource
+extends RefCounted
 # Interaction marker fade animation name props
 
 const FADE_IN: StringName = "fade_in"

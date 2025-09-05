@@ -1,5 +1,5 @@
 class_name ChestAnimationNameData
-extends Resource
+extends RefCounted
 # Chest animation name props
 
 const OPEN: StringName = "open"

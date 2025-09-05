@@ -6,6 +6,6 @@
 scroll_scale = Vector2(0.2, 0)
 repeat_size = Vector2(320, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Mountains" type="Sprite2D" parent="."]
 texture = ExtResource("1_lokrt")
 centered = false

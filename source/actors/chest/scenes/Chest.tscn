@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvlrmt68228f"]
+[gd_scene load_steps=11 format=3 uid="uid://bvlrmt68228f"]
 
 [ext_resource type="Script" uid="uid://fe3i72axwq3l" path="res://source/actors/chest/scripts/chest.gd" id="1_48ulj"]
 [ext_resource type="SpriteFrames" uid="uid://bm7osxl10jy5a" path="res://source/actors/chest/resources/chest_animation_data.tres" id="1_dy6hu"]
 [ext_resource type="Script" uid="uid://ca77eyujwn8yk" path="res://source/actors/chest/scripts/states/chest_state_machine.gd" id="2_3mq8i"]
 [ext_resource type="Shape2D" uid="uid://crgh4nga4y7dj" path="res://source/actors/chest/resources/chest_interaction_area.tres" id="2_48ulj"]
-[ext_resource type="Resource" uid="uid://bq600h675o2i4" path="res://source/actors/chest/resources/chest_animation_name_data.tres" id="2_cjjk1"]
 [ext_resource type="Script" uid="uid://dvkhh15gfaonw" path="res://source/actors/chest/scripts/states/chest_close_state.gd" id="3_nyo4k"]
 [ext_resource type="Script" uid="uid://cb5q3vx58cnj" path="res://source/actors/chest/scripts/states/chest_open_state.gd" id="4_mgjww"]
 [ext_resource type="Script" uid="uid://dcc3kjokn64wr" path="res://source/actors/chest/scripts/chest_animated_sprite.gd" id="6_luvah"]
@@ -17,11 +16,9 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_48ulj")
-animation_name_data = ExtResource("2_cjjk1")
 
-[node name="ChestStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="ChestStateMachine" type="Node" parent="."]
 script = ExtResource("2_3mq8i")
-initial_state = NodePath("ChestCloseState")
 metadata/_custom_type_script = "uid://ca77eyujwn8yk"
 
 [node name="ChestCloseState" type="Node" parent="ChestStateMachine"]
@@ -37,7 +34,6 @@ position = Vector2(0, -16)
 sprite_frames = ExtResource("1_dy6hu")
 animation = &"open"
 script = ExtResource("6_luvah")
-animation_name_data = ExtResource("2_cjjk1")
 
 [node name="ChestInteractionCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -45,7 +41,6 @@ shape = ExtResource("2_48ulj")
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("7_mgjww")
-input_enabled = false
 metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
 
 [node name="InteractionMarker" parent="." instance=ExtResource("10_shpfg")]

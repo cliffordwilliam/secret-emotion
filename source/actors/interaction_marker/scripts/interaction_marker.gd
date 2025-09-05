@@ -12,10 +12,10 @@ func _ready() -> void:
 
 
 func set_active() -> void:
-	fade_animator.play(fade_animator.animation_name_data.FADE_IN)
-	float_animator.play(float_animator.animation_name_data.FLOAT)
+	fade_animator.play(InteractionMarkerFadeAnimationNameData.FADE_IN)
+	float_animator.play(InteractionMarkerFloatAnimationNameData.FLOAT)
 
 
 func set_inactive() -> void:
-	fade_animator.play(fade_animator.animation_name_data.FADE_OUT)
+	fade_animator.play(InteractionMarkerFadeAnimationNameData.FADE_OUT)
 	float_animator.pause()

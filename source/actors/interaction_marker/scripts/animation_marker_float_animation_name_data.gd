@@ -1,5 +1,5 @@
 class_name InteractionMarkerFloatAnimationNameData
-extends Resource
+extends RefCounted
 # Interaction marker float animation name props
 
 const FLOAT: StringName = "float"

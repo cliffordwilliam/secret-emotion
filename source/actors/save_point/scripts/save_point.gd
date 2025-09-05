@@ -5,8 +5,6 @@ extends Area2D
 
 signal player_pressed_save_button
 
-@export var animation_name_data: SavePointAnimationNameData
-
 @onready var save_point_input: PlayerInput = $PlayerInput
 @onready var save_point_animated_sprite: SavePointAnimatedSprite = $SavePointAnimatedSprite
 @onready var interaction_marker: InteractionMarker = $InteractionMarker
@@ -14,8 +12,9 @@ signal player_pressed_save_button
 
 
 func _ready() -> void:
+	save_point_input.set_enable_input(false)
 	save_menu.player_pressed_save_button.connect(_on_save_menu_player_pressed_save_button)
-	save_point_animated_sprite.play(animation_name_data.SPIN)
+	save_point_animated_sprite.play(SavePointAnimationNameData.SPIN)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 

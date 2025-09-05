@@ -3,7 +3,7 @@ class_name StateMachine
 extends Node
 # Listens to kid 'done' event to change current state
 
-@export var initial_state: State
+var initial_state: State
 
 var current_state: State
 

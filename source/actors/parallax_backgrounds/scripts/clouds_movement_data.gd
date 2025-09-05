@@ -1,5 +1,5 @@
 class_name CloudsMovementData
-extends Resource
+extends RefCounted
 # Clouds movement props
 
 const FLOAT_SPEED: float = 1.0

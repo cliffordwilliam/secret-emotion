@@ -11,9 +11,9 @@ var exit_strategy_manager: PlayerRunStateExitStrategyManager = (
 
 func enter(_previous_state: State) -> void:
 	player_animation_sprite.flip_h_changed.connect(_on_player_animated_sprite_flip_h_changed)
-	player_animation_sprite.play(player_animation_name_data.TO_RUN)
+	player_animation_sprite.play(PlayerAnimationNameData.TO_RUN)
 	run_step_sfx_timer.timeout.connect(_on_run_step_sfx_timer_timeout)
-	run_step_sfx_timer.wait_time = player_sound_effect_data.RUN_STEP_INTERVAL
+	run_step_sfx_timer.wait_time = PlayerSoundEffectData.RUN_STEP_INTERVAL
 	run_step_sfx_timer.start()
 
 
@@ -31,7 +31,7 @@ func physics_process(_delta: float) -> void:
 		done.emit(strategy.get_next_state())
 		return
 
-	player.velocity.x = float(input_direction_x) * player_movement_data.RUN_SPEED
+	player.velocity.x = float(input_direction_x) * PlayerMovementData.RUN_SPEED
 	player.move_and_slide()
 
 	if not player.is_on_floor():
@@ -42,7 +42,7 @@ func physics_process(_delta: float) -> void:
 
 
 func _on_player_animated_sprite_flip_h_changed() -> void:
-	player_animation_sprite.play(player_animation_name_data.TURN_TO_RUN)
+	player_animation_sprite.play(PlayerAnimationNameData.TURN_TO_RUN)
 
 
 func _on_run_step_sfx_timer_timeout() -> void:

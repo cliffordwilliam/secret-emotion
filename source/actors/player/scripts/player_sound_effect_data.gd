@@ -1,5 +1,5 @@
 class_name PlayerSoundEffectData
-extends Resource
+extends RefCounted
 # Player sound effect data props
 
 const WALK_STEP_INTERVAL: float = 0.332

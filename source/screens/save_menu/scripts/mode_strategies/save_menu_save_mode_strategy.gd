@@ -10,7 +10,7 @@ func can_handle(action: int) -> bool:
 
 func on_ready_logic() -> void:
 	owner.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-	owner.label.text = owner.save_menu_config_data.SAVE_TITLE_TEXT
+	owner.label.text = SaveMenuConfigData.SAVE_TITLE_TEXT
 	owner.hide()
 
 

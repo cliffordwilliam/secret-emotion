@@ -2,10 +2,6 @@ class_name Player
 extends CharacterBody2D
 # Listens to input and update its position with collision resolution
 
-@export var sound_effect_data: PlayerSoundEffectData
-@export var movement_data: PlayerMovementData
-@export var animation_name_data: PlayerAnimationNameData
-
 @onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine
 @onready var player_input: PlayerInput = $PlayerInput
 @onready var player_animated_sprite: PlayerAnimatedSprite = $PlayerAnimatedSprite
@@ -13,6 +9,7 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
+	player_state_machine.initial_state = $PlayerStateMachine/PlayerIdleState
 	player_save_component.properties_initialized_by_save_file.connect(
 		_on_player_save_component_finished
 	)

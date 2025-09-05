@@ -1,5 +1,5 @@
 class_name PineAnimationNameData
-extends Resource
+extends RefCounted
 # Pine animation name props
 
 const SWAY: StringName = "sway"
