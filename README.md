@@ -18,7 +18,16 @@ You’ll need to install it yourself via the **Godot Asset Library**:
 6. Open **Project → Project Settings → Plugins** and enable the plugin.
 7. Done — the project is now ready to use SQLite.
 
+Remember to delete the db file if you want to do a migration, this also destroys all data sadly
+
 For more details, check out the official repo: [2shady4u/godot-sqlite](https://github.com/2shady4u/godot-sqlite).
+
+To visually see the data, you can install `sqlitebrowser`, rmb to show hidden files when opening the db file.
+
+```bash
+sudo apt update
+sudo apt install sqlitebrowser
+```
 
 ---
 

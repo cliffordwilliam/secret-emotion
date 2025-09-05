@@ -22,3 +22,9 @@
 - [ ] Add tetris inventory
 - [ ] Add one silly health item for inventory testing + hp later
 - [ ] Room switch should ignore y reset on horizontal room switch
+- [ ] Finish crud for slot
+- [ ] Think of this like ms word, you can make as much files as you want (unlimited slots)
+- [ ] Persist things must follow this routine, check if db exists, if not make new default row
+- [ ] Make chest table
+- [ ] Make player table
+- [ ] Make room table
