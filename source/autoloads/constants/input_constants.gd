@@ -23,7 +23,7 @@ func _ready() -> void:
 
 
 func _validate_gui() -> void:
-	for action in ALL_ACTIONS:
+	for action: StringName in ALL_ACTIONS:
 		if not InputMap.has_action(action):
 			push_error("❌ GUI 'Input Map' missing: %s" % action)
 			get_tree().quit(1)

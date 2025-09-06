@@ -24,9 +24,9 @@ func _ready() -> void:
 
 	strategy.on_ready_logic()
 
-	button.pressed.connect(func(): handle_button(WorldState.SaveSlot.SLOT_0))
-	button_2.pressed.connect(func(): handle_button(WorldState.SaveSlot.SLOT_1))
-	button_3.pressed.connect(func(): handle_button(WorldState.SaveSlot.SLOT_2))
+	button.pressed.connect(func() -> void: handle_button(WorldState.SaveSlot.SLOT_0))
+	button_2.pressed.connect(func() -> void: handle_button(WorldState.SaveSlot.SLOT_1))
+	button_3.pressed.connect(func() -> void: handle_button(WorldState.SaveSlot.SLOT_2))
 
 
 func handle_button(slot: WorldState.SaveSlot) -> void:

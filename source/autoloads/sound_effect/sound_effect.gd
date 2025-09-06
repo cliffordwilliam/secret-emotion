@@ -10,7 +10,7 @@ var sound_cache: Dictionary[String, AudioStream] = {}
 
 
 func _ready() -> void:
-	for i in range(POOL_SIZE):
+	for i: int in range(POOL_SIZE):
 		var player: AudioStreamPlayer = AudioStreamPlayer.new()
 		player.bus = BUS
 		player.name = player.name + str(i)
@@ -26,7 +26,7 @@ func play(sound_file_path: String) -> void:
 
 
 func _get_available_player() -> AudioStreamPlayer:
-	for player in get_children():
+	for player: AudioStreamPlayer in get_children():
 		if not player.playing:
 			return player
 	return null

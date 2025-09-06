@@ -8,7 +8,7 @@ var strategies: Array[RefCounted] = [
 
 
 func get_strategy(owner: SaveMenu) -> SaveMenuBaseModeStrategy:
-	for strategy in strategies:
+	for strategy: RefCounted in strategies:
 		var strategy_instance: SaveMenuBaseModeStrategy = strategy.new(owner)
 		if strategy_instance.can_handle(owner.action):
 			return strategy_instance

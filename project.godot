@@ -20,7 +20,12 @@ config/icon="res://icon.svg"
 SoundEffect="*res://source/autoloads/sound_effect/sound_effect.gd"
 WorldState="*res://source/autoloads/world_state/world_state.gd"
 InputConstants="*res://source/autoloads/constants/input_constants.gd"
-Sqlite="*res://db/source/core/database/sqlite.gd"
+ApiSqlite="*res://db/source/core/database/api_sqlite.gd"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/inferred_declaration=2
 
 [display]
 

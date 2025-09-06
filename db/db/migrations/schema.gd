@@ -17,8 +17,6 @@ static func migrate(database: SQLite) -> void:
 			is_active INTEGER NOT NULL DEFAULT 0,
 			last_played_at TEXT,
 			play_time_seconds INTEGER DEFAULT 0,
-			screenshot_path TEXT,
-			metadata TEXT,
 			created_at TEXT NOT NULL DEFAULT (datetime('now')),
 			updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 		);

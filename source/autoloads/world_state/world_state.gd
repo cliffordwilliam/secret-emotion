@@ -45,7 +45,7 @@ func load_slot_from_disk(slot_name: SaveSlot) -> Dictionary:
 	var text: String = file.get_as_text()
 	file.close()
 
-	var data = JSON.parse_string(text)
+	var data: Variant = JSON.parse_string(text)
 	if typeof(data) != TYPE_DICTIONARY:
 		push_error("Corrupted save file at slot: %s" % slot_name)
 		return {}

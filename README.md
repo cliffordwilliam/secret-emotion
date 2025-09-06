@@ -20,6 +20,10 @@ You’ll need to install it yourself via the **Godot Asset Library**:
 
 Remember to delete the db file if you want to do a migration, this also destroys all data sadly
 
+```bash
+bash reset_db.sh
+```
+
 For more details, check out the official repo: [2shady4u/godot-sqlite](https://github.com/2shady4u/godot-sqlite).
 
 To visually see the data, you can install `sqlitebrowser`, rmb to show hidden files when opening the db file.

@@ -16,7 +16,7 @@ func _ready() -> void:
 	player_save_component.read_world_state()
 
 
-func _physics_process(delta) -> void:
+func _physics_process(delta: float) -> void:
 	player_state_machine.physics_process(delta)
 
 

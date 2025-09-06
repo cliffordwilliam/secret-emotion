@@ -10,8 +10,8 @@ var strategies: Array[RefCounted] = [
 
 
 func get_strategy(owner: PlayerRunState) -> PlayerRunStateBaseExitStrategy:
-	for strat_class in strategies:
-		var strat: PlayerRunStateBaseExitStrategy = strat_class.new(owner)
-		if strat.can_handle():
-			return strat
+	for strategy: RefCounted in strategies:
+		var strategy_instance: PlayerRunStateBaseExitStrategy = strategy.new(owner)
+		if strategy_instance.can_handle():
+			return strategy_instance
 	return null

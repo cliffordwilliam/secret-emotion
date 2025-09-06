@@ -4,7 +4,7 @@ extends AnimatedSprite2D
 
 
 func _validate_gui(animation_name_data: RefCounted) -> void:
-	for anim in sprite_frames.get_animation_names():
+	for anim: String in sprite_frames.get_animation_names():
 		if anim not in animation_name_data.ALL:
 			push_error("❌ GUI '%s' '%s' animation name missing: '%s'" % [get_class(), name, anim])
 			get_tree().quit(1)

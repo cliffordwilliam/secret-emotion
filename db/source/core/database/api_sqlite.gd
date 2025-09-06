@@ -1,5 +1,6 @@
+# This is an autoload class (ApiSqlite)
 extends Node
-# Instance db client + run migration (create if db and table if they do not exists)
+# Instance db client + run migration (create if db and table do not exists)
 
 var database: SQLite
 
@@ -20,9 +21,9 @@ func _open_database() -> void:
 
 
 func _apply_pragmas() -> void:
-	for pragma_key in DatabaseConfig.PRAGMAS.keys():
-		var value = DatabaseConfig.PRAGMAS[pragma_key]
-		var sql = "PRAGMA %s = %s;" % [pragma_key, str(value).to_lower()]
+	for pragma_key: String in DatabaseConfig.PRAGMAS.keys():
+		var value: String = DatabaseConfig.PRAGMAS[pragma_key]
+		var sql: String = "PRAGMA %s = %s;" % [pragma_key, str(value).to_lower()]
 		database.query(sql)
 
 
