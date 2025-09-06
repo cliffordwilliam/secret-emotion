@@ -25,12 +25,16 @@
 - [ ] Finish crud for slot
 - [ ] Think of this like ms word, you can make as much files as you want (unlimited slots)
 - [ ] Persist things must follow this routine, check if db exists, if not make new default row
-- [ ] Make chest table
-- [ ] Make player table
-- [ ] Make room table
-- [ ] Make load page first, for now this it the main scene
+- [ ] Make chest db table
+- [ ] Make player db table
+- [ ] Make room db table
+- [ ] Delete the page that combines both load and save
+- [x] Make load page first, for now this it the main scene
 - [ ] Then make save page
 - [ ] Make page manager autoload, 1 page at a time or no page at all
 - [ ] Make global error boundary page to show error log and dump log to disk
 - [ ] Make unit test
-- [ ] Prefix db with API in front of class + file names (AKA namespace them)
+- [x] Prefix db with API in front of class + file names (AKA namespace them)
+- [ ] 1. After POST new slot and loading it (sets it active)
+- [ ] 2. Load starting room and have it POST with to LOCAL WORLD STATE layer 2
+- [ ] 3. When player hit save, then POST LOCAL WORLD STATE to DB with SLOT GENRE

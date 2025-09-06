@@ -13,16 +13,16 @@ func _ready() -> void:
 
 func _open_database() -> void:
 	database = SQLite.new()
-	database.path = DatabaseConfig.DB_PATH
+	database.path = APIDatabaseConfig.DB_PATH
 	if not database.open_db():
-		push_error("Failed to open database at %s" % DatabaseConfig.DB_PATH)
+		push_error("Failed to open database at %s" % APIDatabaseConfig.DB_PATH)
 		get_tree().quit(1)
 		return
 
 
 func _apply_pragmas() -> void:
-	for pragma_key: String in DatabaseConfig.PRAGMAS.keys():
-		var value: String = DatabaseConfig.PRAGMAS[pragma_key]
+	for pragma_key: String in APIDatabaseConfig.PRAGMAS.keys():
+		var value: String = APIDatabaseConfig.PRAGMAS[pragma_key]
 		var sql: String = "PRAGMA %s = %s;" % [pragma_key, str(value).to_lower()]
 		database.query(sql)
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3114afxkijh1"]
 
-[ext_resource type="Script" uid="uid://b0qk1i3bwgjkb" path="res://source/screens/save_menu/scripts/save_menu.gd" id="1_wo1rc"]
+[ext_resource type="Script" uid="uid://b0qk1i3bwgjkb" path="res://source/pages/save_menu/scripts/save_menu.gd" id="1_wo1rc"]
 
 [node name="SaveMenu" type="CenterContainer"]
 anchors_preset = 15

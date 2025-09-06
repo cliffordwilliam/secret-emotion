@@ -12,13 +12,13 @@ static func migrate(database: SQLite) -> void:
 		. query(
 			"""
 		CREATE TABLE IF NOT EXISTS slots (
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			label TEXT NOT NULL UNIQUE,
-			is_active INTEGER NOT NULL DEFAULT 0,
+			slot_id INTEGER PRIMARY KEY AUTOINCREMENT,
+			slot_name TEXT NOT NULL UNIQUE,
+			active_status INTEGER NOT NULL DEFAULT 0,
 			last_played_at TEXT,
 			play_time_seconds INTEGER DEFAULT 0,
-			created_at TEXT NOT NULL DEFAULT (datetime('now')),
-			updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+			date_created TEXT NOT NULL DEFAULT (datetime('now')),
+			date_modified TEXT NOT NULL DEFAULT (datetime('now'))
 		);
 	"""
 		)
