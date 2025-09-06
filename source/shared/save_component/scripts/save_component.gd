@@ -13,6 +13,12 @@ var id: StringName = ""
 
 func _ready() -> void:
 	owner.add_to_group(GroupNameConstants.SAVABLES)
+	# Call kids ready
+	_kid_ready()
+
+
+func _kid_ready() -> void:
+	pass
 
 
 func set_one_object_in_world_state_by_id(

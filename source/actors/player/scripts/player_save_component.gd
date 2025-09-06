@@ -6,8 +6,8 @@ extends SaveComponent
 var player: Player
 
 
-func _ready() -> void:
-	super._ready()
+func _kid_ready() -> void:
+	# Called after parent ready
 	player = owner as Player
 
 

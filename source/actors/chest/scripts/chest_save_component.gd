@@ -6,8 +6,8 @@ extends SaveComponent
 var chest: Chest
 
 
-func _ready() -> void:
-	super._ready()
+func _kid_ready() -> void:
+	# Called after parent ready
 	chest = owner as Chest
 
 

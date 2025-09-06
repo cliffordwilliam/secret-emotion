@@ -30,6 +30,12 @@ func _ready() -> void:
 		if child is Door:
 			doors[child.name] = child
 			child.player_entered.connect(_on_door_player_entered)
+	# Call kids ready
+	_kid_ready()
+
+
+func _kid_ready() -> void:
+	pass
 
 
 func _set_player_position_to_door(door_name: String) -> void:
