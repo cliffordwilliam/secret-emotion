@@ -28,3 +28,9 @@
 - [ ] Make chest table
 - [ ] Make player table
 - [ ] Make room table
+- [ ] Make load page first, for now this it the main scene
+- [ ] Then make save page
+- [ ] Make page manager autoload, 1 page at a time or no page at all
+- [ ] Make global error boundary page to show error log and dump log to disk
+- [ ] Make unit test
+- [ ] Prefix db with API in front of class + file names (AKA namespace them)
