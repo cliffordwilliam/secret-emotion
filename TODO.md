@@ -42,3 +42,10 @@
 - [ ] Add game icon
 - [ ] Do all todo in codebase
 - [ ] Remove the door export, just have each room set its target path with autoload path validation
+- [ ] 1. Create page manager first (should manage special overlay pages)
+- [ ] 2. So we have different pages that are made for standalone, not overlay over room scene
+- [ ] 3. When player hits up on the save point, we have to tell page manager to show save page
+- [ ] 4. Save page allows player to pick 1 slot, on pick, current room savables have to dump to layer 2 first
+- [ ] 5. Then dump to disk
+- [ ] 6. Try starting the game again, should dump disk to mem layer 2
+- [ ] 7. Use picked slot to find the room with that slot genre that is active

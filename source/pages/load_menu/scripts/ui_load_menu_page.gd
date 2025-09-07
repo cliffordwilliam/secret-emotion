@@ -11,9 +11,13 @@ var ui_load_slot_item_scene: PackedScene = preload(
 var create_new_slot_button: Button = $MarginContainer/VBoxContainer/HBoxContainer/CreateNewSlot
 @onready
 var slots_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/SlotsContainer
+@onready var label: Label = $MarginContainer/VBoxContainer/Label
 
 
 func _ready() -> void:
+	# TODO: This is fine, we use localization later here, there is a built in data type to use
+	label.text = "Load game"
+	new_slot_text_field.placeholder_text = "Create new slot"
 	create_new_slot_button.pressed.connect(_handle_create_slot)
 	_rehydrate_slot_list()
 
@@ -29,6 +33,13 @@ func _handle_load(slot_name: String) -> void:
 	# Handle OK
 	else:
 		print("Slot '%s' is now active!" % activated_slot_response_dto.slot_name)
+
+		# 1. Find active room in db
+		# 2. Go to that room if it exists
+		# 3. If it does not exist go to default starting room
+
+		await get_tree().process_frame
+		get_tree().change_scene_to_file(LoadMenuConfigData.FIRST_STARTING_ROOM_SCENE_FILE_PATH)
 
 
 func _handle_delete(slot_name: String) -> void:

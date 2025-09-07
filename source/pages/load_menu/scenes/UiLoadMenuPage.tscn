@@ -21,7 +21,6 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "load menu"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -29,7 +28,6 @@ layout_mode = 2
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "new slot name"
 
 [node name="CreateNewSlot" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

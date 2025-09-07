@@ -5,5 +5,5 @@
 ```mermaid
 erDiagram
   %% SLOT MANAGEMENT
-  slot
+  slots ||--o{ rooms : "has many"
 ```

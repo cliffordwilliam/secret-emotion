@@ -1,9 +1,5 @@
 class_name ApiSlotCreateDto
 extends RefCounted
-## [code]slot_name[/code]:[br]
-## - required.[br]
-## - must be string.[br]
-## - cannot be empty string.[br]
 
 # Schema props
 var slot_name: String
