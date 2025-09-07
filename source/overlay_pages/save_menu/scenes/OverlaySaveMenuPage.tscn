@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cobgp4lictjqi"]
+[gd_scene load_steps=2 format=3 uid="uid://co0meudhxi4rv"]
 
-[ext_resource type="Script" uid="uid://dod3427pr0tst" path="res://source/pages/load_menu/scripts/ui_load_menu_page.gd" id="1_akcrm"]
+[ext_resource type="Script" uid="uid://dc08nrepog6gb" path="res://source/overlay_pages/save_menu/scripts/overlay_save_menu_page.gd" id="1_m5wk5"]
 
-[node name="UiLoadMenuPage" type="CanvasLayer"]
-script = ExtResource("1_akcrm")
+[node name="OverlaySaveMenuPage" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m5wk5")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,17 +27,6 @@ layout_mode = 2
 
 [node name="PageTitle" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CreateNewSlot" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = " + "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

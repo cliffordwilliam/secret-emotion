@@ -31,7 +31,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if save_point_input.is_up_tapped():
-		return
+		OverlayPageManager.change_page(SceneFilePathContants.OVERLAY_SAVE_MENU_SCENE_PATH)
 		#get_tree().paused = true
 		#save_menu.show()
 		# Save menu will unhide and unpause

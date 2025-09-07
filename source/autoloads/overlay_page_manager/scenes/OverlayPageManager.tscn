@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ogwvfpp4kg42"]
+
+[ext_resource type="Script" uid="uid://co6xdrw0sofh8" path="res://source/autoloads/overlay_page_manager/scripts/overlay_page_manager.gd" id="1_vjygp"]
+
+[node name="OverlayPageManager" type="CanvasLayer"]
+script = ExtResource("1_vjygp")

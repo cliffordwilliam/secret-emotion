@@ -1,4 +1,4 @@
-class_name LoadMenuConfigData
+class_name UiLoadMenuConfigData
 extends RefCounted
 
 # Have to split this way, otherwise its too long and wont wrap, formatter will unwrap otherwise

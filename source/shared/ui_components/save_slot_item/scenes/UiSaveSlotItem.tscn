@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://buhxtc0vuljg"]
+
+[ext_resource type="Script" uid="uid://d3tdlm4i11h76" path="res://source/shared/ui_components/save_slot_item/scripts/ui_save_slot_item.gd" id="1_37kfi"]
+
+[node name="UiSaveSlotItem" type="PanelContainer"]
+script = ExtResource("1_37kfi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SlotName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Save"

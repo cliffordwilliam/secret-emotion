@@ -16,11 +16,24 @@ const UI_COMPONENT_BASE_SCENE_PATH: String = "res://source/shared/ui_components/
 const UI_LOAD_SLOT_ITEM_SCENE_PATH: String = (
 	UI_COMPONENT_BASE_SCENE_PATH + "load_slot_item/scenes/UiLoadSlotItem.tscn"
 )
+const UI_SAVE_SLOT_ITEM_SCENE_PATH: String = (
+	UI_COMPONENT_BASE_SCENE_PATH + "save_slot_item/scenes/UiSaveSlotItem.tscn"
+)
+
+const OVERLAY_BASE_SCENE_PATH: String = "res://source/overlay_pages/"
+const OVERLAY_BLANK_SCENE_PATH: String = (
+	OVERLAY_BASE_SCENE_PATH + "blank/scenes/OverlayBlankPage.tscn"
+)
+const OVERLAY_SAVE_MENU_SCENE_PATH: String = (
+	OVERLAY_BASE_SCENE_PATH + "save_menu/scenes/OverlaySaveMenuPage.tscn"
+)
 
 const ALL_FILE_PATHS: Array[String] = [
 	VILLAGE_ENTRANCE_SCENE_PATH,
 	VILLAGE_RIVER_BANK_SCENE_PATH,
 	UI_LOAD_SLOT_ITEM_SCENE_PATH,
+	OVERLAY_BLANK_SCENE_PATH,
+	OVERLAY_SAVE_MENU_SCENE_PATH,
 ]
 
 
