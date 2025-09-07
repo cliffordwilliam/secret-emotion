@@ -1,5 +1,6 @@
 class_name PlayerRunStateCrouchExitStrategy
 extends PlayerRunStateBaseExitStrategy
+# Handle exit to crouch condition
 
 
 func can_handle() -> bool:

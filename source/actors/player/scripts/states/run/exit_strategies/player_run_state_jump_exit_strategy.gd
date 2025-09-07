@@ -1,5 +1,6 @@
 class_name PlayerRunStateJumpExitStrategy
 extends PlayerRunStateBaseExitStrategy
+# Handle exit to jump condition
 
 
 func can_handle() -> bool:

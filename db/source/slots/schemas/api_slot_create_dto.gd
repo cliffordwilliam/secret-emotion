@@ -1,5 +1,9 @@
 class_name ApiSlotCreateDto
 extends RefCounted
+## [code]slot_name[/code]:[br]
+## - required.[br]
+## - must be string.[br]
+## - cannot be empty string.[br]
 
 # Schema props
 var slot_name: String
@@ -7,15 +11,9 @@ var slot_name: String
 
 # Will only instance when shape is valid
 func _init(data: Dictionary) -> void:
-	if not data.has("slot_name"):
-		push_error("Missing required field: slot_name")
-		assert(false)
-	slot_name = str(data["slot_name"]).strip_edges()
-	if slot_name == "":
-		push_error("Slot slot_name cannot be empty")
-		assert(false)
+	slot_name = ApiFieldValidator.require_string(data, "slot_name")
 
 
-# Transform to dict for repository
+# Transform to dict for repository input
 func to_dict() -> Dictionary:
 	return {"slot_name": slot_name}

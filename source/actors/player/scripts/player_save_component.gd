@@ -16,9 +16,6 @@ func read_world_state() -> void:
 	# So must ensure parent refs are ready in state base class
 	await player.ready
 
-	# Define my unique ID for world state key registration
-	id = player.name
-
 	# Read world state
 	var raw_data: Dictionary = get_one_object_in_world_state_by_id(id)
 
@@ -96,7 +93,7 @@ func _rehydrate_self_with_loaded_data(save_data: PlayerSaveData) -> void:
 	#if child.name == save_data.current_state_name:
 	#target_state = child
 	#break
-	#player.player_state_machine.initial_state = target_state
+	#player.player_state_machine.set_initial_state(target_state)
 	# Restore transform
 	player.position = Vector2(save_data.position_x, save_data.position_y)
 	# Restore flip h

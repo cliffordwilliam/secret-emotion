@@ -1,5 +1,6 @@
 class_name PlayerRunStateIdleExitStrategy
 extends PlayerRunStateBaseExitStrategy
+# Handle exit to idle condition
 
 
 func can_handle() -> bool:

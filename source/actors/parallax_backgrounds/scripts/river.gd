@@ -5,5 +5,5 @@ extends ValidatedAnimatedSprite
 
 
 func _ready() -> void:
-	_validate_gui(RiverAnimationNameData)
+	_validate_gui(RiverAnimationNameData.ALL)
 	play(RiverAnimationNameData.FLOW)

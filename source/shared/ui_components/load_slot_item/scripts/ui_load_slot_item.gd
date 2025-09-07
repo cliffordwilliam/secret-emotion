@@ -16,7 +16,7 @@ var slot_name: String = ""
 # Godot does not have initializer, have to call this manually after creation
 func initialize(given_slot_name: String) -> void:
 	slot_name = given_slot_name
-	slot_name_label.text = slot_name
+	slot_name_label.text = given_slot_name
 
 
 func _ready() -> void:

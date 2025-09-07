@@ -1,5 +1,6 @@
 class_name PlayerRunStateWalkExitStrategy
 extends PlayerRunStateBaseExitStrategy
+# Handle exit to walk condition
 
 
 func can_handle() -> bool:

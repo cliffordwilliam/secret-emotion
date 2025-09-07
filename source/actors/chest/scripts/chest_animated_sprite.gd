@@ -5,7 +5,7 @@ extends ValidatedAnimatedSprite
 
 
 func _ready() -> void:
-	_validate_gui(ChestAnimationNameData)
+	_validate_gui(ChestAnimationNameData.ALL)
 
 
 func skip_to_last_frame(animation_name: StringName) -> void:

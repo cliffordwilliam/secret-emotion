@@ -4,9 +4,10 @@ extends AnimatedSprite2D
 # Validates external engine values against codebase const (animation names)
 
 
-func _validate_gui(animation_name_data: RefCounted) -> void:
+# TODO: Can activate global error boundary
+func _validate_gui(animation_names: Array[StringName]) -> void:
 	for anim: String in sprite_frames.get_animation_names():
-		if anim not in animation_name_data.ALL:
+		if anim not in animation_names:
 			push_error("❌ GUI '%s' '%s' animation name missing: '%s'" % [get_class(), name, anim])
 			get_tree().quit(1)
 

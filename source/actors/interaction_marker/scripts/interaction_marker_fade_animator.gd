@@ -4,4 +4,4 @@ extends ValidatedAnimationPlayer
 
 
 func _ready() -> void:
-	_validate_gui(InteractionMarkerFadeAnimationNameData)
+	_validate_gui(InteractionMarkerFadeAnimationNameData.ALL)

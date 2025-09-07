@@ -22,7 +22,7 @@ signal player_pressed_save_button
 
 
 func _ready() -> void:
-	save_point_input.set_enable_input(false)
+	save_point_input.disable_input()
 	#save_menu.player_pressed_save_button.connect(_on_save_menu_player_pressed_save_button)
 	save_point_animated_sprite.play(SavePointAnimationNameData.SPIN)
 	body_entered.connect(_on_body_entered)
@@ -31,18 +31,19 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if save_point_input.is_up_tapped():
-		get_tree().paused = true
+		return
+		#get_tree().paused = true
 		#save_menu.show()
 		# Save menu will unhide and unpause
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	save_point_input.set_enable_input(true)
+	save_point_input.enable_input()
 	interaction_marker.set_active()
 
 
 func _on_body_exited(_body: Node2D) -> void:
-	save_point_input.set_enable_input(false)
+	save_point_input.disable_input()
 	interaction_marker.set_inactive()
 
 

@@ -22,6 +22,8 @@ func _ready() -> void:
 			player = child
 			break
 	# Get save point instance ref
+	# TODO: Do not do this, let autoload page manager emit signal, then room base class sub to it
+	# TODO: Or have the page call get tree all savable groups to save
 	for child: Node in get_children():
 		if child is SavePoint:
 			child.player_pressed_save_button.connect(
@@ -61,4 +63,6 @@ func _on_door_player_entered(
 
 func _dump_my_savable_objects_state_to_local_world_state() -> void:
 	for savable_node: Node in get_tree().get_nodes_in_group(GroupNameConstants.SAVABLES):
+		if not savable_node.has_method("_dump_state_to_world"):
+			pass
 		savable_node._dump_state_to_world()

@@ -10,8 +10,8 @@ var interaction_marker: InteractionMarker
 
 
 func _ready() -> void:
+	await owner.ready
 	chest = owner as Chest
-	await chest.ready
 	chest_state_machine = chest.chest_state_machine
 	chest_input = chest.chest_input
 	chest_animated_sprite = chest.chest_animated_sprite

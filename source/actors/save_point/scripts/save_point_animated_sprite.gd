@@ -5,4 +5,4 @@ extends ValidatedAnimatedSprite
 
 
 func _ready() -> void:
-	_validate_gui(SavePointAnimationNameData)
+	_validate_gui(SavePointAnimationNameData.ALL)

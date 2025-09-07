@@ -13,6 +13,13 @@ func _ready() -> void:
 		child.done.connect(change_state)
 
 
+func set_initial_state(given_state: State) -> void:
+	if not given_state is State:
+		# TODO: Can activate global error boundary
+		return
+	initial_state = given_state
+
+
 func start() -> void:
 	change_state(initial_state)
 

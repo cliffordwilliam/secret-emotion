@@ -1,5 +1,7 @@
-class_name APISlotResponseDTO
+class_name ApiSlotResponseDto
 extends ApiBaseResponseDto
+# Ensure db response is valid
+# Also can be an error reponse, holds error message only
 
 # Schema props
 var slot_id: int
@@ -11,16 +13,24 @@ var date_created: String
 var date_modified: String
 
 
-# Will only instance when shape is valid
-func _init(db_dict: Dictionary = {}, given_error_message: String = "") -> void:
-	super._init(db_dict, given_error_message)
+# Pass empty dict to turn this into error version, can set optional error message too
+func _init(db_dict_response: Dictionary = {}, given_error_message: String = "") -> void:
+	super._init(db_dict_response, given_error_message)
 	# Quit early if this is error version, just need the parent given_error_message
 	if error:
 		return
-	slot_id = int(db_dict.get("slot_id", 0))
-	slot_name = str(db_dict.get("slot_name", ""))
-	active_status = int(db_dict.get("active_status", 0)) != 0
-	last_played_at = str(db_dict.get("last_played_at", ""))
-	play_time_seconds = int(db_dict.get("play_time_seconds", 0))
-	date_created = str(db_dict.get("date_created", ""))
-	date_modified = str(db_dict.get("date_modified", ""))
+
+	# If normal version then validate first then fill all my props with it
+	slot_id = ApiFieldValidator.require_int(db_dict_response, "slot_id", true)
+	slot_name = ApiFieldValidator.require_string(db_dict_response, "slot_name")
+	active_status = ApiFieldValidator.require_bool(db_dict_response, "active_status")
+	last_played_at = ApiFieldValidator.require_string(
+		db_dict_response, "last_played_at", ApiRegexConstants.ISO8601_REGEX
+	)
+	play_time_seconds = ApiFieldValidator.require_int(db_dict_response, "play_time_seconds")
+	date_created = ApiFieldValidator.require_string(
+		db_dict_response, "date_created", ApiRegexConstants.ISO8601_REGEX
+	)
+	date_modified = ApiFieldValidator.require_string(
+		db_dict_response, "date_modified", ApiRegexConstants.ISO8601_REGEX
+	)

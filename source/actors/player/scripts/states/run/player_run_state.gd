@@ -3,7 +3,7 @@ extends PlayerState
 # Player running around
 
 var exit_strategy_manager: PlayerRunStateExitStrategyManager = (
-	PlayerRunStateExitStrategyManager.new()
+	PlayerRunStateExitStrategyManager.new(self)
 )
 
 @onready var run_step_sfx_timer: Timer = $RunStepSfxTimer
@@ -26,7 +26,7 @@ func exit() -> void:
 func physics_process(_delta: float) -> void:
 	var input_direction_x: int = player_input.get_input_direction_x()
 
-	var strategy: PlayerRunStateBaseExitStrategy = exit_strategy_manager.get_strategy(self)
+	var strategy: PlayerRunStateBaseExitStrategy = exit_strategy_manager.get_strategy()
 	if strategy:
 		done.emit(strategy.get_next_state())
 		return

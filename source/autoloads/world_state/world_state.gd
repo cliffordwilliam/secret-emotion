@@ -30,6 +30,7 @@ func get_one_object_in_world_state_by_id(actor_id: StringName) -> Dictionary:
 
 
 # TODO: Dump mem sqlite layer 2 to disk as JSON blob
+# TODO: Can activate global error boundary
 func save_slot_to_disk(slot_name: SaveSlot) -> void:
 	var file: FileAccess = FileAccess.open(
 		SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION, FileAccess.WRITE
@@ -39,6 +40,7 @@ func save_slot_to_disk(slot_name: SaveSlot) -> void:
 
 
 # TODO: The opposite of the above, get disk JSON blob and dump to layer 2 sqlite mem
+# TODO: Can activate global error boundary
 func load_slot_from_disk(slot_name: SaveSlot) -> Dictionary:
 	var path: String = SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION
 

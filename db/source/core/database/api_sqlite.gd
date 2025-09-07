@@ -14,7 +14,9 @@ func _ready() -> void:
 func _open_database() -> void:
 	database = SQLite.new()
 	database.path = ApiDatabaseConfig.DB_PATH
+	database.verbosity_level = ApiDatabaseConfig.VERBOSITY_LEVEL
 	if not database.open_db():
+		# TODO: Can activate global error boundary
 		push_error("Failed to open database at %s" % ApiDatabaseConfig.DB_PATH)
 		get_tree().quit(1)
 		return
@@ -24,7 +26,11 @@ func _apply_pragmas() -> void:
 	for pragma_key: String in ApiDatabaseConfig.PRAGMAS.keys():
 		var value: String = ApiDatabaseConfig.PRAGMAS[pragma_key]
 		var sql: String = "PRAGMA %s = %s;" % [pragma_key, str(value).to_lower()]
-		database.query(sql)
+		if not database.query(sql):
+			# TODO: Can activate global error boundary
+			push_error("Failed to apply PRAGMA:", pragma_key, "with value:", value)
+			get_tree().quit(1)
+			return
 
 
 func _run_migrations() -> void:

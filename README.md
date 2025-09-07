@@ -41,6 +41,10 @@ sudo apt install sqlitebrowser
 2. use autoload for const that multiple domain wanna use
 3. use export as like a GUI like init param in OOP
 
+
+1. Recoverable/user-fixable errors, do not go to global error handler, let user fix it here
+2. If theres nothing the user can do in game to fix it, just show the global error boundary page
+
 ---
 
 ## 📁 Project Structure

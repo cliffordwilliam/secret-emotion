@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cobgp4lictjqi"]
 
-[ext_resource type="Script" uid="uid://dod3427pr0tst" path="res://source/pages/load_menu/scripts/load_menu.gd" id="1_8p7hc"]
+[ext_resource type="Script" uid="uid://dod3427pr0tst" path="res://source/pages/load_menu/scripts/ui_load_menu_page.gd" id="1_akcrm"]
 
-[node name="LoadMenu" type="CanvasLayer"]
-script = ExtResource("1_8p7hc")
+[node name="UiLoadMenuPage" type="CanvasLayer"]
+script = ExtResource("1_akcrm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

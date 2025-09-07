@@ -9,8 +9,8 @@ var player_animation_sprite: PlayerAnimatedSprite
 
 
 func _ready() -> void:
+	await owner.ready
 	player = owner as Player
-	await player.ready
 	player_state_machine = player.player_state_machine
 	player_input = player.player_input
 	player_animation_sprite = player.player_animated_sprite

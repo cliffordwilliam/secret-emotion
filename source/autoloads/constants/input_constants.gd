@@ -23,6 +23,7 @@ func _ready() -> void:
 	_validate_gui()
 
 
+# TODO: Can activate global error boundary
 func _validate_gui() -> void:
 	for action: StringName in ALL_ACTIONS:
 		if not InputMap.has_action(action):

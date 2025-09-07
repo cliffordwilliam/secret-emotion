@@ -5,8 +5,7 @@ extends ValidatedAnimatedSprite
 
 
 func _ready() -> void:
-	_validate_gui(PineAnimationNameData)
+	_validate_gui(PineAnimationNameData.ALL)
 	randomize()
 	play(PineAnimationNameData.SWAY)
-	var frame_count: int = sprite_frames.get_frame_count(animation)
-	frame = randi() % frame_count
+	frame = randi() % sprite_frames.get_frame_count(animation)

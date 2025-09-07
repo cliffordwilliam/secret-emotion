@@ -11,8 +11,8 @@ extends Area2D
 
 
 func _ready() -> void:
-	chest_state_machine.initial_state = $ChestStateMachine/ChestCloseState
-	chest_input.set_enable_input(false)
+	chest_state_machine.set_initial_state($ChestStateMachine/ChestCloseState)
+	chest_input.disable_input()
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	chest_save_component.properties_initialized_by_save_file.connect(
@@ -26,12 +26,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	chest_input.set_enable_input(true)
+	chest_input.enable_input()
 	interaction_marker.set_active()
 
 
 func _on_body_exited(_body: Node2D) -> void:
-	chest_input.set_enable_input(false)
+	chest_input.disable_input()
 	interaction_marker.set_inactive()
 
 

@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
-	player_state_machine.initial_state = $PlayerStateMachine/PlayerIdleState
+	player_state_machine.set_initial_state($PlayerStateMachine/PlayerIdleState)
 	player_save_component.properties_initialized_by_save_file.connect(
 		_on_player_save_component_finished
 	)
