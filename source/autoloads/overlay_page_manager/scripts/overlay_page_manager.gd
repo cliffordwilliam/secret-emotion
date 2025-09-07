@@ -3,6 +3,7 @@
 extends CanvasLayer
 # There must always be only 1 current overlay page all the time
 # Exposes change page public API for anyone to use
+# Think of it like carousel in webdev, there is only 1 slide at a time
 
 var overlay_blank_page: PackedScene = preload(SceneFilePathContants.OVERLAY_BLANK_SCENE_PATH)
 
