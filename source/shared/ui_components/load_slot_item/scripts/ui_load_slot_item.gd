@@ -1,4 +1,4 @@
-class_name UILoadSlotItem
+class_name UiLoadSlotItem
 extends PanelContainer
 # UI Component for load page slot items
 

@@ -1,4 +1,4 @@
-class_name ValidatedAnimationPlayerNode
+class_name ValidatedAnimationPlayer
 extends AnimationPlayer
 # Base class to validate AnimationPlayer animations against provided names
 

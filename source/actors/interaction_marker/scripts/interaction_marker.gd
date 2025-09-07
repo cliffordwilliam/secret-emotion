@@ -3,8 +3,8 @@ class_name InteractionMarker
 extends Sprite2D
 # Render and plays interaction marker animation
 
-@onready var fade_animator: InteractionMarkerFadeAnimationPlayer = $FadeAnimator
-@onready var float_animator: InteractionMarkerFloatAnimationPlayer = $FloatAnimator
+@onready var fade_animator: InteractionMarkerFadeAnimator = $FadeAnimator
+@onready var float_animator: InteractionMarkerFloatAnimator = $FloatAnimator
 
 
 func _ready() -> void:

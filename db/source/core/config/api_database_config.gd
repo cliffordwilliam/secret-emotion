@@ -1,4 +1,4 @@
-class_name APIDatabaseConfig
+class_name ApiDatabaseConfig
 extends RefCounted
 # Holds db configs
 

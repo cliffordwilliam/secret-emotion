@@ -1,13 +1,13 @@
-class_name APISlotRepository
+class_name ApiSlotRepository
 extends RefCounted
 
 
-static func create(slot_create_schema: APISlotCreateDTO) -> APISlotResponseDTO:
+static func create(slot_create_schema: ApiSlotCreateDto) -> APISlotResponseDTO:
 	ApiSqlite.database.insert_row("slots", slot_create_schema.to_dict())
-	return get_by_slot_name(APISlotNameDTO.new(slot_create_schema.slot_name))
+	return get_by_slot_name(ApiSlotNameDto.new(slot_create_schema.slot_name))
 
 
-static func get_by_slot_name(slot_name_schema: APISlotNameDTO) -> APISlotResponseDTO:
+static func get_by_slot_name(slot_name_schema: ApiSlotNameDto) -> APISlotResponseDTO:
 	var raw_results: Array[Dictionary] = ApiSqlite.database.select_rows(
 		"slots", "slot_name = '%s'" % slot_name_schema.slot_name, ["*"]
 	)
@@ -22,7 +22,7 @@ static func get_all() -> Array[APISlotResponseDTO]:
 	return _to_dtos(ApiSqlite.database.query_result)
 
 
-static func delete(slot_name_schema: APISlotNameDTO) -> APISlotResponseDTO:
+static func delete(slot_name_schema: ApiSlotNameDto) -> APISlotResponseDTO:
 	var existing: APISlotResponseDTO = get_by_slot_name(slot_name_schema)
 	if existing.error:
 		return existing
@@ -34,7 +34,7 @@ static func delete(slot_name_schema: APISlotNameDTO) -> APISlotResponseDTO:
 	return _error("Failed to delete slot '%s'" % slot_name_schema.slot_name)
 
 
-static func activate_slot_by_name(slot_name_schema: APISlotNameDTO) -> APISlotResponseDTO:
+static func activate_slot_by_name(slot_name_schema: ApiSlotNameDto) -> APISlotResponseDTO:
 	var target_slot: APISlotResponseDTO = get_by_slot_name(slot_name_schema)
 	if target_slot.error:
 		return target_slot

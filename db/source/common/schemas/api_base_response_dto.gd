@@ -1,4 +1,4 @@
-class_name APIBaseResponseDTO
+class_name ApiBaseResponseDto
 extends RefCounted
 # This exists because response can be OK and BAD
 

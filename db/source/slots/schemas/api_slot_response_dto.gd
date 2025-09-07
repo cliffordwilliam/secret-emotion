@@ -1,5 +1,5 @@
 class_name APISlotResponseDTO
-extends APIBaseResponseDTO
+extends ApiBaseResponseDto
 
 # Schema props
 var slot_id: int

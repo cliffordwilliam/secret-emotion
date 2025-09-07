@@ -1,5 +1,5 @@
-class_name InteractionMarkerFadeAnimationPlayer
-extends ValidatedAnimationPlayerNode
+class_name InteractionMarkerFadeAnimator
+extends ValidatedAnimationPlayer
 # Interaction marker fade animation name props validator
 
 

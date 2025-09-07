@@ -6,7 +6,7 @@ extends CanvasLayer
 # User can make slot be active slot (this starts the game)
 
 var ui_load_slot_item_scene: PackedScene = preload(
-	"res://source/shared/ui_components/load_slot_item/scenes/UILoadSlotItem.tscn"
+	"res://source/shared/ui_components/load_slot_item/scenes/UiLoadSlotItem.tscn"
 )
 
 @onready var new_slot_text_field: LineEdit = $MarginContainer/VBoxContainer/HBoxContainer/LineEdit
@@ -21,8 +21,8 @@ func _ready() -> void:
 
 
 func _handle_load(slot_name: String) -> void:
-	var activated_slot: APISlotResponseDTO = APISlotService.activate_slot_by_name(
-		APISlotNameDTO.new(slot_name)
+	var activated_slot: APISlotResponseDTO = ApiSlotService.activate_slot_by_name(
+		ApiSlotNameDto.new(slot_name)
 	)
 	# Handle BAD
 	if activated_slot.error:
@@ -34,8 +34,8 @@ func _handle_load(slot_name: String) -> void:
 
 
 func _handle_delete(slot_name: String) -> void:
-	var deleted_slot_instance: APISlotResponseDTO = APISlotService.delete(
-		APISlotNameDTO.new(slot_name)
+	var deleted_slot_instance: APISlotResponseDTO = ApiSlotService.delete(
+		ApiSlotNameDto.new(slot_name)
 	)
 	# Handle BAD
 	if deleted_slot_instance.error:
@@ -49,8 +49,8 @@ func _handle_delete(slot_name: String) -> void:
 
 func _handle_create_slot() -> void:
 	var new_slot_name: String = new_slot_text_field.text
-	var slot_create_schema: APISlotCreateDTO = APISlotCreateDTO.new({"slot_name": new_slot_name})
-	var created_slot_instance: APISlotResponseDTO = APISlotService.create(slot_create_schema)
+	var slot_create_schema: ApiSlotCreateDto = ApiSlotCreateDto.new({"slot_name": new_slot_name})
+	var created_slot_instance: APISlotResponseDTO = ApiSlotService.create(slot_create_schema)
 	# Handle BAD
 	if created_slot_instance.error:
 		# TODO: Toast
@@ -72,9 +72,9 @@ func _empty_slot_container() -> void:
 
 
 func _fill_slot_container() -> void:
-	var slots: Array[APISlotResponseDTO] = APISlotService.get_all()
+	var slots: Array[APISlotResponseDTO] = ApiSlotService.get_all()
 	for slot: APISlotResponseDTO in slots:
-		var ui_load_slot_item_instance: UILoadSlotItem = ui_load_slot_item_scene.instantiate()
+		var ui_load_slot_item_instance: UiLoadSlotItem = ui_load_slot_item_scene.instantiate()
 		slots_container.add_child(ui_load_slot_item_instance)
 		ui_load_slot_item_instance.initialize(slot.slot_name)
 		ui_load_slot_item_instance.load_button_pressed.connect(_handle_load)

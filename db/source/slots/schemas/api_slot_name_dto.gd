@@ -1,4 +1,4 @@
-class_name APISlotNameDTO
+class_name ApiSlotNameDto
 extends RefCounted
 
 # Schema props

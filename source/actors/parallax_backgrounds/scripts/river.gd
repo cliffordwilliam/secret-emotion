@@ -1,4 +1,4 @@
-class_name RiverAnimatedSprite
+class_name River
 extends ValidatedAnimatedSprite
 # Draw and animate sprite
 # Validates GUI against my resource (animation name)
