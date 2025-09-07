@@ -86,13 +86,17 @@ func _validate_position(raw_data: Dictionary) -> bool:
 
 
 func _rehydrate_self_with_loaded_data(save_data: PlayerSaveData) -> void:
-	# Restore state machine
-	var target_state: PlayerState = null
-	for child: PlayerState in player.player_state_machine.get_children():
-		if child.name == save_data.current_state_name:
-			target_state = child
-			break
-	player.player_state_machine.initial_state = target_state
+	# TODO: No need to rehydrate state
+	# TODO: Why? Player only rehydrate on
+	# TODO: First instance in a room either from load menu or room switch
+	# TODO: Just always start in IDLE!
+	## Restore state machine
+	#var target_state: PlayerState = null
+	#for child: PlayerState in player.player_state_machine.get_children():
+	#if child.name == save_data.current_state_name:
+	#target_state = child
+	#break
+	#player.player_state_machine.initial_state = target_state
 	# Restore transform
 	player.position = Vector2(save_data.position_x, save_data.position_y)
 	# Restore flip h

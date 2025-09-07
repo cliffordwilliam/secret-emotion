@@ -1,5 +1,7 @@
 class_name SaveMenuModeStrategyManager
 extends RefCounted
+# TODO: Delete this, we want 2 seperated page, save and load
+# TODO: But is that redundant? Yeah but at least its flexible and UI is messy in nature anyways
 
 var strategies: Array[RefCounted] = [
 	SaveMenuSaveModeStrategy,

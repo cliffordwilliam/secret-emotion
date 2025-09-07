@@ -1,6 +1,7 @@
 class_name ValidatedAnimationPlayer
 extends AnimationPlayer
-# Base class to validate AnimationPlayer animations against provided names
+# Base class that have _validate_gui func for AnimationPlayer kids to use
+# Validates external engine values against codebase const (animation names)
 
 
 func _validate_gui(animation_name_data: RefCounted) -> void:

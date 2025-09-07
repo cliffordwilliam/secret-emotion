@@ -1,8 +1,7 @@
 class_name SaveMenu
 extends CenterContainer
-# Screen where user use their mouse to click on 3 slot buttons
-# In load mode this is a root scene
-# In save mode this is a save point kid
+# TODO: Delete this, we want 2 seperated page, save and load
+# TODO: But is that redundant? Yeah but at least its flexible and UI is messy in nature anyways
 
 @warning_ignore("unused_signal")
 signal player_pressed_save_button

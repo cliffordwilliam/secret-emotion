@@ -1,6 +1,7 @@
 class_name SaveMenuLoadModeStrategy
 extends SaveMenuBaseModeStrategy
-# Save menu load mode logics
+# TODO: Delete this, we want 2 seperated page, save and load
+# TODO: But is that redundant? Yeah but at least its flexible and UI is messy in nature anyways
 
 
 func can_handle(action: int) -> bool:

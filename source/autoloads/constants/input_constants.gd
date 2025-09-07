@@ -1,6 +1,7 @@
 # This is an autoload class (InputConstants)
 extends Node
-# Validates GUI against my const (input names)
+# Validates external engine values against codebase const (input names)
+# Why not ref counted? Because this needs _ready() to validate
 
 const LEFT_INPUT_NAME: StringName = "left"
 const RIGHT_INPUT_NAME: StringName = "right"

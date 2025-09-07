@@ -1,11 +1,11 @@
 class_name VillageEntrance
 extends Room
-# Where player first start, meeting friend
+# The very first room ever that players spawn in on new game
 
 @onready var camera: Camera = $Camera
 
 
+# Called after parent ready
 func _kid_ready() -> void:
-	# Called after parent ready
 	camera.set_target(player)
 	# TODO: Read local world state, then decide to play intro cutscene or not

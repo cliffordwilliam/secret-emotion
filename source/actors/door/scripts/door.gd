@@ -1,6 +1,7 @@
 class_name Door
 extends Area2D
 # Emit player_entered event
+# Current room exit door name MUST BE THE SAME as exit room entry door name
 
 signal player_entered(target_room_scene_path: String, target_door_name: StringName)
 

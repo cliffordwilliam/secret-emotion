@@ -13,16 +13,23 @@ const SAVE_FILE_EXTENSION: StringName = ".json"
 var world_state: Dictionary = {}
 
 
+# TODO: Delete this, each kid now has access to the service layer
+# TODO: Kid patch their db row using unique combo
+# TODO: unique room name + kid name (kid name = unique among room item member siblings)
 func set_one_object_in_world_state_by_id(actor_id: StringName, state: Dictionary) -> void:
 	world_state[actor_id] = state
 
 
+# TODO: Delete this, each kid now has access to the service layer
+# TODO: Kid patch their db row using unique combo
+# TODO: unique room name + kid name (kid name = unique among room item member siblings)
 func get_one_object_in_world_state_by_id(actor_id: StringName) -> Dictionary:
 	if world_state.has(actor_id):
 		return world_state[actor_id]
 	return {}
 
 
+# TODO: Dump mem sqlite layer 2 to disk as JSON blob
 func save_slot_to_disk(slot_name: SaveSlot) -> void:
 	var file: FileAccess = FileAccess.open(
 		SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION, FileAccess.WRITE
@@ -31,6 +38,7 @@ func save_slot_to_disk(slot_name: SaveSlot) -> void:
 	file.close()
 
 
+# TODO: The opposite of the above, get disk JSON blob and dump to layer 2 sqlite mem
 func load_slot_from_disk(slot_name: SaveSlot) -> Dictionary:
 	var path: String = SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION
 

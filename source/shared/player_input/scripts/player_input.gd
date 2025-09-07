@@ -1,8 +1,10 @@
 @icon("res://source/shared/player_input/assets/gamepad-2.svg")
 class_name PlayerInput
 extends Node
-# The only thing that calls the builtin Input singleton
+# The only thing that calls the builtin engine Input singleton
 # So its not spammed everywhere
+# And can easily see in node tree which ones listen to input, easy to debug
+# Holds all existing predefined exposed API to query input (is_shift_held, ...)
 
 var input_enabled: bool = true
 

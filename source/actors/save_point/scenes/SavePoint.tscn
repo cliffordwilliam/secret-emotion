@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhd10mh015lwf"]
+[gd_scene load_steps=7 format=3 uid="uid://dhd10mh015lwf"]
 
 [ext_resource type="Script" uid="uid://byhfr1mp4v8rf" path="res://source/actors/save_point/scripts/save_point.gd" id="1_bmiyu"]
 [ext_resource type="SpriteFrames" uid="uid://b3cdjnhioetb3" path="res://source/actors/save_point/resources/save_point_animation_data.tres" id="3_o554e"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shape2D" uid="uid://c6nrcw6xltwxv" path="res://source/actors/save_point/resources/save_point_interaction_area.tres" id="4_skrf2"]
 [ext_resource type="PackedScene" uid="uid://bepdvy345cjy6" path="res://source/shared/player_input/scenes/PlayerInput.tscn" id="5_s5ucr"]
 [ext_resource type="PackedScene" uid="uid://kvelexcshhn5" path="res://source/actors/interaction_marker/scenes/InteractionMarker.tscn" id="6_3v35x"]
-[ext_resource type="PackedScene" uid="uid://c3114afxkijh1" path="res://source/pages/save_menu/scenes/SaveMenu.tscn" id="8_1rjsf"]
 
 [node name="SavePoint" type="Area2D"]
 collision_layer = 0
@@ -28,8 +27,3 @@ shape = ExtResource("4_skrf2")
 
 [node name="InteractionMarker" parent="." instance=ExtResource("6_3v35x")]
 position = Vector2(0, -56)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="SaveMenu" parent="CanvasLayer" instance=ExtResource("8_1rjsf")]
-action = 0

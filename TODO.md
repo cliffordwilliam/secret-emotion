@@ -38,3 +38,7 @@
 - [ ] 1. After POST new slot and loading it (sets it active)
 - [ ] 2. Load starting room and have it POST with to LOCAL WORLD STATE layer 2
 - [ ] 3. When player hit save, then POST LOCAL WORLD STATE to DB with SLOT GENRE
+- [ ] Add font, default font is way too big
+- [ ] Add game icon
+- [ ] Do all todo in codebase
+- [ ] Remove the door export, just have each room set its target path with autoload path validation

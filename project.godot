@@ -21,6 +21,7 @@ SoundEffect="*res://source/autoloads/sound_effect/sound_effect.gd"
 WorldState="*res://source/autoloads/world_state/world_state.gd"
 InputConstants="*res://source/autoloads/constants/input_constants.gd"
 ApiSqlite="*res://db/source/core/database/api_sqlite.gd"
+SoundEffectFilePathContants="*res://source/autoloads/constants/sound_effect_file_path_contants.gd"
 
 [debug]
 

@@ -1,6 +1,7 @@
 class_name SaveMenuBaseModeStrategy
 extends RefCounted
-# This is an owner extension
+# TODO: Delete this, we want 2 seperated page, save and load
+# TODO: But is that redundant? Yeah but at least its flexible and UI is messy in nature anyways
 
 var owner: SaveMenu
 

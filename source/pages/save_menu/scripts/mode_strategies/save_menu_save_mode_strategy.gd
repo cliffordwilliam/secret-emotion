@@ -1,7 +1,7 @@
 class_name SaveMenuSaveModeStrategy
 extends SaveMenuBaseModeStrategy
-# Save mode means this menu is a child of the save point
-# Save point decides when this screen wakes up
+# TODO: Delete this, we want 2 seperated page, save and load
+# TODO: But is that redundant? Yeah but at least its flexible and UI is messy in nature anyways
 
 
 func can_handle(action: int) -> bool:

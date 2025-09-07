@@ -5,6 +5,7 @@ extends PanelContainer
 signal load_button_pressed(slot_name: String)
 signal delete_button_pressed(slot_name: String)
 
+# This is a key that must be unique among siblings
 var slot_name: String = ""
 
 @onready var slot_name_label: Label = $MarginContainer/VBoxContainer/SlotName
