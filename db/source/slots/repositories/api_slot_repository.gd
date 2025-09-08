@@ -1,20 +1,37 @@
 class_name ApiSlotRepository
 extends RefCounted
-# Exposed API to access the `slots` table
 
 
-static func create(slot_create_schema: ApiSlotCreateDto) -> ApiSlotResponseDto:
-	ApiSqlite.database.insert_row("slots", slot_create_schema.to_dict())
-	return get_by_slot_name(ApiStringParamDto.new(slot_create_schema.slot_name, "slot"))
+static func create(insert_data: Dictionary) -> ApiSlotResponseDto:
+	ApiSqlite.database.insert_row("slots", insert_data)
+	return get_by_id(ApiSqlite.database.get_last_insert_rowid())
 
 
-static func get_by_slot_name(slot_name_schema: ApiStringParamDto) -> ApiSlotResponseDto:
-	var raw_results: Array[Dictionary] = ApiSqlite.database.select_rows(
-		"slots", "slot_name = '%s'" % slot_name_schema.string_param, ["*"]
+static func get_by_id(slot_id: int) -> ApiSlotResponseDto:
+	var rows: Array[Dictionary] = ApiSqlite.database.select_rows(
+		"slots", "slot_id = %d" % slot_id, ["*"]
 	)
-	if raw_results.is_empty():
-		return _error("Slot with name '%s' is not found" % slot_name_schema.string_param)
-	return ApiSlotResponseDto.new(raw_results[0])
+	if rows.is_empty():
+		return _error("Slot with id '%d' not found" % slot_id)
+	return ApiSlotResponseDto.new(rows[0])
+
+
+static func get_by_name(slot_name: String) -> ApiSlotResponseDto:
+	var rows: Array[Dictionary] = ApiSqlite.database.select_rows(
+		"slots", "slot_name = '%s'" % slot_name, ["*"]
+	)
+	if rows.is_empty():
+		return _error("Slot with name '%s' not found" % slot_name)
+	return ApiSlotResponseDto.new(rows[0])
+
+
+static func get_active_slot() -> ApiSlotResponseDto:
+	var rows: Array[Dictionary] = ApiSqlite.database.select_rows(
+		"slots", "active_status = 1", ["*"]
+	)
+	if rows.is_empty():
+		return _error("No active slot found")
+	return ApiSlotResponseDto.new(rows[0])
 
 
 static func get_all() -> Array[ApiSlotResponseDto]:
@@ -23,35 +40,12 @@ static func get_all() -> Array[ApiSlotResponseDto]:
 	return _to_dtos(ApiSqlite.database.query_result)
 
 
-static func delete(slot_name_schema: ApiStringParamDto) -> ApiSlotResponseDto:
-	var existing: ApiSlotResponseDto = get_by_slot_name(slot_name_schema)
-	if existing.error:
-		return existing
-	var rows_deleted: int = ApiSqlite.database.delete_rows(
-		"slots", "slot_name = '%s'" % slot_name_schema.string_param
-	)
-	if rows_deleted > 0:
-		return existing
-	return _error("Failed to delete slot '%s'" % slot_name_schema.string_param)
+static func delete_by_id(slot_id: int) -> bool:
+	return ApiSqlite.database.delete_rows("slots", "slot_id = %d" % slot_id)
 
 
-static func activate_slot_by_name(slot_name_schema: ApiStringParamDto) -> ApiSlotResponseDto:
-	var target_slot: ApiSlotResponseDto = get_by_slot_name(slot_name_schema)
-	if target_slot.error:
-		return target_slot
-	deactivate_all()
-	var rows_updated_target: int = (
-		ApiSqlite
-		. database
-		. update_rows(
-			"slots",
-			"slot_name = '%s'" % target_slot.slot_name,
-			{"active_status": 1},
-		)
-	)
-	if rows_updated_target > 0:
-		return get_by_slot_name(slot_name_schema)
-	return _error("Failed to activate slot '%s'" % slot_name_schema.string_param)
+static func update(slot_id: int, update_data: Dictionary) -> bool:
+	return ApiSqlite.database.update_rows("slots", "slot_id = %d" % slot_id, update_data)
 
 
 static func deactivate_all() -> void:

@@ -38,8 +38,9 @@ static func migrate(database: SQLite) -> void:
 		CREATE TABLE IF NOT EXISTS rooms (
 			room_id INTEGER PRIMARY KEY AUTOINCREMENT,
 			slot_id INTEGER NOT NULL,
-			room_name TEXT NOT NULL UNIQUE,
+			room_name TEXT NOT NULL,
 			current_room INTEGER NOT NULL DEFAULT 0,
+			scene_file_path TEXT NOT NULL,
 			date_created TEXT NOT NULL DEFAULT (datetime('now')),
 			date_modified TEXT NOT NULL DEFAULT (datetime('now')),
 			FOREIGN KEY(slot_id) REFERENCES slots(slot_id) ON DELETE CASCADE
@@ -57,6 +58,30 @@ static func migrate(database: SQLite) -> void:
 		FOR EACH ROW
 		BEGIN
 			UPDATE rooms SET date_modified = datetime('now') WHERE room_id = OLD.room_id;
+		END;
+		""",
+		# CHESTS TABLE
+		"""
+		CREATE TABLE IF NOT EXISTS chests (
+			chest_id INTEGER PRIMARY KEY AUTOINCREMENT,
+			room_id INTEGER NOT NULL,
+			chest_name TEXT NOT NULL,
+			current_state TEXT NOT NULL,
+			date_created TEXT NOT NULL DEFAULT (datetime('now')),
+			date_modified TEXT NOT NULL DEFAULT (datetime('now')),
+			FOREIGN KEY(room_id) REFERENCES rooms(room_id) ON DELETE CASCADE,
+			UNIQUE(room_id, chest_name)
+		);
+		""",
+		"""
+		CREATE INDEX IF NOT EXISTS idx_chests_room_id ON chests(room_id);
+		""",
+		"""
+		CREATE TRIGGER IF NOT EXISTS update_chests_modtime
+		AFTER UPDATE ON chests
+		FOR EACH ROW
+		BEGIN
+			UPDATE chests SET date_modified = datetime('now') WHERE chest_id = OLD.chest_id;
 		END;
 		"""
 	]

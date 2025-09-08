@@ -1,6 +1,7 @@
 # This is an autoload class (WorldState)
 extends Node
 # Manages world state + IO it to disk
+# TODO: DELETE THIS, sql client manages load and dump
 
 enum SaveSlot { SLOT_0, SLOT_1, SLOT_2 }
 

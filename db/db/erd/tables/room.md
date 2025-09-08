@@ -10,11 +10,11 @@ Each room belongs to a specific save slot and can be marked as the currently act
 | column        | Type    | constraints                        | Description                                                                        |
 | ------------- | ------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
 | id            | INTEGER | PRIMARY KEY AUTOINCREMENT          | Unique identifier for the room                                                     |
-| slot\_id      | INTEGER | NOT NULL, FOREIGN KEY -> slots(id) | Reference to the save slot this room belongs to                                    |
+| slot_id       | INTEGER | NOT NULL, FOREIGN KEY -> slots(id) | Reference to the save slot this room belongs to                                    |
 | name          | TEXT    | NOT NULL                           | Human-readable name of the room                                                    |
-| current\_room | INTEGER | NOT NULL DEFAULT 0                 | Indicates if this room is the currently active room for its slot (0 = no, 1 = yes) |
-| created\_at   | TEXT    | NOT NULL DEFAULT (datetime('now')) | Record creation timestamp                                                          |
-| updated\_at   | TEXT    | NOT NULL DEFAULT (datetime('now')) | Last modification timestamp                                                        |
+| current_room  | INTEGER | NOT NULL DEFAULT 0                 | Indicates if this room is the currently active room for its slot (0 = no, 1 = yes) |
+| created_at    | TEXT    | NOT NULL DEFAULT (datetime('now')) | Record creation timestamp                                                          |
+| updated_at    | TEXT    | NOT NULL DEFAULT (datetime('now')) | Last modification timestamp                                                        |
 
 ## SQL Schema
 

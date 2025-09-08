@@ -23,56 +23,92 @@ func _ready() -> void:
 
 
 func _handle_load(slot_name: String) -> void:
-	var activated_slot_response_dto: ApiSlotResponseDto = ApiSlotService.activate_slot_by_name(
+	var activated_slot: ApiSlotResponseDto = ApiSlotService.activate_slot_by_name(
 		ApiStringParamDto.new(slot_name, "UiLoadMenuPage _handle_load")
 	)
-	# Handle BAD
-	if activated_slot_response_dto.error:
+	if activated_slot.error:
 		# TODO: Toast
-		print(activated_slot_response_dto.error_message)
-	# Handle OK
-	else:
-		print("Slot '%s' is now active!" % activated_slot_response_dto.slot_name)
+		print(activated_slot.error_message)
+		return
 
-		# 1. Find active room in db
-		# 2. Go to that room if it exists
-		# 3. If it does not exist go to default starting room
+	# TODO: Toast
+	print("Slot '%s' is now active!" % activated_slot.slot_name)
+	var active_room: ApiRoomResponseDto = ApiRoomService.get_current_room(
+		ApiStringParamDto.new(activated_slot.slot_name, "UiLoadMenuPage _handle_load")
+	)
+	if active_room.error:
+		# TODO: Toast
+		print(active_room.error_message)
+		return
 
-		await get_tree().process_frame
-		get_tree().change_scene_to_file(UiLoadMenuConfigData.FIRST_STARTING_ROOM_SCENE_FILE_PATH)
+	# TODO: Toast
+	await get_tree().process_frame
+	get_tree().change_scene_to_file(active_room.scene_file_path)
 
 
 func _handle_delete(slot_name: String) -> void:
-	var deleted_slot_response_dto: ApiSlotResponseDto = ApiSlotService.delete(
+	var deleted_slot: ApiSlotResponseDto = ApiSlotService.delete(
 		ApiStringParamDto.new(slot_name, "UiLoadMenuPage _handle_delete")
 	)
-	# Handle BAD
-	if deleted_slot_response_dto.error:
+	if deleted_slot.error:
 		# TODO: Toast
-		print(deleted_slot_response_dto.error_message)
-	# Handle OK
-	else:
-		print("OK: Deleted a slot with name: '%s'" % deleted_slot_response_dto.slot_name)
-		_rehydrate_slot_list()
+		print(deleted_slot.error_message)
+		return
+
+	# TODO: Toast
+	print("OK: Deleted a slot with name: '%s'" % deleted_slot.slot_name)
+	_rehydrate_slot_list()
 
 
 func _handle_create_slot() -> void:
-	# Recoverable/user-fixable errors, do not go to global error handler, let user fix it here
+	# Validate FE text field user input
 	if new_slot_text_field.text == "":
 		# TODO: Toast
 		return
-	var created_slot_response_dto: ApiSlotResponseDto = ApiSlotService.create(
+
+	# Create the slot
+	var created_slot: ApiSlotResponseDto = ApiSlotService.create(
 		ApiSlotCreateDto.new({"slot_name": new_slot_text_field.text})
 	)
-	# Handle BAD
-	if created_slot_response_dto.error:
+	if created_slot.error:
 		# TODO: Toast
-		print(created_slot_response_dto.error_message)
-	# Handle OK
+		print(created_slot.error_message)
+		return
+
+	# TODO: Toast
+	print("OK: Made a new slot")
+	_rehydrate_slot_list()
+	new_slot_text_field.text = ""
+
+	# Create slot starting room (mark it as its current room)
+	var starting_room_dto: ApiRoomCreateDto = (
+		ApiRoomCreateDto
+		. new(
+			{
+				"slot_name": created_slot.slot_name,
+				"room_name": UiLoadMenuConfigData.FIRST_STARTING_ROOM_NAME,
+				"scene_file_path": UiLoadMenuConfigData.FIRST_STARTING_ROOM_SCENE_FILE_PATH,
+				"current_room": true,
+			}
+		)
+	)
+	var created_room: ApiRoomResponseDto = ApiRoomService.create(starting_room_dto)
+	if created_room.error:
+		# TODO: Toast
+		print(
+			(
+				"Failed to create starting room for slot '%s': %s"
+				% [created_slot.slot_name, created_room.error_message]
+			)
+		)
 	else:
-		print("OK: Made a new slot")
-		_rehydrate_slot_list()
-		new_slot_text_field.text = ""
+		# TODO: Toast
+		print(
+			(
+				"Created starting room '%s' for slot '%s'"
+				% [created_room.room_name, created_slot.slot_name]
+			)
+		)
 
 
 func _rehydrate_slot_list() -> void:
