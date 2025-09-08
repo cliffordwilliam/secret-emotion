@@ -46,3 +46,6 @@
 - [x] 5. Then dump to disk
 - [x] 6. Try starting the game again, should dump disk to mem layer 2
 - [ ] 7. Use picked slot to find the room with that slot genre that is active
+- [ ] Review the save load cycle again, there is a weird bug when overwriting save file
+- [ ] Overwrite should work like this, instead of using the current slot active as owner genre to use
+- [ ] Use a different genre and dump to those items that have the different genre instead
