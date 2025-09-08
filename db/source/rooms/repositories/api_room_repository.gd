@@ -23,6 +23,7 @@ static func get_by_slot_and_name(slot_id: int, room_name: String) -> ApiRoomResp
 
 
 static func get_current_room(slot_id: int) -> ApiRoomResponseDto:
+	# OK
 	var raw_results: Array[Dictionary] = ApiSqlite.database.select_rows(
 		"rooms", "slot_id = %d AND current_room = 1" % slot_id, ["*"]
 	)

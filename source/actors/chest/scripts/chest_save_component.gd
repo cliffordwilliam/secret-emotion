@@ -17,11 +17,25 @@ func read_world_state() -> void:
 	await chest.ready
 
 	# Fetch from DB via service
-	var chest_data: ApiChestResponseDto = ApiChestService.get_in_current_context(chest.name)
+
+	var chest_data: ApiChestResponseDto = ApiChestService.get_in_current_context(
+		ApiStringParamDto.new(chest.name, "ChestSaveComponent read_world_state")
+	)
 	if chest_data.error:
 		# No save exists yet → start fresh AND make my new save
-		ApiChestService.create_in_current_context(
-			chest.name, chest.chest_state_machine.initial_state.name
+		(
+			ApiChestService
+			. create_in_current_context(
+				(
+					ApiChestContextCreateDto
+					. new(
+						{
+							"chest_name": chest.name,
+							"chest_state": chest.chest_state_machine.initial_state.name,
+						}
+					)
+				)
+			)
 		)
 		properties_initialized_by_save_file.emit()
 		return
@@ -51,8 +65,19 @@ func _rehydrate_self_with_loaded_data(chest_data: ApiChestResponseDto) -> void:
 
 
 func dump_state_to_world() -> void:
-	var result: ApiChestResponseDto = ApiChestService.update_in_current_context(
-		chest.name, chest.chest_state_machine.current_state.name
+	var result: ApiChestResponseDto = (
+		ApiChestService
+		. update_in_current_context(
+			(
+				ApiChestContextEditDto
+				. new(
+					{
+						"chest_name": chest.name,
+						"chest_state": chest.chest_state_machine.current_state.name,
+					}
+				)
+			)
+		)
 	)
 	if result.error:
 		push_error("Failed to persist chest '%s': %s" % [chest.name, result.error_message])

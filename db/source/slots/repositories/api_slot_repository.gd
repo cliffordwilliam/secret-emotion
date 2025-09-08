@@ -26,6 +26,7 @@ static func get_by_name(slot_name: String) -> ApiSlotResponseDto:
 
 
 static func get_active_slot() -> ApiSlotResponseDto:
+	# OK
 	var rows: Array[Dictionary] = ApiSqlite.database.select_rows(
 		"slots", "active_status = 1", ["*"]
 	)

@@ -42,6 +42,8 @@ func _handle_load(slot_name: String) -> void:
 		return
 
 	# TODO: Toast
+	print("OK: Activated a slot with name: '%s'" % activated_slot.slot_name)
+	ApiSqlite.dump_mem_to_disk_json()
 	await get_tree().process_frame
 	get_tree().change_scene_to_file(active_room.scene_file_path)
 
@@ -57,6 +59,7 @@ func _handle_delete(slot_name: String) -> void:
 
 	# TODO: Toast
 	print("OK: Deleted a slot with name: '%s'" % deleted_slot.slot_name)
+	ApiSqlite.dump_mem_to_disk_json()
 	_rehydrate_slot_list()
 
 
@@ -77,6 +80,7 @@ func _handle_create_slot() -> void:
 
 	# TODO: Toast
 	print("OK: Made a new slot")
+	ApiSqlite.dump_mem_to_disk_json()
 	_rehydrate_slot_list()
 	new_slot_text_field.text = ""
 
