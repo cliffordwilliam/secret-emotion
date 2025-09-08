@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to the database
-DB_PATH="$HOME/.local/share/godot/app_userdata/Secret Emotion/secret_emotion.db"
+DB_PATH="$HOME/.local/share/godot/app_userdata/Secret Emotion/save_backup.json"
 
 # Check if the file exists
 if [ -f "$DB_PATH" ]; then
