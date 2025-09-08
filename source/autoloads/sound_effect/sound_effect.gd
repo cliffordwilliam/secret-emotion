@@ -10,14 +10,10 @@ func _ready() -> void:
 	for i: int in range(SoundEffectConfigData.POOL_SIZE):
 		var sfx_player: AudioStreamPlayer = AudioStreamPlayer.new()
 		sfx_player.bus = SoundEffectConfigData.BUS
-		sfx_player.name = sfx_player.name + str(i)
-		sfx_player.volume_db = 0.0
 		add_child(sfx_player)
 
 
 func play(wav_file_path: String) -> void:
-	if not ResourceLoader.exists(wav_file_path, "AudioStream"):
-		return
 	var sfx_player: AudioStreamPlayer = _get_not_busy_sfx_player()
 	if sfx_player:
 		sfx_player.stream = _get_loaded_sfx(wav_file_path)

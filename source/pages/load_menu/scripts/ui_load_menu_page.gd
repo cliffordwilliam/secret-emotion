@@ -29,7 +29,7 @@ func _handle_load(slot_name: String) -> void:
 	if activated_slot.error:
 		ToastMaker.show_toast(activated_slot.error_message)
 		return
-	ToastMaker.show_toast("Slot '%s' is now active!" % activated_slot.slot_name)
+	ToastMaker.show_toast("Selected slot '%s' is now active" % activated_slot.slot_name)
 
 	var active_room: ApiRoomResponseDto = ApiRoomService.get_current_room(
 		ApiStringParamDto.new(activated_slot.slot_name, "UiLoadMenuPage _handle_load")
@@ -37,10 +37,12 @@ func _handle_load(slot_name: String) -> void:
 	if active_room.error:
 		ToastMaker.show_toast(active_room.error_message)
 		return
-	ToastMaker.show_toast("OK: Activated a slot with name: '%s'" % activated_slot.slot_name)
+	ToastMaker.show_toast("Activated a slot with name: '%s'" % activated_slot.slot_name)
 
 	ApiSqlite.dump_mem_to_disk_json()
+
 	await get_tree().process_frame
+	ToastMaker.show_toast("Switching to activated slot current room: '%s'" % active_room.room_name)
 	get_tree().change_scene_to_file(active_room.scene_file_path)
 
 
@@ -52,7 +54,7 @@ func _handle_delete(slot_name: String) -> void:
 		ToastMaker.show_toast(deleted_slot.error_message)
 		return
 
-	ToastMaker.show_toast("OK: Deleted a slot with name: '%s'" % deleted_slot.slot_name)
+	ToastMaker.show_toast("Deleted a slot with name: '%s'" % deleted_slot.slot_name)
 	ApiSqlite.dump_mem_to_disk_json()
 	_rehydrate_slot_list()
 
@@ -60,7 +62,7 @@ func _handle_delete(slot_name: String) -> void:
 func _handle_create_slot() -> void:
 	# Validate FE text field user input
 	if new_slot_text_field.text == "":
-		ToastMaker.show_toast("Slot name cannot be empty!")
+		ToastMaker.show_toast("Slot name cannot be empty")
 		return
 
 	# Create the slot
@@ -70,36 +72,40 @@ func _handle_create_slot() -> void:
 	if created_slot.error:
 		ToastMaker.show_toast(created_slot.error_message)
 		return
-	ToastMaker.show_toast("OK: Made a new slot")
+	ToastMaker.show_toast("Successfully made a new slot with name: '%s'" % created_slot.slot_name)
 
 	ApiSqlite.dump_mem_to_disk_json()
 	_rehydrate_slot_list()
 	new_slot_text_field.text = ""
 
-	# Create slot starting room (mark it as its current room)
-	var starting_room_dto: ApiRoomCreateDto = (
-		ApiRoomCreateDto
-		. new(
-			{
-				"slot_name": created_slot.slot_name,
-				"room_name": UiLoadMenuConfigData.FIRST_STARTING_ROOM_NAME,
-				"scene_file_path": UiLoadMenuConfigData.FIRST_STARTING_ROOM_SCENE_FILE_PATH,
-				"current_room": true,
-			}
+	# Create this new slot starting room (mark it as its current room too)
+	var created_room: ApiRoomResponseDto = (
+		ApiRoomService
+		. create(
+			(
+				ApiRoomCreateDto
+				. new(
+					{
+						"slot_name": created_slot.slot_name,
+						"room_name": UiLoadMenuConfigData.FIRST_STARTING_ROOM_NAME,
+						"scene_file_path": UiLoadMenuConfigData.FIRST_STARTING_ROOM_SCENE_FILE_PATH,
+						"current_room": true,
+					}
+				)
+			)
 		)
 	)
-	var created_room: ApiRoomResponseDto = ApiRoomService.create(starting_room_dto)
 	if created_room.error:
 		ToastMaker.show_toast(
 			(
-				"Failed to create starting room for slot '%s': %s"
+				"Failed to create starting room for the new slot '%s': %s"
 				% [created_slot.slot_name, created_room.error_message]
 			)
 		)
 		return
 	ToastMaker.show_toast(
 		(
-			"Created starting room '%s' for slot '%s'"
+			"Created starting room '%s' for the new slot '%s'"
 			% [created_room.room_name, created_slot.slot_name]
 		)
 	)

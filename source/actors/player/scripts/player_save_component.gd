@@ -16,113 +16,56 @@ func read_world_state() -> void:
 	# So must ensure parent refs are ready in state base class
 	await player.ready
 
-	# Read world state
-	var raw_data: Dictionary = get_one_object_in_world_state_by_id(id)
+	# Fetch from DB via service
 
-	# Empty? Start state machine now
-	if raw_data.is_empty():
+	var player_data: ApiPlayerResponseDto = ApiPlayerService.get_in_current_context()
+	if player_data.error:
+		# No save exists yet → start fresh AND make my new save
+		(
+			ApiPlayerService
+			. create_in_current_context(
+				(
+					ApiPlayerCreateDto
+					. new(
+						{
+							"player_pos_x": player.position.x,
+							"player_pos_y": player.position.x,
+							"flip_h": player.player_animated_sprite.flip_h,
+						}
+					)
+				)
+			)
+		)
 		properties_initialized_by_save_file.emit()
 		return
 
-	# Got something? Validate it
-	if not _validate_state_machine(raw_data):
-		return
-	if not _validate_flip_h(raw_data):
-		return
-	if not _validate_position(raw_data):
-		return
-
-	# Apply world state to my props
-	var save_data: PlayerSaveData = _raw_to_resource_schema(raw_data)
-	_rehydrate_self_with_loaded_data(save_data)
+	# Rehydrate self using DB DTO
+	_rehydrate_self_with_loaded_data(player_data)
 	# Start state machine now
 	properties_initialized_by_save_file.emit()
 
 
-func _validate_state_machine(raw_data: Dictionary) -> bool:
-	if not raw_data.has(PlayerSaveData.KEY_CURRENT_STATE_NAME):
-		push_warning("Missing state name in player save data for id: %s" % id)
-		return false
-	var state_name: String = raw_data[PlayerSaveData.KEY_CURRENT_STATE_NAME]
-	for child: PlayerState in player.player_state_machine.get_children():
-		if child.name == state_name:
-			return true
-	push_warning("Invalid state '%s' in player save data for id: %s" % [state_name, id])
-	return false
-
-
-func _validate_flip_h(raw_data: Dictionary) -> bool:
-	if not raw_data.has(PlayerSaveData.KEY_FLIP_H):
-		push_warning("Missing flip_h in player save data for id: %s" % id)
-		return false
-	var raw_flip_h: String = raw_data[PlayerSaveData.KEY_FLIP_H]
-	if raw_flip_h != "true" and raw_flip_h != "false":
-		push_warning("Invalid flip_h '%s' in player save data for id: %s" % [raw_flip_h, id])
-		return false
-	return true
-
-
-func _validate_position(raw_data: Dictionary) -> bool:
-	if (
-		not raw_data.has(PlayerSaveData.KEY_POSITION_X)
-		or not raw_data.has(PlayerSaveData.KEY_POSITION_Y)
-	):
-		push_warning("Missing position in player save data for id: %s" % id)
-		return false
-	var raw_x: String = raw_data[PlayerSaveData.KEY_POSITION_X]
-	var raw_y: String = raw_data[PlayerSaveData.KEY_POSITION_Y]
-	if not raw_x.is_valid_float() or not raw_y.is_valid_float():
-		push_warning(
-			(
-				"Position values must be floats (got '%s', '%s') in player save data for id: %s"
-				% [raw_x, raw_y, id]
-			)
-		)
-		return false
-	return true
-
-
-func _rehydrate_self_with_loaded_data(save_data: PlayerSaveData) -> void:
-	# TODO: No need to rehydrate state
-	# TODO: Why? Player only rehydrate on
-	# TODO: First instance in a room either from load menu or room switch
-	# TODO: Just always start in IDLE!
-	## Restore state machine
-	#var target_state: PlayerState = null
-	#for child: PlayerState in player.player_state_machine.get_children():
-	#if child.name == save_data.current_state_name:
-	#target_state = child
-	#break
-	#player.player_state_machine.set_initial_state(target_state)
-	# Restore transform
-	player.position = Vector2(save_data.position_x, save_data.position_y)
-	# Restore flip h
-	player.player_animated_sprite.flip_h = save_data.flip_h
+func _rehydrate_self_with_loaded_data(player_data: ApiPlayerResponseDto) -> void:
+	player.position.x = player_data.pos_x
+	player.position.y = player_data.pos_y
+	player.player_animated_sprite.flip_h = player_data.flip_h
 
 
 func dump_state_to_world() -> void:
-	var save_data: PlayerSaveData = PlayerSaveData.new()
-	save_data.current_state_name = player.player_state_machine.current_state.name
-	save_data.position_x = player.position.x
-	save_data.position_y = player.position.y
-	save_data.flip_h = player.player_animated_sprite.flip_h
-	var save_data_dict: Dictionary = _resource_schema_to_raw_dict(save_data)
-	set_one_object_in_world_state_by_id(id, save_data_dict)
-
-
-func _raw_to_resource_schema(raw_data: Dictionary) -> PlayerSaveData:
-	var save_data: PlayerSaveData = PlayerSaveData.new()
-	save_data.current_state_name = StringName(raw_data[PlayerSaveData.KEY_CURRENT_STATE_NAME])
-	save_data.flip_h = raw_data[PlayerSaveData.KEY_FLIP_H] == "true"
-	save_data.position_x = raw_data[PlayerSaveData.KEY_POSITION_X].to_float()
-	save_data.position_y = raw_data[PlayerSaveData.KEY_POSITION_Y].to_float()
-	return save_data
-
-
-func _resource_schema_to_raw_dict(save_data: PlayerSaveData) -> Dictionary:
-	return {
-		PlayerSaveData.KEY_CURRENT_STATE_NAME: str(save_data.current_state_name),
-		PlayerSaveData.KEY_FLIP_H: str(save_data.flip_h),
-		PlayerSaveData.KEY_POSITION_X: str(save_data.position_x),
-		PlayerSaveData.KEY_POSITION_Y: str(save_data.position_y),
-	}
+	var result: ApiPlayerResponseDto = (
+		ApiPlayerService
+		. update_in_current_context(
+			(
+				ApiPlayerEditDto
+				. new(
+					{
+						"player_pos_x": player.position.x,
+						"player_pos_y": player.position.y,
+						"flip_h": player.player_animated_sprite.flip_h,
+					}
+				)
+			)
+		)
+	)
+	if result.error:
+		push_error("Failed to persist player '%s': %s" % [player.name, result.error_message])
