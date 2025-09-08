@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxwaen5irvn78"]
+
+[ext_resource type="Script" uid="uid://d2rmgm268su5t" path="res://source/shared/ui_components/toast/ui_toast.gd" id="1_vhk42"]
+
+[node name="Toast" type="PanelContainer"]
+offset_right = 55.0
+offset_bottom = 23.0
+script = ExtResource("1_vhk42")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "asddsa"

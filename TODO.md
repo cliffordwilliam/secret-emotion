@@ -21,31 +21,28 @@
 - [x] Complete code base todo list comments
 - [ ] Add tetris inventory
 - [ ] Add one silly health item for inventory testing + hp later
-- [ ] Room switch should ignore y reset on horizontal room switch
-- [ ] Finish crud for slot
-- [ ] Think of this like ms word, you can make as much files as you want (unlimited slots)
-- [ ] Persist things must follow this routine, check if db exists, if not make new default row
-- [ ] Make chest db table
+- ~~[ ] Room switch should ignore y reset on horizontal room switch~~
+- [x] Finish crud for slot
+- [x] Think of this like ms word, you can make as much files as you want (unlimited slots)
+- [x] Persist things must follow this routine, check if db exists, if not make new default row
+- [x] Make chest db table
 - [ ] Make player db table
-- [ ] Make room db table
-- [ ] Delete the page that combines both load and save
+- [x] Make room db table
+- [x] Delete the page that combines both load and save
 - [x] Make load page first, for now this it the main scene
-- [ ] Then make save page
-- [ ] Make page manager autoload, 1 page at a time or no page at all
+- [x] Then make save page
+- [x] Make page manager autoload, 1 page at a time or no page at all
 - [ ] Make global error boundary page to show error log and dump log to disk
-- [ ] Make unit test
+- ~~[ ] Make unit test~~
 - [x] Prefix db with API in front of class + file names (AKA namespace them)
-- [ ] 1. After POST new slot and loading it (sets it active)
-- [ ] 2. Load starting room and have it POST with to LOCAL WORLD STATE layer 2
-- [ ] 3. When player hit save, then POST LOCAL WORLD STATE to DB with SLOT GENRE
-- [ ] Add font, default font is way too big
+- [x] Add font, default font is way too big
 - [ ] Add game icon
-- [ ] Do all todo in codebase
-- [ ] Remove the door export, just have each room set its target path with autoload path validation
-- [ ] 1. Create page manager first (should manage special overlay pages)
-- [ ] 2. So we have different pages that are made for standalone, not overlay over room scene
-- [ ] 3. When player hits up on the save point, we have to tell page manager to show save page
-- [ ] 4. Save page allows player to pick 1 slot, on pick, current room savables have to dump to layer 2 first
-- [ ] 5. Then dump to disk
-- [ ] 6. Try starting the game again, should dump disk to mem layer 2
+- [x] Do all todo in codebase
+- [x] Remove the door export, just have each room set its target path with autoload path validation
+- [x] 1. Create page manager first (should manage special overlay pages)
+- [x] 2. So we have different pages that are made for standalone, not overlay over room scene
+- [x] 3. When player hits up on the save point, we have to tell page manager to show save page
+- [x] 4. Save page allows player to pick 1 slot, on pick, current room savables have to dump to layer 2 first
+- [x] 5. Then dump to disk
+- [x] 6. Try starting the game again, should dump disk to mem layer 2
 - [ ] 7. Use picked slot to find the room with that slot genre that is active

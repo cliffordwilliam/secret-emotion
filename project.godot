@@ -24,6 +24,7 @@ ApiSqlite="*res://db/source/core/database/api_sqlite.gd"
 SoundEffectFilePathContants="*res://source/autoloads/constants/sound_effect_file_path_contants.gd"
 SceneFilePathContants="*res://source/autoloads/constants/scene_file_path_contants.gd"
 OverlayPageManager="*res://source/autoloads/overlay_page_manager/scenes/OverlayPageManager.tscn"
+ToastMaker="*res://source/autoloads/toast_maker/ToastMaker.tscn"
 
 [debug]
 
@@ -40,6 +41,10 @@ window/stretch/scale_mode="integer"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/collapse_folders/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://dx1j16yl3vrl4"
 
 [input]
 
