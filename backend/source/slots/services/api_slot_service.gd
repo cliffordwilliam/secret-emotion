@@ -13,6 +13,10 @@ static func get_all() -> Array[ApiSlotResponseDto]:
 	return ApiSlotRepository.get_all()
 
 
+static func get_by_name(slot_name: String) -> ApiSlotResponseDto:
+	return ApiSlotRepository.get_by_name(slot_name)
+
+
 static func delete_by_name(slot_name_dto: ApiStringParamDto) -> ApiSlotResponseDto:
 	var slot: ApiSlotResponseDto = ApiSlotRepository.get_by_name(slot_name_dto.string_param)
 	if slot.error:
@@ -31,5 +35,8 @@ static func activate_by_name(slot_name_dto: ApiStringParamDto) -> ApiSlotRespons
 	ApiSlotRepository.deactivate_all()
 	if ApiSlotRepository.activate_by_id(target_slot.slot_id):
 		return ApiSlotRepository.get_by_id(target_slot.slot_id)
-
 	return ApiSlotResponseDto.err("Failed to activate slot '%s'" % slot_name_dto.string_param)
+
+
+static func get_active_slot() -> ApiSlotResponseDto:
+	return ApiSlotRepository.get_active_slot()

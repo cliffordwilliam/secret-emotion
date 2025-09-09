@@ -16,60 +16,89 @@ func read_world_state() -> void:
 	# So must ensure parent refs are ready in state base class
 	await chest.ready
 
-	# Fetch from DB via service
-
-	var chest_data: ApiChestResponseDto = ApiChestService.get_in_current_context(
-		ApiStringParamDto.new(chest.name)
+	# Fetch data from db
+	# Get the slot we want
+	var found_active_slot: ApiSlotResponseDto = ApiSlotService.get_active_slot()
+	if found_active_slot.error:
+		return
+	# Get a room from this slot
+	var found_active_room: ApiRoomResponseDto = ApiRoomRepository.get_active_room_by_slot_id(
+		found_active_slot.slot_id
 	)
-	if chest_data.error:
-		# No save exists yet → start fresh AND make my new save
-		(
-			ApiChestService
-			. create_in_current_context(
-				(
-					ApiChestContextCreateDto
-					. new(
-						{
-							"chest_name": chest.name,
-							"chest_state": chest.chest_state_machine.initial_state.name,
-						}
-					)
+	if found_active_room.error:
+		return
+	# Get chest in that room
+	var chest_data: ApiChestResponseDto = (
+		ApiChestService
+		. get_by_slot_name_room_name_and_chest_name(
+			ApiStringParamDto.new(found_active_slot.slot_name),
+			ApiStringParamDto.new(found_active_room.room_name),
+			ApiStringParamDto.new(chest.name),
+		)
+	)
+
+	if not chest_data.error:
+		# Rehydrate self using that chest
+		_rehydrate_self_with_loaded_data(chest_data)
+		# Start state machine now
+		properties_initialized_by_save_file.emit()
+		return
+	# Not found? Make new one
+	var created_chest: ApiChestResponseDto = (
+		ApiChestService
+		. create(
+			ApiStringParamDto.new(found_active_slot.slot_name),
+			ApiStringParamDto.new(found_active_room.room_name),
+			(
+				ApiChestCreateDto
+				. new(
+					{
+						"chest_name": chest.name,
+						"chest_state": chest.chest_state_machine.initial_state.name,
+					}
 				)
 			)
 		)
-		properties_initialized_by_save_file.emit()
+	)
+	if created_chest.error:
+		print(created_chest.error_message)
 		return
-
-	# Rehydrate self using DB DTO
-	_rehydrate_self_with_loaded_data(chest_data)
-	# Start state machine now
+	# Start state machine
 	properties_initialized_by_save_file.emit()
+	return
 
 
 func _rehydrate_self_with_loaded_data(chest_data: ApiChestResponseDto) -> void:
 	# Restore state machine
-	var target_state: ChestState = null
 	for child: ChestState in chest.chest_state_machine.get_children():
 		if child.name == chest_data.chest_state:
-			target_state = child
+			chest.chest_state_machine.set_initial_state(child)
 			break
-	if target_state:
-		chest.chest_state_machine.set_initial_state(target_state)
+
+
+func dump_state_to_world(slot_name: String = "") -> void:
+	# Get the slot we want
+	var found_slot: ApiSlotResponseDto
+	if slot_name.strip_edges() != "":
+		found_slot = ApiSlotService.get_by_name(slot_name)
 	else:
-		push_warning(
-			(
-				"Invalid state '%s' in chest save data for chest_id %d"
-				% [chest_data.current_state, chest_data.chest_id]
-			)
-		)
-
-
-func dump_state_to_world() -> void:
+		found_slot = ApiSlotService.get_active_slot()
+	if found_slot.error:
+		return
+	# Get a room from this slot
+	var found_active_room: ApiRoomResponseDto = ApiRoomRepository.get_active_room_by_slot_id(
+		found_slot.slot_id
+	)
+	if found_active_room.error:
+		return
+	# Update chest in that room
 	var result: ApiChestResponseDto = (
 		ApiChestService
-		. update_in_current_context(
+		. update(
+			ApiStringParamDto.new(found_slot.slot_name),
+			ApiStringParamDto.new(found_active_room.room_name),
 			(
-				ApiChestContextEditDto
+				ApiChestEditDto
 				. new(
 					{
 						"chest_name": chest.name,
@@ -80,4 +109,4 @@ func dump_state_to_world() -> void:
 		)
 	)
 	if result.error:
-		push_error("Failed to persist chest '%s': %s" % [chest.name, result.error_message])
+		return

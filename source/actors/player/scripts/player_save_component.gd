@@ -16,29 +16,21 @@ func read_world_state() -> void:
 	# So must ensure parent refs are ready in state base class
 	await player.ready
 
-	# Fetch from DB via service
-
-	var player_data: ApiPlayerResponseDto = ApiPlayerService.get_in_current_context()
-	if player_data.error:
-		# No save exists yet → start fresh AND make my new save
-		(
-			ApiPlayerService
-			. create_in_current_context(
-				(
-					ApiPlayerCreateDto
-					. new(
-						{
-							"player_pos_x": player.position.x,
-							"player_pos_y": player.position.x,
-							"flip_h": player.player_animated_sprite.flip_h,
-						}
-					)
-				)
-			)
-		)
-		properties_initialized_by_save_file.emit()
+	# Fetch data from db
+	var found_active_slot: ApiSlotResponseDto = ApiSlotService.get_active_slot()
+	if found_active_slot.error:
+		#ToastMaker.show_toast(found_active_slot.error_message)
 		return
-
+	#ToastMaker.show_toast(
+	#"Found active slot '%s'" % found_active_slot.slot_name
+	#)
+	var player_data: ApiPlayerResponseDto = ApiPlayerService.get_by_slot_id(
+		ApiStringParamDto.new(found_active_slot.slot_name)
+	)
+	# Slot and player are one to one, so player must exists
+	if player_data.error:
+		#ToastMaker.show_toast(found_active_slot.error_message)
+		return
 	# Rehydrate self using DB DTO
 	_rehydrate_self_with_loaded_data(player_data)
 	# Start state machine now
@@ -51,10 +43,18 @@ func _rehydrate_self_with_loaded_data(player_data: ApiPlayerResponseDto) -> void
 	player.player_animated_sprite.flip_h = player_data.flip_h
 
 
-func dump_state_to_world() -> void:
+func dump_state_to_world(slot_name: String = "") -> void:
+	var found_slot: ApiSlotResponseDto
+	if slot_name.strip_edges() != "":
+		found_slot = ApiSlotService.get_by_name(slot_name)
+	else:
+		found_slot = ApiSlotService.get_active_slot()
+	if found_slot.error:
+		return
 	var result: ApiPlayerResponseDto = (
 		ApiPlayerService
-		. update_in_current_context(
+		. update_by_slot_id(
+			ApiStringParamDto.new(found_slot.slot_name),
 			(
 				ApiPlayerEditDto
 				. new(

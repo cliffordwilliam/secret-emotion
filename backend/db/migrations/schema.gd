@@ -34,11 +34,12 @@ static func migrate(database: SQLite) -> void:
 			room_id INTEGER PRIMARY KEY AUTOINCREMENT,
 			slot_id INTEGER NOT NULL,
 			room_name TEXT NOT NULL,
-			current_room INTEGER NOT NULL DEFAULT 0,
+			active_status INTEGER NOT NULL DEFAULT 0,
 			scene_file_path TEXT NOT NULL,
 			date_created TEXT NOT NULL DEFAULT (datetime('now')),
 			date_modified TEXT NOT NULL DEFAULT (datetime('now')),
 			FOREIGN KEY(slot_id) REFERENCES slots(slot_id) ON DELETE CASCADE
+			UNIQUE(slot_id, room_name)
 		);
 		""",
 		"""
@@ -59,13 +60,14 @@ static func migrate(database: SQLite) -> void:
 		"""
 		CREATE TABLE IF NOT EXISTS chests (
 			chest_id INTEGER PRIMARY KEY AUTOINCREMENT,
+			slot_id INTEGER NOT NULL,
 			room_id INTEGER NOT NULL,
 			chest_name TEXT NOT NULL,
 			current_state TEXT NOT NULL,
 			date_created TEXT NOT NULL DEFAULT (datetime('now')),
 			date_modified TEXT NOT NULL DEFAULT (datetime('now')),
 			FOREIGN KEY(room_id) REFERENCES rooms(room_id) ON DELETE CASCADE,
-			UNIQUE(room_id, chest_name)
+			UNIQUE(slot_id, room_id, chest_name)
 		);
 		""",
 		"""

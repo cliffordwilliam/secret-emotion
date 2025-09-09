@@ -1,7 +1,6 @@
 class_name ApiPlayerEditDto
 extends RefCounted
 
-# Schema props
 var player_pos_x: float
 var player_pos_y: float
 var flip_h: bool

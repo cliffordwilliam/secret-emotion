@@ -47,7 +47,7 @@ func _on_door_player_entered(
 	await get_tree().process_frame
 	var new_room: Room = load(target_room_scene_path).instantiate()
 
-	_api_upsert_new_room_as_current(new_room)
+	_activate_new_room(new_room)
 
 	get_tree().root.add_child(new_room)
 	new_room._set_player_position_to_door(new_room_entrance_door_name)
@@ -56,38 +56,33 @@ func _on_door_player_entered(
 
 func _dump_my_savable_objects_state_to_local_world_state() -> void:
 	for savable_node: Node in get_tree().get_nodes_in_group(GroupNameConstants.SAVABLES):
-		if not savable_node.has_method("_dump_state_to_world"):
-			pass
 		savable_node._dump_state_to_world()
 
 
-func _api_upsert_new_room_as_current(new_room: Room) -> void:
-	var is_upsert_failed: bool = false
-	var activated_room: ApiRoomResponseDto = ApiRoomService.set_room_to_current_by_name(
-		ApiStringParamDto.new(new_room.name)
-	)
-	if activated_room.error:
-		ToastMaker.show_toast(activated_room.error_message)
-		is_upsert_failed = true
-	else:
-		ToastMaker.show_toast("Successfully set room '%s' as current" % activated_room.room_name)
+func _activate_new_room(new_room: Room) -> void:
+	var found_active_slot: ApiSlotResponseDto = ApiSlotService.get_active_slot()
+	if found_active_slot.error:
+		return
 
-	if is_upsert_failed:
-		var created_new_current_room: ApiRoomResponseDto = (
-			ApiRoomService
-			. create_new_current_room_in_current_context(
-				ApiRoomContextCreateDto.new(
-					{
-						"room_name": new_room.name,
-						"scene_file_path": new_room.scene_file_path,
-						"current_room": 1
-					}
-				)
-			)
+	var activated_room: ApiRoomResponseDto = (
+		ApiRoomService
+		. activate_room_by_name_and_slot_name(
+			ApiStringParamDto.new(new_room.name),
+			ApiStringParamDto.new(found_active_slot.slot_name),
 		)
-		if created_new_current_room.error:
-			ToastMaker.show_toast(created_new_current_room.error_message)
-			return
-		ToastMaker.show_toast(
-			"Successfully created a new room '%s' as current" % created_new_current_room.room_name
+	)
+	if not activated_room.error:
+		return
+
+	var new_active_room: ApiRoomResponseDto = ApiRoomService.create(
+		ApiStringParamDto.new(found_active_slot.slot_name),
+		ApiRoomCreateDto.new(
+			{
+				"room_name": new_room.name,
+				"scene_file_path": new_room.scene_file_path,
+				"active_status": 1
+			}
 		)
+	)
+	if new_active_room.error:
+		return

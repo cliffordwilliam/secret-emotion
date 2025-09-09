@@ -24,8 +24,8 @@ func reposition_to_door(given_global_position: Vector2) -> void:
 	global_position = given_global_position
 
 
-func _dump_state_to_world() -> void:
-	player_save_component.dump_state_to_world()
+func _dump_state_to_world(slot_name: String = "") -> void:
+	player_save_component.dump_state_to_world(slot_name)
 
 
 func _on_player_save_component_finished() -> void:

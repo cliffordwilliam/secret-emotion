@@ -2,47 +2,44 @@ class_name ApiChestService
 extends RefCounted
 
 
-static func get_in_current_context(chest_name: ApiStringParamDto) -> ApiChestResponseDto:
-	# OK
-	var active_slot: ApiSlotResponseDto = ApiSlotRepository.get_active_slot()
-	if not active_slot:
-		return ApiChestResponseDto.err("No active slot found")
-
-	var current_room: ApiRoomResponseDto = ApiRoomRepository.get_current_room(active_slot.slot_id)
-	if current_room.error:
-		return ApiChestResponseDto.err(
-			"Active slot has no current room '%s'" % active_slot.slot_name
-		)
-
-	return ApiChestRepository.get_by_room_and_name(current_room.room_id, chest_name.string_param)
-
-
-static func update_in_current_context(
-	# OK
-	chest_context_edit_dto: ApiChestContextEditDto
+static func get_by_slot_name_room_name_and_chest_name(
+	slot_name: ApiStringParamDto, room_name: ApiStringParamDto, chest_name: ApiStringParamDto
 ) -> ApiChestResponseDto:
-	var active_slot: ApiSlotResponseDto = ApiSlotRepository.get_active_slot()
-	if not active_slot:
-		return ApiChestResponseDto.err("No active slot found")
+	var slot: ApiSlotResponseDto = ApiSlotRepository.get_by_name(slot_name.string_param)
+	if slot.error:
+		return ApiChestResponseDto.err("Slot '%s' not found" % slot_name.string_param)
+	var room: ApiRoomResponseDto = ApiRoomRepository.get_by_name_and_slot_id(
+		room_name.string_param, slot.slot_id
+	)
+	if room.error:
+		return ApiChestResponseDto.err("Room '%s' not found" % room_name.string_param)
+	return ApiChestRepository.get_by_slot_id_and_room_id_and_name(
+		slot.slot_id, room.room_id, chest_name.string_param
+	)
 
-	var current_room: ApiRoomResponseDto = ApiRoomRepository.get_current_room(active_slot.slot_id)
-	if current_room.error:
-		return ApiChestResponseDto.err(
-			"Active slot has no current room '%s'" % active_slot.slot_name
-		)
 
+static func update(
+	slot_name: ApiStringParamDto, room_name: ApiStringParamDto, chest_edit_dto: ApiChestEditDto
+) -> ApiChestResponseDto:
+	var slot: ApiSlotResponseDto = ApiSlotRepository.get_by_name(slot_name.string_param)
+	if slot.error:
+		return ApiChestResponseDto.err("Slot '%s' not found" % slot_name.string_param)
+	var room: ApiRoomResponseDto = ApiRoomRepository.get_by_name_and_slot_id(
+		room_name.string_param, slot.slot_id
+	)
+	if room.error:
+		return ApiChestResponseDto.err("Room '%s' not found" % room_name.string_param)
 	return (
 		ApiChestRepository
 		. update(
-			current_room.room_id,
+			slot.slot_id,
+			room.room_id,
 			(
-				ApiChestRepoEditDto
+				ApiChestEditDto
 				. new(
 					{
-						"slot_name": active_slot.slot_name,
-						"room_name": current_room.room_name,
-						"chest_name": chest_context_edit_dto.chest_name,
-						"chest_state": chest_context_edit_dto.chest_state,
+						"chest_name": chest_edit_dto.chest_name,
+						"chest_state": chest_edit_dto.chest_state,
 					}
 				)
 			)
@@ -50,45 +47,38 @@ static func update_in_current_context(
 	)
 
 
-static func create_in_current_context(
-	chest_context_create_dto: ApiChestContextCreateDto
+static func create(
+	slot_name: ApiStringParamDto, room_name: ApiStringParamDto, chest_create_dto: ApiChestCreateDto
 ) -> ApiChestResponseDto:
-	# OK
-	var active_slot: ApiSlotResponseDto = ApiSlotRepository.get_active_slot()
-	if not active_slot:
-		return ApiChestResponseDto.err("No active slot found")
-
-	var current_room: ApiRoomResponseDto = ApiRoomRepository.get_current_room(active_slot.slot_id)
-	if current_room.error:
-		return ApiChestResponseDto.err("No current room found in slot '%s'" % active_slot.slot_name)
-
-	var existing: ApiChestResponseDto = ApiChestRepository.get_by_room_and_name(
-		current_room.room_id, chest_context_create_dto.chest_name
+	var slot: ApiSlotResponseDto = ApiSlotRepository.get_by_name(slot_name.string_param)
+	if slot.error:
+		return ApiChestResponseDto.err("Slot '%s' not found" % slot_name.string_param)
+	var room: ApiRoomResponseDto = ApiRoomRepository.get_by_name_and_slot_id(
+		room_name.string_param, slot.slot_id
+	)
+	if room.error:
+		return ApiChestResponseDto.err("Room '%s' not found" % room_name.string_param)
+	var existing: ApiChestResponseDto = ApiChestRepository.get_by_slot_id_and_room_id_and_name(
+		slot.slot_id, room.room_id, chest_create_dto.chest_name
 	)
 	if not existing.error:
 		return ApiChestResponseDto.err(
 			(
 				"Chest '%s' already exists in room '%s' (slot '%s')"
-				% [
-					chest_context_create_dto.chest_name,
-					current_room.room_name,
-					active_slot.slot_name
-				]
+				% [chest_create_dto.chest_name, room.room_name, slot.slot_name]
 			)
 		)
-
 	return (
 		ApiChestRepository
 		. create(
-			current_room.room_id,
+			slot.slot_id,
+			room.room_id,
 			(
-				ApiChestRepoCreateDto
+				ApiChestCreateDto
 				. new(
 					{
-						"slot_name": active_slot.slot_name,
-						"room_name": current_room.room_name,
-						"chest_name": chest_context_create_dto.chest_name,
-						"chest_state": chest_context_create_dto.chest_state,
+						"chest_name": chest_create_dto.chest_name,
+						"chest_state": chest_create_dto.chest_state,
 					}
 				)
 			),

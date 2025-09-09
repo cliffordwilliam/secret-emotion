@@ -27,18 +27,12 @@ func _handle_load(slot_name: String) -> void:
 		ApiStringParamDto.new(slot_name)
 	)
 	if activated_slot.error:
-		ToastMaker.show_toast(activated_slot.error_message)
 		return
-	ToastMaker.show_toast("Selected slot '%s' is now active" % activated_slot.slot_name)
-	ApiSqlite.dump_mem_to_disk_json()
-
-	var active_room: ApiRoomResponseDto = ApiRoomService.get_current_room(
+	var active_room: ApiRoomResponseDto = ApiRoomService.get_active_room_by_slot_name(
 		ApiStringParamDto.new(activated_slot.slot_name)
 	)
 	if active_room.error:
-		ToastMaker.show_toast(active_room.error_message)
 		return
-	ToastMaker.show_toast("Successfully get this slot current room '%s'" % active_room.slot_name)
 
 	await get_tree().process_frame
 	get_tree().change_scene_to_file(active_room.scene_file_path)
@@ -49,60 +43,60 @@ func _handle_delete(slot_name: String) -> void:
 		ApiStringParamDto.new(slot_name)
 	)
 	if deleted_slot.error:
-		ToastMaker.show_toast(deleted_slot.error_message)
 		return
-	ToastMaker.show_toast("Deleted a slot '%s'" % deleted_slot.slot_name)
 	ApiSqlite.dump_mem_to_disk_json()
 	_rehydrate_slot_list()
 
 
 func _handle_create_slot() -> void:
 	if new_slot_text_field.text == "":
-		ToastMaker.show_toast("Slot name cannot be empty")
 		return
-
 	var created_slot: ApiSlotResponseDto = ApiSlotService.create(
 		ApiSlotCreateDto.new({"slot_name": new_slot_text_field.text})
 	)
 	if created_slot.error:
-		ToastMaker.show_toast(created_slot.error_message)
 		return
-	ToastMaker.show_toast("Successfully made a new slot '%s'" % created_slot.slot_name)
-	ApiSqlite.dump_mem_to_disk_json()
 	_rehydrate_slot_list()
 	new_slot_text_field.text = ""
 
-	# Create this new slot starting room (activate it too)
+	var created_player: ApiPlayerResponseDto = (
+		ApiPlayerService
+		. create(
+			ApiStringParamDto.new(created_slot.slot_name),
+			(
+				ApiPlayerCreateDto
+				. new(
+					{
+						"player_pos_x": UiLoadMenuConfigData.FIRST_STARTING_PLAYER_POSITION_X,
+						"player_pos_y": UiLoadMenuConfigData.FIRST_STARTING_PLAYER_POSITION_Y,
+						"flip_h": UiLoadMenuConfigData.FIRST_STARTING_PLAYER_FLIP_H,
+					}
+				)
+			)
+		)
+	)
+	if created_player.error:
+		return
+
 	var created_room: ApiRoomResponseDto = (
 		ApiRoomService
 		. create(
+			ApiStringParamDto.new(created_slot.slot_name),
 			(
 				ApiRoomCreateDto
 				. new(
 					{
-						"slot_name": created_slot.slot_name,
 						"room_name": UiLoadMenuConfigData.FIRST_STARTING_ROOM_NAME,
 						"scene_file_path": UiLoadMenuConfigData.FIRST_STARTING_ROOM_SCENE_FILE_PATH,
-						"current_room": true,
+						"active_status": true,
 					}
 				)
 			)
 		)
 	)
 	if created_room.error:
-		ToastMaker.show_toast(
-			(
-				"Failed to create starting room for the new slot '%s': %s"
-				% [created_slot.slot_name, created_room.error_message]
-			)
-		)
 		return
-	ToastMaker.show_toast(
-		(
-			"Created starting room '%s' for the new slot '%s'"
-			% [created_room.room_name, created_slot.slot_name]
-		)
-	)
+	ApiSqlite.dump_mem_to_disk_json()
 
 
 func _rehydrate_slot_list() -> void:

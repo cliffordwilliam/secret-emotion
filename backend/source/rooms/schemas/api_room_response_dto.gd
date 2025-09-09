@@ -1,12 +1,11 @@
 class_name ApiRoomResponseDto
 extends ApiBaseResponseDto
 
-# Schema props
 var room_id: int
 var slot_id: int
 var room_name: String
 var scene_file_path: String
-var current_room: bool
+var active_status: bool
 var date_created: String
 var date_modified: String
 
@@ -20,7 +19,7 @@ func _init(db_dict_response: Dictionary = {}, given_error_message: String = "") 
 	slot_id = ApiFieldValidator.require_int(db_dict_response, "slot_id")
 	room_name = ApiFieldValidator.require_string(db_dict_response, "room_name")
 	scene_file_path = ApiFieldValidator.require_string(db_dict_response, "scene_file_path")
-	current_room = ApiFieldValidator.require_bool(db_dict_response, "current_room")
+	active_status = ApiFieldValidator.require_bool(db_dict_response, "active_status")
 	date_created = ApiFieldValidator.require_string(
 		db_dict_response, "date_created", ApiRegexConstants.ISO8601_REGEX
 	)

@@ -2,8 +2,7 @@ class_name ApiPlayerRepository
 extends RefCounted
 
 
-static func create(slot_id: int, player_create_schema: ApiPlayerCreateDto) -> ApiPlayerResponseDto:
-	# OK
+static func create(slot_id: int, player_create_dto: ApiPlayerCreateDto) -> ApiPlayerResponseDto:
 	(
 		ApiSqlite
 		. database
@@ -11,9 +10,9 @@ static func create(slot_id: int, player_create_schema: ApiPlayerCreateDto) -> Ap
 			"player",
 			{
 				"slot_id": slot_id,
-				"pos_x": player_create_schema.player_pos_x,
-				"pos_y": player_create_schema.player_pos_y,
-				"flip_h": player_create_schema.flip_h,
+				"pos_x": player_create_dto.player_pos_x,
+				"pos_y": player_create_dto.player_pos_y,
+				"flip_h": player_create_dto.flip_h,
 			},
 		)
 	)
@@ -21,7 +20,6 @@ static func create(slot_id: int, player_create_schema: ApiPlayerCreateDto) -> Ap
 
 
 static func update(slot_id: int, player_edit_schema: ApiPlayerEditDto) -> ApiPlayerResponseDto:
-	# OK
 	var rows_updated: int = (
 		ApiSqlite
 		. database
@@ -29,7 +27,6 @@ static func update(slot_id: int, player_edit_schema: ApiPlayerEditDto) -> ApiPla
 			"player",
 			"slot_id = %d" % [slot_id],
 			{
-				"slot_id": slot_id,
 				"pos_x": player_edit_schema.player_pos_x,
 				"pos_y": player_edit_schema.player_pos_y,
 				"flip_h": player_edit_schema.flip_h,
@@ -42,9 +39,9 @@ static func update(slot_id: int, player_edit_schema: ApiPlayerEditDto) -> ApiPla
 
 
 static func get_by_slot_id(slot_id: int) -> ApiPlayerResponseDto:
-	# OK
-	var where: String = "slot_id = %d" % [slot_id]
-	var raw_results: Array[Dictionary] = ApiSqlite.database.select_rows("player", where, ["*"])
+	var raw_results: Array[Dictionary] = ApiSqlite.database.select_rows(
+		"player", "slot_id = %d" % [slot_id], ["*"]
+	)
 	if raw_results.is_empty():
-		return ApiPlayerResponseDto.new({}, "Player not found for slot with id: %s" % [slot_id])
+		return ApiPlayerResponseDto.err("Slot slot_id %d does not have a player" % [slot_id])
 	return ApiPlayerResponseDto.new(raw_results[0])

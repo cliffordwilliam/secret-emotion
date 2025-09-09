@@ -30,4 +30,4 @@ func _validate_gui() -> void:
 			push_error("❌ GUI 'Input Map' missing: %s" % action)
 			get_tree().quit(1)
 
-	print("✅ GUI 'Input Map' valid.")
+	#print("✅ GUI 'Input Map' valid.")

@@ -35,8 +35,8 @@ func _on_body_exited(_body: Node2D) -> void:
 	interaction_marker.set_inactive()
 
 
-func _dump_state_to_world() -> void:
-	chest_save_component.dump_state_to_world()
+func _dump_state_to_world(slot_name: String = "") -> void:
+	chest_save_component.dump_state_to_world(slot_name)
 
 
 func _on_chest_save_component_finished() -> void:

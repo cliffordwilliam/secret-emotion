@@ -49,3 +49,5 @@
 - [ ] Review the save load cycle again, there is a weird bug when overwriting save file
 - [ ] Overwrite should work like this, instead of using the current slot active as owner genre to use
 - [ ] Use a different genre and dump to those items that have the different genre instead
+- [ ] Move tenant to sql json file instead, that way player can overwrite files, delete the slot table the
+- [ ] So have fixed amount of save slots

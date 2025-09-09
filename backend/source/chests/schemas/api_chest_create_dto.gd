@@ -1,7 +1,6 @@
-class_name ApiChestContextCreateDto
+class_name ApiChestCreateDto
 extends RefCounted
 
-# Schema props
 var chest_name: String
 var chest_state: String
 

@@ -27,12 +27,10 @@ func _empty_slot_container() -> void:
 		child.free()
 
 
-func _handle_save(_slot_name: String) -> void:
+func _handle_save(slot_name: String) -> void:
 	# 1. Tell savables to hydrate sqlite mem (use unique to PATCH)
 	for savable_node: Node in get_tree().get_nodes_in_group(GroupNameConstants.SAVABLES):
-		if not savable_node.has_method("_dump_state_to_world"):
-			pass
-		savable_node._dump_state_to_world()
+		savable_node._dump_state_to_world(slot_name)
 	# 2. Then dump sqlite mem to disk as JSON Here
 	ApiSqlite.dump_mem_to_disk_json()
 	# 3. Change page back to blank page

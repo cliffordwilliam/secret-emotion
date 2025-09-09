@@ -11,4 +11,4 @@ func _validate_file_path(file_paths: Array[String]) -> void:
 			push_error("❌ Missing file: %s" % path)
 			get_tree().quit(1)
 
-	print("✅ All files exist.")
+	#print("✅ All files exist.")
