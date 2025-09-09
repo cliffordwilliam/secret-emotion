@@ -19,7 +19,7 @@ func read_world_state() -> void:
 	# Fetch from DB via service
 
 	var chest_data: ApiChestResponseDto = ApiChestService.get_in_current_context(
-		ApiStringParamDto.new(chest.name, "ChestSaveComponent read_world_state")
+		ApiStringParamDto.new(chest.name)
 	)
 	if chest_data.error:
 		# No save exists yet → start fresh AND make my new save

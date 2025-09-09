@@ -13,17 +13,12 @@ static func migrate(database: SQLite) -> void:
 			slot_id INTEGER PRIMARY KEY AUTOINCREMENT,
 			slot_name TEXT NOT NULL UNIQUE,
 			active_status INTEGER NOT NULL DEFAULT 0,
-			last_played_at TEXT,
-			play_time_seconds INTEGER DEFAULT 0,
 			date_created TEXT NOT NULL DEFAULT (datetime('now')),
 			date_modified TEXT NOT NULL DEFAULT (datetime('now'))
 		);
 		""",
 		"""
 		CREATE INDEX IF NOT EXISTS idx_slots_name ON slots(slot_name);
-		""",
-		"""
-		CREATE INDEX IF NOT EXISTS idx_slots_last_played ON slots(last_played_at);
 		""",
 		"""
 		CREATE TRIGGER IF NOT EXISTS update_slots_modtime

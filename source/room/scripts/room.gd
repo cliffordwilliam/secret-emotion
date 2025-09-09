@@ -64,7 +64,7 @@ func _dump_my_savable_objects_state_to_local_world_state() -> void:
 func _api_upsert_new_room_as_current(new_room: Room) -> void:
 	var is_upsert_failed: bool = false
 	var activated_room: ApiRoomResponseDto = ApiRoomService.set_room_to_current_by_name(
-		ApiStringParamDto.new(new_room.name, "Room _on_door_player_entered")
+		ApiStringParamDto.new(new_room.name)
 	)
 	if activated_room.error:
 		ToastMaker.show_toast(activated_room.error_message)
