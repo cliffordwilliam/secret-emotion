@@ -1,29 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3114afxkijh1"]
+[gd_scene load_steps=2 format=3 uid="uid://dx2js8tmcwrf8"]
 
-[ext_resource type="Script" uid="uid://b0qk1i3bwgjkb" path="res://source/pages/save_menu/scripts/save_menu.gd" id="1_wo1rc"]
+[ext_resource type="Script" uid="uid://bygpjkcphydbr" path="res://source/pages/load_menu/scripts/load_menu.gd" id="1_6mtqk"]
 
-[node name="SaveMenu" type="CenterContainer"]
+[node name="LoadMenu" type="CenterContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wo1rc")
+script = ExtResource("1_6mtqk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "save game"
+text = "load game"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "slot 0"
+text = "slot 1"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "slot 1"
+text = "slot 2"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2

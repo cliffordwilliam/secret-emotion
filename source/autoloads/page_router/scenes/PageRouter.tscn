@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ghbjptrbgni1"]
+
+[ext_resource type="Script" uid="uid://b3hbucn2m4prh" path="res://source/autoloads/page_router/scripts/page_router.gd" id="1_ureqf"]
+[ext_resource type="PackedScene" uid="uid://dxrvr3obyo8t0" path="res://source/pages/blank_page/scenes/BlankPage.tscn" id="2_0t8d2"]
+[ext_resource type="PackedScene" uid="uid://dx2js8tmcwrf8" path="res://source/pages/load_menu/scenes/LoadMenu.tscn" id="3_u7x4c"]
+[ext_resource type="PackedScene" uid="uid://c3114afxkijh1" path="res://source/pages/save_menu/scenes/SaveMenu.tscn" id="4_ww72w"]
+
+[node name="PageRouter" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ureqf")
+
+[node name="BlankPage" parent="." instance=ExtResource("2_0t8d2")]
+
+[node name="LoadMenu" parent="." instance=ExtResource("3_u7x4c")]
+visible = false
+
+[node name="SaveMenu" parent="." instance=ExtResource("4_ww72w")]
+visible = false

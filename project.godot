@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Secret Emotion"
-run/main_scene="uid://c3114afxkijh1"
+run/main_scene="uid://gb5sw4oyy4a1"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 InputConstants="*res://source/autoloads/constants/input_constants.gd"
 SoundEffect="*res://source/autoloads/sound_effect/sound_effect.gd"
 WorldState="*res://source/autoloads/world_state/world_state.gd"
+PageRouter="*res://source/autoloads/page_router/scenes/PageRouter.tscn"
 
 [debug]
 
@@ -36,6 +37,10 @@ window/stretch/scale_mode="integer"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/collapse_folders/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://donlc2ncnvfmv"
 
 [input]
 

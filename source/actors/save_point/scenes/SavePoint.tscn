@@ -1,10 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://dhd10mh015lwf"]
+[gd_scene load_steps=29 format=3 uid="uid://dhd10mh015lwf"]
 
 [ext_resource type="Script" uid="uid://byhfr1mp4v8rf" path="res://source/actors/save_point/scripts/save_point.gd" id="1_bmiyu"]
 [ext_resource type="Texture2D" uid="uid://kxiee6r1rll2" path="res://source/actors/save_point/assets/save-point.png" id="2_l52kv"]
 [ext_resource type="PackedScene" uid="uid://bepdvy345cjy6" path="res://source/shared/player_input/scenes/PlayerInput.tscn" id="5_s5ucr"]
 [ext_resource type="PackedScene" uid="uid://kvelexcshhn5" path="res://source/actors/interaction_marker/scenes/InteractionMarker.tscn" id="6_3v35x"]
-[ext_resource type="PackedScene" uid="uid://c3114afxkijh1" path="res://source/pages/save_menu/scenes/SaveMenu.tscn" id="8_1rjsf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsko6"]
 atlas = ExtResource("2_l52kv")
@@ -191,12 +190,6 @@ input_enabled = false
 
 [node name="InteractionMarker" parent="." instance=ExtResource("6_3v35x")]
 position = Vector2(0, -56)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="SaveMenu" parent="CanvasLayer" instance=ExtResource("8_1rjsf")]
-visible = false
-action = 0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
