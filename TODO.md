@@ -19,3 +19,5 @@
 - [x] Create a save trigger
 - [x] Use strategy pattern for long if else
 - [x] Complete code base todo list comments
+- [ ] Seperate save and load page, use page router
+- [ ] Use silver font, it has localization for other languages
