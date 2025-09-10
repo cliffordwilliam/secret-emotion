@@ -7,7 +7,7 @@
 [ext_resource type="Shape2D" uid="uid://c6nrcw6xltwxv" path="res://source/actors/save_point/resources/save_point_interaction_area.tres" id="4_skrf2"]
 [ext_resource type="PackedScene" uid="uid://bepdvy345cjy6" path="res://source/shared/player_input/scenes/PlayerInput.tscn" id="5_s5ucr"]
 [ext_resource type="PackedScene" uid="uid://kvelexcshhn5" path="res://source/actors/interaction_marker/scenes/InteractionMarker.tscn" id="6_3v35x"]
-[ext_resource type="PackedScene" uid="uid://c3114afxkijh1" path="res://source/screens/save_menu/scenes/SaveMenu.tscn" id="8_1rjsf"]
+[ext_resource type="PackedScene" uid="uid://c3114afxkijh1" path="res://source/pages/save_menu/scenes/SaveMenu.tscn" id="8_1rjsf"]
 
 [node name="SavePoint" type="Area2D"]
 collision_layer = 0
