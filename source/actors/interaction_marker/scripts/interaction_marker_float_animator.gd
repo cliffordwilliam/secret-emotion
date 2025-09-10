@@ -1,5 +1,5 @@
-class_name InteractionMarkerFloatAnimationPlayer
-extends ValidatedAnimationPlayerNode
+class_name InteractionMarkerFloatAnimator
+extends ValidatedAnimationPlayer
 
 @export var animation_name_data: InteractionMarkerFloatAnimationNameData
 

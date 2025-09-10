@@ -1,4 +1,4 @@
-# This is an autoload class (SoundEffectFilePathConstants)
+# Autoload SoundEffectFilePathConstants
 extends Node
 # Holds all path string to sound files (.wav)
 

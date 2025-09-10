@@ -1,4 +1,4 @@
-# This is an autoload class (WorldState)
+# Autoload WorldState
 extends Node
 # Manages world state + ability to IO it
 
@@ -32,7 +32,7 @@ func load_from_slot(slot_name: SaveSlot) -> Dictionary:
 	var path: String = SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION
 
 	if not FileAccess.file_exists(path):
-		print("No save file at slot:", slot_name)
+		#print("No save file at slot:", slot_name)
 		return {}
 
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)

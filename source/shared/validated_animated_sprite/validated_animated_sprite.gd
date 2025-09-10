@@ -9,4 +9,4 @@ func _validate_gui(animation_name_data: Resource) -> void:
 			push_error("❌ GUI '%s' '%s' animation name missing: '%s'" % [get_class(), name, anim])
 			get_tree().quit(1)
 
-	print("✅ GUI '%s' '%s' animation name valid." % [get_class(), name])
+	#print("✅ GUI '%s' '%s' animation name valid." % [get_class(), name])

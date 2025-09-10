@@ -1,3 +1,4 @@
+class_name SaveMenu
 extends CenterContainer
 
 signal player_pressed_save_button

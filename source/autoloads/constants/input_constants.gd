@@ -1,4 +1,4 @@
-# This is an autoload class (InputConstants)
+# Autoload InputConstants
 extends Node
 # Validates GUI against my const (input map)
 
@@ -28,4 +28,4 @@ func _validate_gui() -> void:
 			push_error("❌ GUI 'Input Map' missing: %s" % action)
 			get_tree().quit(1)
 
-	print("✅ GUI 'Input Map' valid.")
+	#print("✅ GUI 'Input Map' valid.")

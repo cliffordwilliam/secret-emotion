@@ -1,4 +1,4 @@
-# This is an autoload class (GroupNameConstants)
+# Autoload GroupNameConstants
 extends Node
 # Holds all group names
 

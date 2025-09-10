@@ -1,4 +1,4 @@
-# This is an autoload class (LocalWorldStateConstants)
+# Autoload LocalWorldStateConstants
 extends Node
 # Holds all group names
 
