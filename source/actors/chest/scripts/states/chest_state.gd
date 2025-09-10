@@ -1,6 +1,5 @@
 class_name ChestState
 extends State
-# Stores owner belongings (so lsp knows owner type)
 
 var chest: Chest
 var chest_state_machine: ChestStateMachine
@@ -11,10 +10,9 @@ var interaction_marker: InteractionMarker
 
 
 func _ready() -> void:
+	await owner.ready
 	chest = owner as Chest
-	await chest.ready
 	chest_state_machine = chest.chest_state_machine
 	chest_input = chest.chest_input
-	chest_animation_name_data = chest.animation_name_data
 	chest_animated_sprite = chest.chest_animated_sprite
 	interaction_marker = chest.interaction_marker

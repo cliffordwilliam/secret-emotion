@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="InteractionMarkerFadeAnimationNameData" load_steps=2 format=3 uid="uid://c6b6v6012o6nb"]
-
-[ext_resource type="Script" uid="uid://b37e57jx2iqf5" path="res://source/actors/interaction_marker/scripts/interaction_marker_fade_animation_name_data.gd" id="1_r0ikf"]
-
-[resource]
-script = ExtResource("1_r0ikf")
-metadata/_custom_type_script = "uid://b37e57jx2iqf5"

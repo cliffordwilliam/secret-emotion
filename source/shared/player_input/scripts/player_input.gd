@@ -1,7 +1,6 @@
 @icon("res://source/shared/player_input/assets/gamepad-2.svg")
 class_name PlayerInput
 extends Node
-# The only thing that calls the Input singleton, so its not spammed everywhere
 
 @export var input_enabled: bool = true
 
@@ -16,31 +15,31 @@ func get_input_direction_x() -> int:
 	return int(Input.get_axis(InputConstants.LEFT_INPUT, InputConstants.RIGHT_INPUT))
 
 
-func is_shift_held() -> int:
+func is_shift_held() -> bool:
 	if not input_enabled:
 		return false
 	return Input.is_action_pressed(InputConstants.SHIFT_INPUT)
 
 
-func is_down_held() -> int:
+func is_down_held() -> bool:
 	if not input_enabled:
 		return false
 	return Input.is_action_pressed(InputConstants.DOWN_INPUT)
 
 
-func is_jump_tapped() -> int:
+func is_jump_tapped() -> bool:
 	if not input_enabled:
 		return false
 	return Input.is_action_just_pressed(InputConstants.JUMP_INPUT)
 
 
-func is_jump_held() -> int:
+func is_jump_held() -> bool:
 	if not input_enabled:
 		return false
 	return Input.is_action_pressed(InputConstants.JUMP_INPUT)
 
 
-func is_up_tapped() -> int:
+func is_up_tapped() -> bool:
 	if not input_enabled:
 		return false
 	return Input.is_action_just_pressed(InputConstants.UP_INPUT)

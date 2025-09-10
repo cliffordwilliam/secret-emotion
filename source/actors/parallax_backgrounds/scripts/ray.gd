@@ -1,10 +1,8 @@
 class_name Ray
 extends Parallax2D
-# Scroll ray each frame
-
-@export var movement_data: RayMovementData
+const FLOAT_SPEED: float = 1.0
 
 
 func _physics_process(delta: float) -> void:
-	scroll_offset.x -= movement_data.FLOAT_SPEED * delta
+	scroll_offset.x -= FLOAT_SPEED * delta
 	scroll_offset.x = fposmod(scroll_offset.x, repeat_size.x)

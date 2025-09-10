@@ -1,10 +1,9 @@
 # Autoload WorldState
 extends Node
-# Manages world state + ability to IO it
 
 enum SaveSlot { SLOT_0, SLOT_1, SLOT_2 }
 
-const SAVE_PATH_PREFIX: String = "user://save_slot_"
+const SAVE_PATH_PREFIX: String = "user://secret_emotion_save_slot_"
 const SAVE_FILE_EXTENSION: String = ".json"
 
 var world_state: Dictionary = {}
@@ -20,7 +19,7 @@ func get_world_state(actor_id: String) -> Dictionary:
 	return {}
 
 
-func save_to_slot(slot_name: SaveSlot) -> void:
+func dump_to_disk(slot_name: SaveSlot) -> void:
 	var file: FileAccess = FileAccess.open(
 		SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION, FileAccess.WRITE
 	)
@@ -28,24 +27,11 @@ func save_to_slot(slot_name: SaveSlot) -> void:
 	file.close()
 
 
-func load_from_slot(slot_name: SaveSlot) -> Dictionary:
+func hydrate_world(slot_name: SaveSlot) -> void:
 	var path: String = SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION
-
-	if not FileAccess.file_exists(path):
-		#print("No save file at slot:", slot_name)
-		return {}
-
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
-	if file == null:
-		push_error("Failed to open save file at slot: %s" % slot_name)
-		return {}
+	if not file:
+		return
 	var text: String = file.get_as_text()
 	file.close()
-
-	var data: Variant = JSON.parse_string(text)
-	if typeof(data) != TYPE_DICTIONARY:
-		push_error("Corrupted save file at slot: %s" % slot_name)
-		return {}
-
-	world_state = data
-	return data
+	world_state = JSON.parse_string(text) as Dictionary

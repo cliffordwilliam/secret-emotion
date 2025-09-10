@@ -17,5 +17,5 @@
 - [x] Scaffold save / load system
 - ~~[ ] Add direction export to door to init player face dir~~
 - [x] Create a save trigger
-- [ ] Use strategy pattern for long if else
-- [ ] Complete code base todo list comments
+- [x] Use strategy pattern for long if else
+- [x] Complete code base todo list comments

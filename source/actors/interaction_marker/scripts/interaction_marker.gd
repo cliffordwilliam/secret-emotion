@@ -1,21 +1,20 @@
 @icon("res://source/actors/interaction_marker/assets/message-circle-more.svg")
 class_name InteractionMarker
 extends Sprite2D
-# Render and plays interaction marker animation
 
-@onready var fade_animator: InteractionMarkerFadeAnimator = $FadeAnimator
-@onready var float_animator: InteractionMarkerFloatAnimator = $FloatAnimator
+const FADE_IN: StringName = "fade_in"
+const FADE_OUT: StringName = "fade_out"
+const FLOAT: StringName = "float"
 
-
-func _ready() -> void:
-	modulate.a = 0.0
+@onready var fade_animator: AnimationPlayer = $FadeAnimator
+@onready var float_animator: AnimationPlayer = $FloatAnimator
 
 
 func set_active() -> void:
-	fade_animator.play(fade_animator.animation_name_data.FADE_IN)
-	float_animator.play(float_animator.animation_name_data.FLOAT)
+	fade_animator.play(FADE_IN)
+	float_animator.play(FLOAT)
 
 
 func set_inactive() -> void:
-	fade_animator.play(fade_animator.animation_name_data.FADE_OUT)
+	fade_animator.play(FADE_OUT)
 	float_animator.pause()

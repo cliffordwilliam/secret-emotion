@@ -25,9 +25,9 @@ repos:
     hooks:
       - id: godot-classname-check
         name: Godot class/file naming convention
-        entry: scripts/check_godot_classnames.sh
+        entry: ./check_godot_classnames.sh
         language: system
       - id: godot-scene-naming-check
         name: Godot scene naming convention
-        entry: scripts/check_godot_scene_names.sh
+        entry: ./check_godot_scene_names.sh
         language: system

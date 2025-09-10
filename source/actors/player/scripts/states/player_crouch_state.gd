@@ -1,10 +1,9 @@
 class_name PlayerCrouchState
 extends PlayerState
-# Player crouching still
 
 
 func enter(_previous_state: State) -> void:
-	player_animation_sprite.play(player_animation_name_data.TO_CROUCH)
+	player_animation_sprite.play(PlayerAnimationNameData.TO_CROUCH)
 	player.velocity.x = 0.0
 
 

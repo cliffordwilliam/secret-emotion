@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck0ab3frwfod3"]
 
 [ext_resource type="Script" uid="uid://c1330kb5h4nmx" path="res://source/actors/door/scripts/door.gd" id="1_ocmpv"]
-[ext_resource type="Shape2D" uid="uid://s2gm5o1lhcuq" path="res://source/actors/door/resources/standing_door_collision.tres" id="1_oh267"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpj5i"]
+size = Vector2(16, 180)
 
 [node name="Door" type="Area2D"]
 collision_layer = 0
@@ -11,6 +13,8 @@ script = ExtResource("1_ocmpv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 90)
-shape = ExtResource("1_oh267")
+shape = SubResource("RectangleShape2D_xpj5i")
 
 [node name="PlayerSpawnPosition" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=6]

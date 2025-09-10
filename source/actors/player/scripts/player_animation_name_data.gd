@@ -1,6 +1,5 @@
 class_name PlayerAnimationNameData
-extends Resource
-# Player animation name props + next animation map bindings (to_run -> run)
+extends RefCounted
 
 const IDLE: StringName = "idle"
 const WALK: StringName = "walk"
@@ -15,21 +14,6 @@ const JUMP: StringName = "jump"
 const TO_FALL: StringName = "to_fall"
 const FALL: StringName = "fall"
 const FALL_TO_IDLE: StringName = "fall_to_idle"
-const ALL: Array[StringName] = [
-	IDLE,
-	WALK,
-	TO_RUN,
-	RUN,
-	RUN_TO_IDLE,
-	TO_CROUCH,
-	CROUCH,
-	CROUCH_TO_IDLE,
-	TURN_TO_RUN,
-	JUMP,
-	TO_FALL,
-	FALL,
-	FALL_TO_IDLE,
-]
 
 const FOLLOWUPS: Dictionary[StringName, StringName] = {
 	TO_RUN: RUN,

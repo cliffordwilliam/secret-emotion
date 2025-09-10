@@ -1,13 +1,16 @@
 # Autoload SoundEffect
 extends Node
 
+const POOL_SIZE: int = 16
+const BUS: String = "SFX"
+
 var sound_cache: Dictionary[String, AudioStream] = {}
 
 
 func _ready() -> void:
-	for i: int in range(SoundEffectConfigData.POOL_SIZE):
+	for i: int in range(POOL_SIZE):
 		var player: AudioStreamPlayer = AudioStreamPlayer.new()
-		player.bus = SoundEffectConfigData.BUS
+		player.bus = BUS
 		add_child(player)
 
 

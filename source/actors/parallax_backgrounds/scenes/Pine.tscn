@@ -1,11 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://yscb6li8ju1y"]
+[gd_scene load_steps=10 format=3 uid="uid://yscb6li8ju1y"]
 
-[ext_resource type="SpriteFrames" uid="uid://nj12qtqxyh8q" path="res://source/actors/parallax_backgrounds/resources/pine_tree_animation_data.tres" id="1_r3nbj"]
+[ext_resource type="Texture2D" uid="uid://q5p2g8300i83" path="res://source/room/stages/village/assets/day_blue_pine_tree.png" id="1_ta523"]
 [ext_resource type="Script" uid="uid://bj7iah5w37w3k" path="res://source/actors/parallax_backgrounds/scripts/pine.gd" id="2_23hfk"]
-[ext_resource type="Resource" uid="uid://bosj18pswwm2r" path="res://source/actors/parallax_backgrounds/resources/pine_animation_name_data.tres" id="3_22c4d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y076f"]
+atlas = ExtResource("1_ta523")
+region = Rect2(0, 0, 83, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vly3i"]
+atlas = ExtResource("1_ta523")
+region = Rect2(83, 0, 83, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4n2w"]
+atlas = ExtResource("1_ta523")
+region = Rect2(166, 0, 83, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itfnw"]
+atlas = ExtResource("1_ta523")
+region = Rect2(249, 0, 83, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ahq8"]
+atlas = ExtResource("1_ta523")
+region = Rect2(332, 0, 83, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv1cp"]
+atlas = ExtResource("1_ta523")
+region = Rect2(415, 0, 83, 152)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vh8nx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y076f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vly3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4n2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itfnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ahq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv1cp")
+}],
+"loop": true,
+"name": &"sway",
+"speed": 8.0
+}]
 
 [node name="Pine" type="AnimatedSprite2D"]
-sprite_frames = ExtResource("1_r3nbj")
+sprite_frames = SubResource("SpriteFrames_vh8nx")
 animation = &"sway"
+autoplay = "sway"
 script = ExtResource("2_23hfk")
-animation_name_data = ExtResource("3_22c4d")

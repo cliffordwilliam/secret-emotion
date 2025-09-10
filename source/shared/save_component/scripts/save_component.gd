@@ -1,13 +1,15 @@
 @icon("res://source/shared/save_component/assets/save.svg")
 class_name SaveComponent
 extends Node
-# Declare actor ID (unique name for kid to define with node name)
-# And has GET and PATCH for WorldState autoload
 
 @warning_ignore("unused_signal")
-signal start_owner_state_machine_request
+signal data_loaded
 
-var id: StringName = ""
+@onready var id: StringName = owner.name
+
+
+func _ready() -> void:
+	add_to_group(GroupNameConstants.SAVABLES)
 
 
 func update_world_state(state_dictionary: Dictionary) -> void:

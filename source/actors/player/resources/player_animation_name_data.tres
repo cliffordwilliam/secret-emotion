@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="PlayerAnimationNameData" load_steps=2 format=3 uid="uid://ddraiblcf4lin"]
-
-[ext_resource type="Script" uid="uid://q1dkl25oxfcb" path="res://source/actors/player/scripts/player_animation_name_data.gd" id="1_1gojk"]
-
-[resource]
-script = ExtResource("1_1gojk")
-metadata/_custom_type_script = "uid://q1dkl25oxfcb"

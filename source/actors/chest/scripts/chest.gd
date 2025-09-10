@@ -1,9 +1,6 @@
 @icon("res://source/actors/chest/assets/archive.svg")
 class_name Chest
 extends Area2D
-# Opens and close sprite animation on player input
-
-@export var animation_name_data: ChestAnimationNameData
 
 @onready var chest_state_machine: ChestStateMachine = $ChestStateMachine
 @onready var chest_input: PlayerInput = $PlayerInput
@@ -13,12 +10,6 @@ extends Area2D
 
 
 func _ready() -> void:
-	add_to_group(GroupNameConstants.SAVABLE)
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
-	chest_save_component.start_owner_state_machine_request.connect(
-		_on_chest_save_component_start_owner_state_machine_request
-	)
 	chest_save_component.read_world_state()
 
 
@@ -36,9 +27,5 @@ func _on_body_exited(_body: Node2D) -> void:
 	interaction_marker.set_inactive()
 
 
-func _dump_state_to_world() -> void:
-	chest_save_component.dump_state_to_world()
-
-
-func _on_chest_save_component_start_owner_state_machine_request() -> void:
+func _on_chest_save_component_data_loaded() -> void:
 	chest_state_machine.start()

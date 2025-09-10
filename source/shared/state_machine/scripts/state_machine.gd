@@ -1,7 +1,6 @@
 @icon("res://source/shared/state_machine/assets/shuffle.svg")
 class_name StateMachine
 extends Node
-# Listens to kid 'done' event to change current state
 
 @export var initial_state: State
 
@@ -26,5 +25,4 @@ func change_state(next_state: State) -> void:
 		current_state.exit()
 	var previous_state: State = current_state
 	current_state = get_node(next_state.get_path())
-	if current_state:
-		current_state.enter(previous_state)
+	current_state.enter(previous_state)

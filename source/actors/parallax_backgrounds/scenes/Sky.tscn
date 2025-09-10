@@ -4,7 +4,6 @@
 
 [node name="Sky" type="Parallax2D"]
 scroll_scale = Vector2(0, 0)
-repeat_size = Vector2(320, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_k8crk")

@@ -1,6 +1,5 @@
 # Autoload InputConstants
 extends Node
-# Validates GUI against my const (input map)
 
 const LEFT_INPUT: StringName = "left"
 const RIGHT_INPUT: StringName = "right"
@@ -8,24 +7,6 @@ const SHIFT_INPUT: StringName = "shift"
 const DOWN_INPUT: StringName = "down"
 const JUMP_INPUT: StringName = "jump"
 const UP_INPUT: StringName = "up"
-const ALL_ACTIONS: Array[StringName] = [
-	LEFT_INPUT,
-	RIGHT_INPUT,
-	SHIFT_INPUT,
-	DOWN_INPUT,
-	JUMP_INPUT,
-	UP_INPUT,
-]
 
-
-func _ready() -> void:
-	_validate_gui()
-
-
-func _validate_gui() -> void:
-	for action: StringName in ALL_ACTIONS:
-		if not InputMap.has_action(action):
-			push_error("❌ GUI 'Input Map' missing: %s" % action)
-			get_tree().quit(1)
-
-	#print("✅ GUI 'Input Map' valid.")
+#func _ready() -> void:
+# TODO: Read from disk saved input mapping

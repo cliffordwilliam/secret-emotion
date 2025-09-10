@@ -1,14 +1,13 @@
 class_name PlayerFallState
 extends PlayerState
-# Player falling down around
 
 
 func enter(_previous_state: State) -> void:
-	player_animation_sprite.play(player_animation_name_data.TO_FALL)
+	player_animation_sprite.play(PlayerAnimationNameData.TO_FALL)
 
 
 func exit() -> void:
-	SoundEffect.play(SoundEffectFilePathContants.SOFT_LAND)
+	SoundEffect.play(SoundEffectFilePathConstants.PLAYER_SOFT_LAND)
 
 
 func physics_process(delta: float) -> void:
@@ -16,13 +15,13 @@ func physics_process(delta: float) -> void:
 
 	var speed: float
 	if not player_input.is_shift_held():
-		speed = player_movement_data.RUN_SPEED
+		speed = PlayerMovementData.RUN_SPEED
 	else:
-		speed = player_movement_data.WALK_SPEED
+		speed = PlayerMovementData.WALK_SPEED
 
 	player.velocity.x = float(input_direction_x) * speed
-	player.velocity.y += player_movement_data.FALL_GRAVITY * delta
-	player.velocity.y = min(player.velocity.y, player_movement_data.MAX_FALL_SPEED)
+	player.velocity.y += PlayerMovementData.FALL_GRAVITY * delta
+	player.velocity.y = min(player.velocity.y, PlayerMovementData.MAX_FALL_SPEED)
 	player.move_and_slide()
 
 	if player.velocity.x:
