@@ -17,4 +17,4 @@ shape = SubResource("RectangleShape2D_xpj5i")
 
 [node name="PlayerSpawnPosition" type="Marker2D" parent="."]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=6]
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]

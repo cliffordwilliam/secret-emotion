@@ -3,7 +3,7 @@ class_name SaveComponent
 extends Node
 
 @warning_ignore("unused_signal")
-signal data_loaded
+signal finished_reading
 
 @onready var id: StringName = owner.name
 

@@ -9,10 +9,9 @@ func _ready() -> void:
 
 
 func set_face_direction(is_facing_left: bool) -> void:
-	if flip_h == is_facing_left:
-		return
-	flip_h_changed.emit()
-	flip_h = is_facing_left
+	if flip_h != is_facing_left:
+		flip_h_changed.emit()
+		flip_h = is_facing_left
 
 
 func _on_animation_finished() -> void:

@@ -10,11 +10,11 @@ const FLOAT: StringName = "float"
 @onready var float_animator: AnimationPlayer = $FloatAnimator
 
 
-func set_active() -> void:
+func appear() -> void:
 	fade_animator.play(FADE_IN)
 	float_animator.play(FLOAT)
 
 
-func set_inactive() -> void:
+func disappear() -> void:
 	fade_animator.play(FADE_OUT)
 	float_animator.pause()

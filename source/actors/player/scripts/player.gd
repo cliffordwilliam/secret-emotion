@@ -19,5 +19,5 @@ func reposition_to_door(given_global_position: Vector2) -> void:
 	global_position = given_global_position
 
 
-func _on_player_save_component_data_loaded() -> void:
+func _on_save_component_finished_reading() -> void:
 	player_state_machine.start()

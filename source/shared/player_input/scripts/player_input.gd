@@ -5,8 +5,12 @@ extends Node
 @export var input_enabled: bool = true
 
 
-func set_enable_input(value: bool) -> void:
-	input_enabled = value
+func listen_to_user_input() -> void:
+	input_enabled = true
+
+
+func ignore_user_input() -> void:
+	input_enabled = false
 
 
 func get_input_direction_x() -> int:

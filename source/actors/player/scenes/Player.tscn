@@ -538,4 +538,4 @@ metadata/_custom_type_script = "uid://dp6ygnv6bxt7s"
 script = ExtResource("16_dl8lm")
 metadata/_custom_type_script = "uid://tvhka460tfhc"
 
-[connection signal="data_loaded" from="PlayerSaveComponent" to="." method="_on_player_save_component_data_loaded"]
+[connection signal="finished_reading" from="PlayerSaveComponent" to="." method="_on_save_component_finished_reading"]

@@ -123,6 +123,6 @@ position = Vector2(0, -48)
 script = ExtResource("11_85e77")
 metadata/_custom_type_script = "uid://wmwebcb1i3je"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="data_loaded" from="ChestSaveComponent" to="." method="_on_chest_save_component_data_loaded"]
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]
+[connection signal="body_exited" from="." to="." method="_on_player_exited"]
+[connection signal="finished_reading" from="ChestSaveComponent" to="." method="_on_save_component_finished_reading"]

@@ -191,5 +191,5 @@ input_enabled = false
 [node name="InteractionMarker" parent="." instance=ExtResource("6_3v35x")]
 position = Vector2(0, -56)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]
+[connection signal="body_exited" from="." to="." method="_on_player_exited"]

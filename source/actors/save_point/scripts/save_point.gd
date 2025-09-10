@@ -11,11 +11,11 @@ func _physics_process(_delta: float) -> void:
 		PageRouter.show_page(PageNameConstants.SAVE_MENU_PAGE)
 
 
-func _on_body_entered(_body: Node2D) -> void:
-	save_point_input.set_enable_input(true)
-	interaction_marker.set_active()
+func _on_player_entered(_player: Node2D) -> void:
+	save_point_input.listen_to_user_input()
+	interaction_marker.appear()
 
 
-func _on_body_exited(_body: Node2D) -> void:
-	save_point_input.set_enable_input(false)
-	interaction_marker.set_inactive()
+func _on_player_exited(_player: Node2D) -> void:
+	save_point_input.ignore_user_input()
+	interaction_marker.disappear()

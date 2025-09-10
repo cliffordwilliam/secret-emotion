@@ -17,15 +17,15 @@ func _physics_process(delta: float) -> void:
 	chest_state_machine.physics_process(delta)
 
 
-func _on_body_entered(_body: Node2D) -> void:
-	chest_input.set_enable_input(true)
-	interaction_marker.set_active()
+func _on_player_entered(_player: Node2D) -> void:
+	chest_input.listen_to_user_input()
+	interaction_marker.appear()
 
 
-func _on_body_exited(_body: Node2D) -> void:
-	chest_input.set_enable_input(false)
-	interaction_marker.set_inactive()
+func _on_player_exited(_player: Node2D) -> void:
+	chest_input.ignore_user_input()
+	interaction_marker.disappear()
 
 
-func _on_chest_save_component_data_loaded() -> void:
+func _on_save_component_finished_reading() -> void:
 	chest_state_machine.start()
