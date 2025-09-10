@@ -24,6 +24,11 @@ WorldState="*res://source/autoloads/world_state/world_state.gd"
 GroupNameConstants="*res://source/autoloads/constants/group_name_constants.gd"
 LocalWorldStateConstants="*res://source/autoloads/constants/local_world_state_constants.gd"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/inferred_declaration=2
+
 [display]
 
 window/size/viewport_width=320

@@ -16,17 +16,17 @@ func _ready() -> void:
 		{LocalWorldStateConstants.ROOM_SCENE_PATH: scene_file_path}
 	)
 	# Get player ref
-	for child in get_children():
+	for child: Node in get_children():
 		if child is Player:
 			player = child
 			break
 	# Get save point ref
-	for child in get_children():
+	for child: Node in get_children():
 		if child is SavePoint:
 			child.player_pressed_save_button.connect(_dump_my_savable_objects_state_to_world)
 			break
 	# Populate door dict map storage
-	for child in get_children():
+	for child: Node in get_children():
 		if child is Door:
 			doors[child.name] = child
 			child.player_entered.connect(_on_door_player_entered)
@@ -46,5 +46,5 @@ func _on_door_player_entered(target_room_scene_path: String, target_door_name: S
 
 
 func _dump_my_savable_objects_state_to_world() -> void:
-	for savable_node in get_tree().get_nodes_in_group(GroupNameConstants.SAVABLE):
+	for savable_node: Node in get_tree().get_nodes_in_group(GroupNameConstants.SAVABLE):
 		savable_node._dump_state_to_world()

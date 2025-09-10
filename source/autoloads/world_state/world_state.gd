@@ -4,8 +4,8 @@ extends Node
 
 enum SaveSlot { SLOT_0, SLOT_1, SLOT_2 }
 
-const SAVE_PATH_PREFIX := "user://save_slot_"
-const SAVE_FILE_EXTENSION := ".json"
+const SAVE_PATH_PREFIX: String = "user://save_slot_"
+const SAVE_FILE_EXTENSION: String = ".json"
 
 var world_state: Dictionary = {}
 
@@ -21,7 +21,7 @@ func get_world_state(actor_id: String) -> Dictionary:
 
 
 func save_to_slot(slot_name: SaveSlot) -> void:
-	var file = FileAccess.open(
+	var file: FileAccess = FileAccess.open(
 		SAVE_PATH_PREFIX + str(slot_name) + SAVE_FILE_EXTENSION, FileAccess.WRITE
 	)
 	file.store_line(JSON.stringify(world_state))
@@ -42,7 +42,7 @@ func load_from_slot(slot_name: SaveSlot) -> Dictionary:
 	var text: String = file.get_as_text()
 	file.close()
 
-	var data = JSON.parse_string(text)
+	var data: Variant = JSON.parse_string(text)
 	if typeof(data) != TYPE_DICTIONARY:
 		push_error("Corrupted save file at slot: %s" % slot_name)
 		return {}

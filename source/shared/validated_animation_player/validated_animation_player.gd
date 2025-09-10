@@ -4,7 +4,7 @@ extends AnimationPlayer
 
 
 func _validate_gui(animation_name_data: Resource) -> void:
-	for anim in get_animation_list():
+	for anim: String in get_animation_list():
 		if anim not in animation_name_data.ALL:
 			push_error("❌ GUI '%s' '%s' animation name missing: '%s'" % [get_class(), name, anim])
 			get_tree().quit(1)

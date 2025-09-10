@@ -10,7 +10,7 @@ signal start_owner_state_machine_request
 var id: StringName = ""
 
 
-func update_world_state(state_dictionary: Dictionary):
+func update_world_state(state_dictionary: Dictionary) -> void:
 	WorldState.set_world_state(id, state_dictionary)
 
 

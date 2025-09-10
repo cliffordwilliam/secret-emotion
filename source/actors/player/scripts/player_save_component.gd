@@ -46,7 +46,7 @@ func _validate_state_machine(raw_data: Dictionary) -> bool:
 		push_warning("Missing state name in player save data for id: %s" % id)
 		return false
 	var state_name: String = raw_data[PlayerSaveData.KEY_CURRENT_STATE_NAME]
-	for child in player.player_state_machine.get_children():
+	for child: PlayerState in player.player_state_machine.get_children():
 		if child.name == state_name:
 			return true
 	push_warning("Invalid state '%s' in player save data for id: %s" % [state_name, id])
@@ -87,7 +87,7 @@ func _validate_position(raw_data: Dictionary) -> bool:
 func _apply_loaded_data(save_data: PlayerSaveData) -> void:
 	# Restore state machine
 	var target_state: PlayerState = null
-	for child in player.player_state_machine.get_children():
+	for child: PlayerState in player.player_state_machine.get_children():
 		if child.name == save_data.current_state_name:
 			target_state = child
 			break
@@ -109,7 +109,7 @@ func dump_state_to_world() -> void:
 
 
 func _raw_to_resource_schema(raw_data: Dictionary) -> PlayerSaveData:
-	var save_data = PlayerSaveData.new()
+	var save_data: PlayerSaveData = PlayerSaveData.new()
 	save_data.current_state_name = StringName(raw_data[PlayerSaveData.KEY_CURRENT_STATE_NAME])
 	save_data.flip_h = raw_data[PlayerSaveData.KEY_FLIP_H] == "true"
 	save_data.position_x = raw_data[PlayerSaveData.KEY_POSITION_X].to_float()

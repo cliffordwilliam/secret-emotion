@@ -6,7 +6,7 @@ extends ValidatedAnimatedSprite
 @export var animation_name_data: ChestAnimationNameData
 
 
-func _ready():
+func _ready() -> void:
 	_validate_gui(animation_name_data)
 
 

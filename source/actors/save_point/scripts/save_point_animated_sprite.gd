@@ -6,5 +6,5 @@ extends ValidatedAnimatedSprite
 @export var animation_name_data: SavePointAnimationNameData
 
 
-func _ready():
+func _ready() -> void:
 	_validate_gui(animation_name_data)

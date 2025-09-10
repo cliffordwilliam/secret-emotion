@@ -20,7 +20,7 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	if save_point_input.is_up_tapped():
 		get_tree().paused = true
 		save_menu.show()

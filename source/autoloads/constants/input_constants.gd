@@ -18,12 +18,12 @@ const ALL_ACTIONS: Array[StringName] = [
 ]
 
 
-func _ready():
+func _ready() -> void:
 	_validate_gui()
 
 
-func _validate_gui():
-	for action in ALL_ACTIONS:
+func _validate_gui() -> void:
+	for action: StringName in ALL_ACTIONS:
 		if not InputMap.has_action(action):
 			push_error("❌ GUI 'Input Map' missing: %s" % action)
 			get_tree().quit(1)

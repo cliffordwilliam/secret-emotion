@@ -22,7 +22,7 @@ func _ready() -> void:
 	chest_save_component.read_world_state()
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	chest_state_machine.physics_process(delta)
 
 

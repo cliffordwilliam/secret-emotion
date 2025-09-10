@@ -8,7 +8,7 @@ signal flip_h_changed
 @export var animation_name_data: PlayerAnimationNameData
 
 
-func _ready():
+func _ready() -> void:
 	_validate_gui(animation_name_data)
 	animation_finished.connect(_on_animation_finished)
 

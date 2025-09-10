@@ -13,5 +13,5 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 
-func _on_body_entered(_body: Node):
+func _on_body_entered(_body: Node) -> void:
 	player_entered.emit(target_room_scene_path, self.name)

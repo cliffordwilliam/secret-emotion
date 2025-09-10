@@ -11,7 +11,7 @@ enum ActionType { SAVE, LOAD }
 @onready var button_3: Button = $VBoxContainer/Button3
 
 
-func _ready():
+func _ready() -> void:
 	match action:
 		ActionType.SAVE:
 			# Save menu is opened from in game save points only
@@ -19,9 +19,9 @@ func _ready():
 			label.text = "SAVE"
 		ActionType.LOAD:
 			label.text = "LOAD"
-	button.pressed.connect(func(): handle_button(WorldState.SaveSlot.SLOT_0))
-	button_2.pressed.connect(func(): handle_button(WorldState.SaveSlot.SLOT_1))
-	button_3.pressed.connect(func(): handle_button(WorldState.SaveSlot.SLOT_2))
+	button.pressed.connect(func() -> void: handle_button(WorldState.SaveSlot.SLOT_0))
+	button_2.pressed.connect(func() -> void: handle_button(WorldState.SaveSlot.SLOT_1))
+	button_3.pressed.connect(func() -> void: handle_button(WorldState.SaveSlot.SLOT_2))
 
 
 func handle_button(slot: WorldState.SaveSlot) -> void:

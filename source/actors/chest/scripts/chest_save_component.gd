@@ -43,7 +43,7 @@ func _validate_state_machine(raw_data: Dictionary) -> bool:
 		return false
 
 	var state_name: String = raw_data[ChestSaveData.KEY_CURRENT_STATE_NAME]
-	for child in chest.chest_state_machine.get_children():
+	for child: ChestState in chest.chest_state_machine.get_children():
 		if child.name == state_name:
 			return true
 
@@ -54,7 +54,7 @@ func _validate_state_machine(raw_data: Dictionary) -> bool:
 func _apply_loaded_data(save_data: ChestSaveData) -> void:
 	# Restore state machine
 	var target_state: ChestState = null
-	for child in chest.chest_state_machine.get_children():
+	for child: ChestState in chest.chest_state_machine.get_children():
 		if child.name == save_data.current_state_name:
 			target_state = child
 			break
@@ -69,7 +69,7 @@ func dump_state_to_world() -> void:
 
 
 func _raw_to_resource_schema(raw_data: Dictionary) -> ChestSaveData:
-	var save_data = ChestSaveData.new()
+	var save_data: ChestSaveData = ChestSaveData.new()
 	save_data.current_state_name = StringName(raw_data[ChestSaveData.KEY_CURRENT_STATE_NAME])
 	return save_data
 

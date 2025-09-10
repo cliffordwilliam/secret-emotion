@@ -9,7 +9,7 @@ var current_state: State
 
 
 func _ready() -> void:
-	for child in get_children():
+	for child: State in get_children():
 		child.done.connect(change_state)
 
 
